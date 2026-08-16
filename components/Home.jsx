@@ -29,13 +29,12 @@ const stagesConfig = [
     icon: BookOpen,
     gradient: 'from-cyan-400 to-blue-500',
     cards: [
-      { id: '1', title: 'CĐ 1: Nhập môn & Tiền đề CNXHKH', icon: BookOpen },
-      { id: '2', title: 'CĐ 2: Sứ mệnh lịch sử của GCCN', icon: Sparkles },
-      { id: '3', title: 'CĐ 3: CNXH & Đặc trưng bản chất', icon: Layers3 },
-      { id: '4', title: 'CĐ 4: Thời kỳ quá độ lên CNXH', icon: Target },
-      { id: '5', title: 'CĐ 5: Dân chủ xã hội chủ nghĩa', icon: Wand2 },
-      { id: '6', title: 'CĐ 6: Nhà nước xã hội chủ nghĩa', icon: Puzzle },
-      { id: 'new-questions', title: 'Bộ câu hỏi mới', icon: Sparkles },
+      { id: '1', title: 'Phần 1: Nhập môn & Sứ mệnh LS GCCN', icon: BookOpen },
+      { id: '2', title: 'Phần 2: CNXH & Thời kỳ quá độ', icon: Sparkles },
+      { id: '3', title: 'Phần 3: Dân chủ & Nhà nước XHCN', icon: Layers3 },
+      { id: '4', title: 'Phần 4: Đang cập nhật', icon: Target, isUpdating: true },
+      { id: '5', title: 'Phần 5: Đang cập nhật', icon: Wand2, isUpdating: true },
+      { id: '6', title: 'Phần 6: Đang cập nhật', icon: Puzzle, isUpdating: true },
     ],
   },
   {
@@ -43,8 +42,7 @@ const stagesConfig = [
     icon: Layers3,
     gradient: 'from-fuchsia-400 to-pink-500',
     cards: [
-      { id: 'review-1-3', title: 'Ôn tập CĐ 1-3 Cơ bản', icon: Layers3 },
-      { id: 'review-4-6', title: 'Ôn tập CĐ 4-6 Nâng cao', icon: Sparkles },
+      { id: 'review-1-3', title: 'Ôn tập Tổng hợp Phần 1 - 3', icon: Layers3 },
     ],
   },
   {
@@ -52,7 +50,7 @@ const stagesConfig = [
     icon: Target,
     gradient: 'from-emerald-400 to-teal-500',
     cards: [
-      { id: 'type-quiz', title: 'Trắc nghiệm', icon: Target },
+      { id: 'type-quiz', title: 'Trắc nghiệm (A,B,C,D)', icon: Target },
       { id: 'type-tf', title: 'Đúng / Sai', icon: SquareCheckBig },
       { id: 'type-drag', title: 'Kéo thả & Ghép nối', icon: Puzzle },
     ],
@@ -61,7 +59,7 @@ const stagesConfig = [
     key: 'phase-4',
     icon: ArrowRight,
     gradient: 'from-amber-300 to-orange-500',
-    cards: [{ id: 'review-all', title: 'Tổng hợp toàn bộ', icon: ArrowRight }],
+    cards: [{ id: 'review-all', title: 'Tổng hợp toàn bộ kiến thức', icon: ArrowRight }],
   },
 ]
 

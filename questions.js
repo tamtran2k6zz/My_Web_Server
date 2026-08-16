@@ -1,6 +1,6 @@
 export const questions = [
   // ==========================================
-  // CHỦ ĐỀ 1: NHẬP MÔN CNXHKH & SỰ RA ĐỜI CỦA CNXHKH (19 CÂU)
+  // PHẦN 1: NHẬP MÔN CNXHKH & SỨ MỆNH LỊCH SỬ CỦA GIAI CẤP CÔNG NHÂN (38 CÂU)
   // ==========================================
   {
     article: "Bài 1",
@@ -230,13 +230,9 @@ export const questions = [
     answer: ["A", "D"],
     type: "multiple"
   },
-
-  // ==========================================
-  // CHỦ ĐỀ 2: SỨ MỆNH LỊCH SỬ CỦA GIAI CẤP CÔNG NHÂN & GCCN VIỆT NAM (19 CÂU)
-  // ==========================================
   {
-    article: "Bài 2",
-    text: "Câu 1: Phạm trù nào được coi là cơ bản nhất và là xuất phát điểm của chủ nghĩa xã hội khoa học?",
+    article: "Bài 1",
+    text: "Câu 20: Phạm trù nào được coi là cơ bản nhất và là xuất phát điểm của chủ nghĩa xã hội khoa học?",
     options: [
       "A. Sứ mệnh lịch sử của giai cấp công nhân",
       "B. Giai cấp công nhân",
@@ -247,8 +243,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 2",
-    text: "Câu 2: Xét trong quan hệ sản xuất tư bản chủ nghĩa giai cấp công nhân là:",
+    article: "Bài 1",
+    text: "Câu 21: Xét trong quan hệ sản xuất tư bản chủ nghĩa giai cấp công nhân là:",
     options: [
       "A. Giai cấp không có tư liệu sản xuất, đi làm thuê cho nhà tư bản, bị nhà tư bản bóc lột giá trị thặng dư",
       "B. Giai cấp có số lượng đông trong dân cư",
@@ -259,8 +255,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 2",
-    text: "Câu 3: Dấu hiệu đánh dấu sự trưởng thành vượt bậc của giai cấp công nhân với tư cách là giai cấp cách mạng là:",
+    article: "Bài 1",
+    text: "Câu 22: Dấu hiệu đánh dấu sự trưởng thành vượt bậc của giai cấp công nhân với tư cách là giai cấp cách mạng là:",
     options: [
       "A. Sự trưởng thành về ý thức chính trị",
       "B. Sự trưởng thành về trình độ nhận thức",
@@ -271,8 +267,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 2",
-    text: "Câu 4: Giai cấp công nhân Việt Nam chủ yếu xuất thân từ tầng lớp nào? (Chọn 2 đáp án đúng)",
+    article: "Bài 1",
+    text: "Câu 23: Giai cấp công nhân Việt Nam chủ yếu xuất thân từ tầng lớp nào? (Chọn 2 đáp án đúng)",
     options: [
       "A. Giai cấp nông dân bị tước đoạt hết ruộng đất",
       "B. Thợ thủ công bị phá sản",
@@ -283,8 +279,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 2",
-    text: "Câu 5: Giai cấp công nhân Việt Nam có đặc điểm gì khác với giai cấp công nhân ở các nước tư bản? (Chọn 2 đáp án đúng)",
+    article: "Bài 1",
+    text: "Câu 24: Giai cấp công nhân Việt Nam có đặc điểm gì khác với giai cấp công nhân ở các nước tư bản? (Chọn 2 đáp án đúng)",
     options: [
       "A. Chịu sự bóc lột của thực dân và phong kiến",
       "B. Sở hữu tư liệu sản xuất trong xã hội",
@@ -295,8 +291,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 2",
-    text: "Câu 6: Điền từ còn thiếu vào chỗ trống: Giai cấp công nhân và nhân dân lao động là cơ sở..., cơ sở... của Đảng cộng sản, là nguồn bổ sung lực lượng phong phú cho Đảng.",
+    article: "Bài 1",
+    text: "Câu 25: Điền từ còn thiếu vào chỗ trống: Giai cấp công nhân và nhân dân lao động là cơ sở..., cơ sở... của Đảng cộng sản, là nguồn bổ sung lực lượng phong phú cho Đảng.",
     options: [
       "A. Giai cấp – xã hội",
       "B. Chính trị - xã hội",
@@ -307,8 +303,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 2",
-    text: "Câu 7: Trong các nội dung sau đây thì nội dung nào thuộc về giải pháp xây dựng giai cấp công nhân Việt Nam hiện nay?",
+    article: "Bài 1",
+    text: "Câu 26: Trong các nội dung sau đây thì nội dung nào thuộc về giải pháp xây dựng giai cấp công nhân Việt Nam hiện nay?",
     options: [
       "A. Xây dựng giai cấp công nhân tăng về số lượng và chất lượng",
       "B. Xây dựng giai cấp công nhân lớn mạnh, có giác ngộ giai cấp và chính trị vững vàng",
@@ -319,8 +315,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 2",
-    text: "Câu 8: Đặc điểm nào sau đây thể hiện đúng bản chất của giai cấp công nhân? (Chọn 2 đáp án đúng)",
+    article: "Bài 1",
+    text: "Câu 27: Đặc điểm nào sau đây thể hiện đúng bản chất của giai cấp công nhân? (Chọn 2 đáp án đúng)",
     options: [
       "A. Có tính tổ chức và kỷ luật cao trong lao động sản xuất",
       "B. Có trình độ học vấn thấp, chủ yếu làm việc tay chân",
@@ -331,8 +327,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 2",
-    text: "Câu 9: Vấn đề nổi bật nhất đối với việc thực hiện sứ mệnh lịch sử của giai cấp công nhân Việt Nam hiện nay là gì?",
+    article: "Bài 1",
+    text: "Câu 28: Vấn đề nổi bật nhất đối với việc thực hiện sứ mệnh lịch sử của giai cấp công nhân Việt Nam hiện nay là gì?",
     options: [
       "A. Tham gia xây dựng nền kinh tế thị trường định hướng xã hội chủ nghĩa",
       "B. Lực lượng chủ đạo trong lao động",
@@ -343,8 +339,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 2",
-    text: "Câu 10: Điền từ còn thiếu vào chỗ trống “Giai cấp công nhân Việt Nam thực hiện lãnh đạo cách mạng thông qua đội tiên phong của nó là (...)”",
+    article: "Bài 1",
+    text: "Câu 29: Điền từ còn thiếu vào chỗ trống “Giai cấp công nhân Việt Nam thực hiện lãnh đạo cách mạng thông qua đội tiên phong của nó là (...)”",
     options: [
       "A. Tổng liên đoàn lao động Việt Nam",
       "B. Tổ chức công đoàn",
@@ -355,8 +351,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 2",
-    text: "Câu 11: Chủ nghĩa xã hội khoa học ra đời dựa trên cơ sở của những tiền đề nào? (Chọn nhiều đáp án)",
+    article: "Bài 1",
+    text: "Câu 30: Chủ nghĩa xã hội khoa học ra đời dựa trên cơ sở của những tiền đề nào? (Chọn nhiều đáp án)",
     options: [
       "A. Tiền đề khoa học tự nhiên",
       "B. Tiền đề khoa học lịch sử",
@@ -367,8 +363,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 2",
-    text: "Câu 12: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    article: "Bài 1",
+    text: "Câu 31: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
     options: [
       "Giai cấp công nhân đại diện cho phương thức sản xuất tiên tiến và lực lượng sản xuất hiện đại",
       "Đảng Cộng sản là nhân tố khách quan quan trọng nhất để giai cấp công nhân thực hiện thắng lợi sứ mệnh lịch sử của mình",
@@ -379,8 +375,8 @@ export const questions = [
     type: "truefalse"
   },
   {
-    article: "Bài 2",
-    text: "Câu 13: Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 vế trái dưới đây:",
+    article: "Bài 1",
+    text: "Câu 32: Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 vế trái dưới đây:",
     options: [
       "giải phóng con người khỏi áp bức, bất công, bóc lột",
       "giai cấp cách mạng và có tinh thần cách mạng triệt để",
@@ -400,8 +396,8 @@ export const questions = [
     type: "dragdrop"
   },
   {
-    article: "Bài 2",
-    text: "Câu 14: Nội dung sứ mệnh lịch sử của giai cấp công nhân Việt Nam hiện nay bao gồm: (Chọn 3 đáp án đúng)",
+    article: "Bài 1",
+    text: "Câu 33: Nội dung sứ mệnh lịch sử của giai cấp công nhân Việt Nam hiện nay bao gồm: (Chọn 3 đáp án đúng)",
     options: [
       "A. Nội dung lý luận",
       "B. Nội dung văn hóa, tư tưởng",
@@ -412,8 +408,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 2",
-    text: "Câu 15: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    article: "Bài 1",
+    text: "Câu 34: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
     options: [
       "Giai cấp công nhân Việt Nam là tầng lớp giàu có, ít chịu áp bức bóc lột.",
       "Giai cấp công nhân Việt Nam không có sự liên kết với các lực lượng cách mạng khác",
@@ -424,8 +420,8 @@ export const questions = [
     type: "truefalse"
   },
   {
-    article: "Bài 2",
-    text: "Câu 16: Câu nói sau đây được viết trong tác phẩm nào: \"Giai cấp tư sản, trong quá trình thống trị giai cấp chưa đầy một thế kỷ, tạo ra những lực lượng sản xuất nhiều hơn và đồ sộ hơn lực lượng sản xuất của tất cả các thế hệ trước gộp lại\"",
+    article: "Bài 1",
+    text: "Câu 35: Câu nói sau đây được viết trong tác phẩm nào: \"Giai cấp tư sản, trong quá trình thống trị giai cấp chưa đầy một thế kỷ, tạo ra những lực lượng sản xuất nhiều hơn và đồ sộ hơn lực lượng sản xuất của tất cả các thế hệ trước gộp lại\"",
     options: [
       "A. Chống Đuyrinh",
       "B. Bộ Tư bản",
@@ -436,8 +432,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 2",
-    text: "Câu 17: Kéo thả các đáp án khớp với các phát biểu từ 1 – 4 vế trái dưới đây:",
+    article: "Bài 1",
+    text: "Câu 36: Kéo thả các đáp án khớp với các phát biểu từ 1 – 4 vế trái dưới đây:",
     options: [
       "lực lượng sản xuất hiện đại",
       "chủ thể của quá trình sản xuất vật chất hiện đại",
@@ -459,8 +455,8 @@ export const questions = [
     type: "dragdrop"
   },
   {
-    article: "Bài 2",
-    text: "Câu 18: Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 vế trái dưới đây:",
+    article: "Bài 1",
+    text: "Câu 37: Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 vế trái dưới đây:",
     options: [
       "giai cấp, tầng lớp trong xã hội",
       "Đảng Cộng sản Việt Nam",
@@ -480,8 +476,8 @@ export const questions = [
     type: "dragdrop"
   },
   {
-    article: "Bài 2",
-    text: "Câu 19: Kéo thả các yếu tố sau đây vào cột tương ứng:",
+    article: "Bài 1",
+    text: "Câu 38: Kéo thả các yếu tố sau đây vào cột tương ứng:",
     options: [
       "Sự phát triển của bản thân giai cấp công nhân cả về số lượng và chất lượng",
       "Đảng Cộng sản",
@@ -500,10 +496,10 @@ export const questions = [
   },
 
   // ==========================================
-  // CHỦ ĐỀ 3: CHỦ NGHĨA XÃ HỘI VÀ ĐẶC TRƯNG BẢN CHẤT (20 CÂU)
+  // PHẦN 2: CHỦ NGHĨA XÃ HỘI VÀ THỜI KỲ QUÁ ĐỘ LÊN CHỦ NGHĨA XÃ HỘI (41 CÂU)
   // ==========================================
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 1: Theo C.Mác và Ph.Ăngghen thì giai đoạn đầu của hình thái kinh tế - xã hội cộng sản chủ nghĩa là gì?",
     options: [
       "A. Chủ nghĩa cộng sản.",
@@ -515,7 +511,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 2: Câu \"Cần phải có thời kỳ quá độ khá lâu dài từ chủ nghĩa tư bản lên chủ nghĩa xã hội\" là của ai?",
     options: [
       "A. C.Mác",
@@ -527,7 +523,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 3: Chủ nghĩa xã hội có mấy đặc trưng cơ bản?",
     options: [
       "A. 8",
@@ -539,7 +535,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 4: Đặc trưng về kinh tế của chủ nghĩa xã hội là gì?",
     options: [
       "A. Có nền kinh tế phát triển cao dựa trên lực lượng sản xuất hiện đại và chế độ tư hữu về tư liệu sản xuất",
@@ -551,7 +547,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 5: Nguyên nhân sâu xa dẫn đến sự thay thế hình thái kinh tế - xã hội tư bản chủ nghĩa bằng hình thái kinh tế - xã hội cộng sản chủ nghĩa là gì?",
     options: [
       "A. Mâu thuẫn giữa phương thức sản xuất tư bản chủ nghĩa và phương thức sản xuất xã hội chủ nghĩa dựa trên chế độ chiếm hữu tư nhân tư bản chủ nghĩa về tư liệu sản xuất chủ yếu",
@@ -563,7 +559,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 6: Theo quan điểm của chủ nghĩa Mác – Lênin mốc bắt đầu của thời kỳ quá độ lên chủ nghĩa xã hội từ khi nào?",
     options: [
       "A. Khi giai cấp công nhân tiến hành cải tạo xã hội cũ và xây dựng xã hội mới",
@@ -575,7 +571,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 7: Đặc điểm của thời kỳ quá độ lên chủ nghĩa trên lĩnh vực kinh tế là gì?",
     options: [
       "A. Tồn tại giai cấp đối kháng",
@@ -587,7 +583,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 8: Đặc điểm nổi bật của thời kỳ quá độ đó là:",
     options: [
       "A. Những yếu tố của xã hội mới đã phát triển, xoá bỏ hoàn toàn yếu tố của xã hội cũ.",
@@ -599,7 +595,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 9: Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa ở nước ta, được hiểu là:",
     options: [
       "A. Bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa, nhưng tiếp thu, kế thừa những thành tựu mà nhân loại đã đạt được dưới chế độ tư bản chủ nghĩa",
@@ -611,7 +607,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 10: Hãy chỉ ra luận điểm không chính xác:",
     options: [
       "A. Nhà nước trong thời kỳ quá độ lên chủ nghĩa xã hội là nền chuyên chính cách mạng của giai cấp công nhân",
@@ -623,7 +619,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 11: Kiểu quá độ lên chủ nghĩa xã hội ở Việt Nam là kiểu quá độ nào?",
     options: [
       "A. Quá độ trực tiếp",
@@ -635,7 +631,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 12: Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội (Bổ sung và phát triển năm 2011) được Đảng ta thông qua ở đại hội lần thứ mấy?",
     options: [
       "A. Đại hội IX",
@@ -647,7 +643,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 13: Tìm đáp án sai. Đặc trưng bản chất của chủ nghĩa xã hội Việt Nam theo tinh thần của Đại hội XI",
     options: [
       "A. Có quan hệ hữu nghị và hợp tác với các nước trên thế giới",
@@ -659,7 +655,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 14: Thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam là bước quá độ:",
     options: [
       "A. Gián tiếp, bỏ qua chế độ tư bản chủ nghĩa tiến lên chủ nghĩa xã hội",
@@ -671,7 +667,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 15: Đặc điểm nổi bật của thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam là gì? (Chọn 2 đáp án đúng)",
     options: [
       "A. Xây dựng nhà nước pháp quyền tư sản",
@@ -683,7 +679,7 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 16: Hình thái kinh tế - xã hội cộng sản chủ nghĩa bắt đầu và hoàn thiện khi nào?",
     options: [
       "A. Bắt đầu từ thời kỳ quá độ cho đến khi xây dựng xong giai đoạn cao của xã hội cộng sản",
@@ -695,7 +691,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 17: Chọn cụm từ còn thiếu điền vào dấu ...: \"Giữa xã hội tư bản chủ nghĩa và xã hội cộng sản chủ nghĩa là một thời kỳ....từ xã hội nọ sang xã hội kia\" (C.Mác)",
     options: [
       "A. Cách mạng",
@@ -707,7 +703,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 18: Chọn từ đúng điền vào chỗ trống để hoàn thành mục tiêu của Đảng xác định trong thời kỳ quá độ lên chủ nghĩa xã hội ở nước ta: Độc lập dân tộc gắn liền với chủ nghĩa xã hội; dân giàu, nước mạnh, dân chủ, ...., văn minh",
     options: [
       "A. Công bằng",
@@ -719,7 +715,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 19: Chọn phương án sai:",
     options: [
       "A. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa tức là bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa",
@@ -731,7 +727,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 3",
+    article: "Bài 2",
     text: "Câu 20: Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 vế trái dưới đây:",
     options: [
       "thời kỳ quá độ",
@@ -750,13 +746,9 @@ export const questions = [
     },
     type: "dragdrop"
   },
-
-  // ==========================================
-  // CHỦ ĐỀ 4: THỜI KỲ QUÁ ĐỘ LÊN CNXH Ở VIỆT NAM (21 CÂU)
-  // ==========================================
   {
-    article: "Bài 4",
-    text: "Câu 1: Phát triển bỏ qua chế độ tư bản chủ nghĩa ở Việt Nam được hiểu như thế nào?",
+    article: "Bài 2",
+    text: "Câu 21: Phát triển bỏ qua chế độ tư bản chủ nghĩa ở Việt Nam được hiểu như thế nào?",
     options: [
       "A. Không xây dựng quan hệ sản xuất tư bản chủ nghĩa",
       "B. Bỏ qua các yếu tố gắn với phương thức sản xuất tư bản chủ nghĩa",
@@ -767,8 +759,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 4",
-    text: "Câu 2: Trong cuốn sách “Một số vấn đề lý luận và thực tiễn về chủ nghĩa xã hội và con đường đi lên chủ nghĩa xã hội ở Việt Nam”, Tổng Bí thư Nguyễn Phú Trọng khẳng định: đường lối cơ bản, xuyên suốt của cách mạng Việt Nam và cũng là điểm cốt yếu trong di sản tư tưởng của Chủ tịch Hồ Chí Minh là:",
+    article: "Bài 2",
+    text: "Câu 22: Trong cuốn sách “Một số vấn đề lý luận và thực tiễn về chủ nghĩa xã hội và con đường đi lên chủ nghĩa xã hội ở Việt Nam”, Tổng Bí thư Nguyễn Phú Trọng khẳng định: đường lối cơ bản, xuyên suốt của cách mạng Việt Nam và cũng là điểm cốt yếu trong di sản tư tưởng của Chủ tịch Hồ Chí Minh là:",
     options: [
       "A. Phát triển kinh tế thị trường định hướng xã hội chủ nghĩa",
       "B. Chủ nghĩa xã hội và giải phóng giai cấp vô sản",
@@ -779,8 +771,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 4",
-    text: "Câu 3: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    article: "Bài 2",
+    text: "Câu 23: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
     options: [
       "Trong thời kỳ quá độ từ chủ nghĩa tư bản lên chủ nghĩa xã hội tồn tại chủ yếu là tư tưởng vô sản",
       "Trong thời kỳ quá độ từ chủ nghĩa tư bản lên chủ nghĩa xã hội tồn tại nền kinh tế nhiều thành phần",
@@ -791,8 +783,8 @@ export const questions = [
     type: "truefalse"
   },
   {
-    article: "Bài 4",
-    text: "Câu 4: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    article: "Bài 2",
+    text: "Câu 24: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
     options: [
       "Thời kỳ quá độ lên chủ nghĩa xã hội chỉ có kinh tế nhà nước tồn tại và phát triển",
       "Thời kỳ quá độ lên chủ nghĩa xã hội có sự tồn tại song song giữa các yếu tố cũ và yếu tố mới",
@@ -803,8 +795,8 @@ export const questions = [
     type: "truefalse"
   },
   {
-    article: "Bài 4",
-    text: "Câu 5: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    article: "Bài 2",
+    text: "Câu 25: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
     options: [
       "Quá độ trực tiếp từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đối với những nước đã trải qua chủ nghĩa tư bản phát triển",
       "Học thuyết hình thái kinh tế- xã hội của chủ nghĩa Mác- Lênin đã chỉ rõ: Lịch sử xã hội đã trải qua 4 hình thái kinh tế- xã hội",
@@ -815,8 +807,8 @@ export const questions = [
     type: "truefalse"
   },
   {
-    article: "Bài 4",
-    text: "Câu 6: Về nội dung, thời kỳ quá độ lên chủ nghĩa xã hội là thời kỳ cải tạo cách mạng sâu sắc, triệt để xã hội tư bản chủ nghĩa trên các lĩnh vực:",
+    article: "Bài 2",
+    text: "Câu 26: Về nội dung, thời kỳ quá độ lên chủ nghĩa xã hội là thời kỳ cải tạo cách mạng sâu sắc, triệt để xã hội tư bản chủ nghĩa trên các lĩnh vực:",
     options: [
       "A. Kinh tế, chính trị, văn hóa, xã hội",
       "B. Chủ yếu về văn hóa",
@@ -827,8 +819,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 4",
-    text: "Câu 7: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    article: "Bài 2",
+    text: "Câu 27: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
     options: [
       "Chủ nghĩa xã hội ở Việt Nam không chấp nhận kinh tế tư nhân tồn tại song song với kinh tế nhà nước",
       "Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam là nhà nước của nhân dân, do nhân dân, vì nhân dân",
@@ -839,8 +831,8 @@ export const questions = [
     type: "truefalse"
   },
   {
-    article: "Bài 4",
-    text: "Câu 8: Đặc điểm về chính trị trong thời kỳ quá độ được thể hiện ở điểm nào? (Hãy chọn 2 đáp án đúng nhất !)",
+    article: "Bài 2",
+    text: "Câu 28: Đặc điểm về chính trị trong thời kỳ quá độ được thể hiện ở điểm nào? (Hãy chọn 2 đáp án đúng nhất !)",
     options: [
       "A. Đa nguyên chính trị, đa đảng đối lập",
       "B. Thiết lập chuyên chính vô sản",
@@ -851,8 +843,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 4",
-    text: "Câu 9: Tại sao cho rằng con đường cách mạng Việt Nam là quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là một tất yếu?",
+    article: "Bài 2",
+    text: "Câu 29: Tại sao cho rằng con đường cách mạng Việt Nam là quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là một tất yếu?",
     options: [
       "A. Vì không cần tạo ra sự biến đổi về chất trên tất cả các lĩnh vực",
       "B. Vì sự phát triển của lực lượng sản xuất ngày càng cao",
@@ -863,8 +855,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 4",
-    text: "Câu 10: Căn cứ vào giáo trình Chủ nghĩa xã hội khoa học, hãy xác định khái niệm dùng để chỉ một chế độ xã hội tốt đẹp, giai đoạn đầu của hình thái kinh tế - xã hội cộng sản chủ nghĩa",
+    article: "Bài 2",
+    text: "Câu 30: Căn cứ vào giáo trình Chủ nghĩa xã hội khoa học, hãy xác định khái niệm dùng để chỉ một chế độ xã hội tốt đẹp, giai đoạn đầu của hình thái kinh tế - xã hội cộng sản chủ nghĩa",
     options: [
       "A. Thời kỳ quá độ",
       "B. Chủ nghĩa cộng sản",
@@ -875,8 +867,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 4",
-    text: "Câu 11: Hai loại quá độ từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đó là: (Chọn 2)",
+    article: "Bài 2",
+    text: "Câu 31: Hai loại quá độ từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đó là: (Chọn 2)",
     options: [
       "A. Quá độ cơ bản",
       "B. Quá độ trực tiếp",
@@ -887,8 +879,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 4",
-    text: "Câu 12: Đặc điểm về kinh tế của thời kỳ quá độ lên chủ nghĩa xã hội gồm: (Chọn 2)",
+    article: "Bài 2",
+    text: "Câu 32: Đặc điểm về kinh tế của thời kỳ quá độ lên chủ nghĩa xã hội gồm: (Chọn 2)",
     options: [
       "A. Chỉ có kinh tế nhà nước tồn tại và phát triển",
       "B. Có những thành phần kinh tế đối lập nhau",
@@ -899,8 +891,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 4",
-    text: "Câu 13: Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 về trái dưới đây:",
+    article: "Bài 2",
+    text: "Câu 33: Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 về trái dưới đây:",
     options: [
       "tất yếu khách quan",
       "vị trí thống trị",
@@ -919,8 +911,8 @@ export const questions = [
     type: "dragdrop"
   },
   {
-    article: "Bài 4",
-    text: "Câu 14: Đặc điểm cơ bản của thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam là gì? (Chọn 2 đáp án đúng)",
+    article: "Bài 2",
+    text: "Câu 34: Đặc điểm cơ bản của thời kỳ quá độ lên chủ nghĩa xã hội ở Việt Nam là gì? (Chọn 2 đáp án đúng)",
     options: [
       "A. Chuyển thẳng từ chế độ phong kiến lên chủ nghĩa xã hội",
       "B. Bỏ qua chế độ tư bản chủ nghĩa",
@@ -931,8 +923,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 4",
-    text: "Câu 15: Thời kỳ quá độ lên chủ nghĩa xã hội có những mâu thuẫn nào cần giải quyết? (Chọn 2 đáp án đúng)",
+    article: "Bài 2",
+    text: "Câu 35: Thời kỳ quá độ lên chủ nghĩa xã hội có những mâu thuẫn nào cần giải quyết? (Chọn 2 đáp án đúng)",
     options: [
       "A. Mâu thuẫn giữa các thành phần kinh tế khác nhau trong xã hội",
       "B. Mâu thuẫn giữa cái cũ và cái mới trong xã hội",
@@ -943,8 +935,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 4",
-    text: "Câu 16: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    article: "Bài 2",
+    text: "Câu 36: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
     options: [
       "Việt Nam thực hiện quá độ trực tiếp đi lên chủ nghĩa xã hội",
       "Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là sự lựa chọn duy nhất đúng, khoa học, phản ánh đúng quy luật phát triển khách quan của cách mạng Việt Nam trong thời đại ngày nay",
@@ -955,8 +947,8 @@ export const questions = [
     type: "truefalse"
   },
   {
-    article: "Bài 4",
-    text: "Câu 17: Cuộc cách mạng của giai cấp công nhân và nhân dân lao động dưới sự lãnh đạo của Đảng cộng sản chống lại giai cấp tư sản, là cuộc cách mạng:",
+    article: "Bài 2",
+    text: "Câu 37: Cuộc cách mạng của giai cấp công nhân và nhân dân lao động dưới sự lãnh đạo của Đảng cộng sản chống lại giai cấp tư sản, là cuộc cách mạng:",
     options: [
       "A. Cách mạng dân chủ tư sản",
       "B. Cách mạng xã hội",
@@ -967,8 +959,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 4",
-    text: "Câu 18: Những đặc điểm nổi bật trong thời kỳ quá độ lên chủ nghĩa xã hội gồm: (Chọn 2 đáp án đúng)",
+    article: "Bài 2",
+    text: "Câu 38: Những đặc điểm nổi bật trong thời kỳ quá độ lên chủ nghĩa xã hội gồm: (Chọn 2 đáp án đúng)",
     options: [
       "A. Xã hội hoàn toàn không còn giai cấp.",
       "B. Sự tồn tại song song của các yếu tố cũ và yếu tố mới",
@@ -979,8 +971,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 4",
-    text: "Câu 19: Việc \"bỏ qua chế độ tư bản chủ nghĩa\" ở Việt Nam có nghĩa là: (Chọn 2)",
+    article: "Bài 2",
+    text: "Câu 39: Việc \"bỏ qua chế độ tư bản chủ nghĩa\" ở Việt Nam có nghĩa là: (Chọn 2)",
     options: [
       "A. Tăng cường sở hữu tư nhân để phát triển lực lượng sản xuất",
       "B. Loại bỏ hoàn toàn tất cả yếu tố tư bản trong nền kinh tế",
@@ -991,8 +983,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 4",
-    text: "Câu 20: Theo chủ nghĩa Mác – Lênin có mấy hình thức quá độ lên chủ nghĩa xã hội?",
+    article: "Bài 2",
+    text: "Câu 40: Theo chủ nghĩa Mác – Lênin có mấy hình thức quá độ lên chủ nghĩa xã hội?",
     options: [
       "A. 1",
       "B. 2",
@@ -1003,8 +995,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 4",
-    text: "Câu 21: Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 vế trái dưới đây:",
+    article: "Bài 2",
+    text: "Câu 41: Kéo thả các đáp án khớp với các phát biểu từ 1 – 3 vế trái dưới đây:",
     options: [
       "kinh tế thị trường",
       "nhà nước pháp quyền",
@@ -1025,10 +1017,10 @@ export const questions = [
   },
 
   // ==========================================
-  // CHỦ ĐỀ 5: DÂN CHỦ XÃ HỘI CHỦ NGHĨA & NỀN DÂN CHỦ Ở VIỆT NAM (15 CÂU)
+  // PHẦN 3: DÂN CHỦ XÃ HỘI CHỦ NGHĨA VÀ NHÀ NƯỚC XÃ HỘI CHỦ NGHĨA (30 CÂU)
   // ==========================================
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 1: Theo nguyên nghĩa tiếng Hy lạp thì “Dân chủ” là gì?",
     options: [
       "A. Là trật tự xã hội",
@@ -1040,7 +1032,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 2: Bản chất kinh tế của nền dân chủ xã hội chủ nghĩa là:",
     options: [
       "A. Thực hiện chế độ công hữu về tư liệu sản xuất chủ yếu và thực hiện chế độ phân phối lợi ích theo kết quả lao động là chủ yếu",
@@ -1052,7 +1044,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 3: Dân chủ xã hội chủ nghĩa mang tính nhất nguyên về chính trị, được hiểu là:",
     options: [
       "A. Nền dân chủ xã hội chủ nghĩa đại biểu cho trí tuệ, lợi ích của riêng giai cấp công nhân và giai cấp nông dân",
@@ -1064,7 +1056,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 4: So với các nền dân chủ trước đây, dân chủ xã hội chủ nghĩa có điểm khác biệt cơ bản nào?",
     options: [
       "A. Là nền dân chủ rộng rãi cho giai cấp công nhân và nhân dân lao động",
@@ -1076,7 +1068,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 5: Bản chất chính trị của nền dân chủ xã hội chủ nghĩa thể hiện như thế nào?",
     options: [
       "A. Nền dân chủ tập trung vào phát triển kinh tế tư nhân và bảo vệ lợi ích của tầng lớp giàu có.",
@@ -1088,7 +1080,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 6: Bản chất tư tưởng – văn hoá – xã hội của nền dân chủ xã hội chủ nghĩa được thể hiện ở nội dung nào?",
     options: [
       "A. Lấy hệ tư tưởng của giai cấp nông dân làm chủ đạo",
@@ -1100,7 +1092,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 7: Đặc điểm của nhà nước pháp quyền xã hội chủ nghĩa là gì?",
     options: [
       "A. Quản lý xã hội bằng dư luận",
@@ -1112,7 +1104,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 8: Nhà nước pháp quyền XHCN quản lý mọi mặt của đời sống xã hội chủ yếu bằng gì?",
     options: [
       "A. Tuyên truyền",
@@ -1124,7 +1116,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 9: Căn cứ vào phạm vi tác động của quyền lực nhà nước, chức năng của nhà nước được chia thành:",
     options: [
       "A. Chức năng giai cấp, xã hội",
@@ -1136,7 +1128,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 10: Chế độ dân chủ nhân dân ở Việt Nam được xác lập từ khi nào?",
     options: [
       "A. Sau kháng chiến chống đế quốc Mỹ năm 1975",
@@ -1148,7 +1140,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 1",
     text: "Câu 11: Tại sao quyền lực nhà nước ở Việt Nam được tổ chức theo nguyên tắc thống nhất?",
     options: [
       "A. Để kiểm soát chặt chẽ các hoạt động kinh tế",
@@ -1160,7 +1152,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 12: Hãy xác định mục tiêu chính của việc xây dựng Nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam.",
     options: [
       "A. Phát triển kinh tế thị trường tự do",
@@ -1172,7 +1164,7 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 13: Đặc điểm nổi bật của nền dân chủ xã hội chủ nghĩa là gì? (Chọn 2 đáp án đúng)",
     options: [
       "A. Thực hiện quyền làm chủ tập thể của nhân dân",
@@ -1184,7 +1176,7 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 14: Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam được xây dựng dựa trên những nguyên tắc nào sau đây? (Chọn 2 đáp án đúng)",
     options: [
       "A. Đảng lãnh đạo nhà nước theo phương thức mệnh lệnh",
@@ -1196,7 +1188,7 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 5",
+    article: "Bài 3",
     text: "Câu 15: Dân chủ xã hội chủ nghĩa ở Việt Nam là: (Chọn 2 đáp án đúng)",
     options: [
       "A. Nền dân chủ bảo đảm quyền lực thuộc về nhân dân",
@@ -1207,13 +1199,9 @@ export const questions = [
     answer: ["A", "C"],
     type: "multiple"
   },
-
-  // ==========================================
-  // CHỦ ĐỀ 6: NHÀ NƯỚC XÃ HỘI CHỦ NGHĨA & PHÁP QUYỀN XHCN VIỆT NAM (15 CÂU)
-  // ==========================================
   {
-    article: "Bài 6",
-    text: "Câu 1: Sự ra đời của nhà nước xã hội chủ nghĩa gắn liền với sự kiện nào?",
+    article: "Bài 3",
+    text: "Câu 16: Sự ra đời của nhà nước xã hội chủ nghĩa gắn liền với sự kiện nào?",
     options: [
       "A. Công nhân đấu tranh phản đối sự áp bức, bóc lột của giai cấp tư sản.",
       "B. Giai cấp công nhân lật đổ chính quyền bóc lột và giành lấy quyền lực nhà nước.",
@@ -1224,8 +1212,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 2: Lịch sử loài người từng xuất hiện những nền dân chủ nào?",
+    article: "Bài 3",
+    text: "Câu 17: Lịch sử loài người từng xuất hiện những nền dân chủ nào?",
     options: [
       "A. Dân chủ nguyên thủy, dân chủ chủ nô, dân chủ phong kiến, dân chủ tư sản, dân chủ vô sản.",
       "B. Dân chủ chủ nô, dân chủ phong kiến, dân chủ tư sản, dân chủ vô sản.",
@@ -1236,8 +1224,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 3: Kiểu nhà nước nào được V.I. Lênin gọi là nhà nước \"nửa nhà nước\"?",
+    article: "Bài 3",
+    text: "Câu 18: Kiểu nhà nước nào được V.I. Lênin gọi là nhà nước \"nửa nhà nước\"?",
     options: [
       "A. Nhà nước tư sản.",
       "B. Nhà nước chủ nô.",
@@ -1248,8 +1236,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 4: Bản chất của nền dân chủ xã hội chủ nghĩa ở Việt Nam được thực hiện thông qua hình thức nào?",
+    article: "Bài 3",
+    text: "Câu 19: Bản chất của nền dân chủ xã hội chủ nghĩa ở Việt Nam được thực hiện thông qua hình thức nào?",
     options: [
       "A. Các hình thức dân chủ mang tính tự nguyện.",
       "B. Các hình thức dân chủ mang tính không tự nguyện.",
@@ -1260,8 +1248,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 5: Điểm khác biệt về chất của Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam so với các mô hình nhà nước khác trong lịch sử là gì?",
+    article: "Bài 3",
+    text: "Câu 20: Điểm khác biệt về chất của Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam so với các mô hình nhà nước khác trong lịch sử là gì?",
     options: [
       "A. Đại diện cho bản chất của đa số nhân dân lao động.",
       "B. Mang thuần túy bản chất giai cấp công nhân.",
@@ -1272,8 +1260,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 6: Phương án nào mô tả đúng về hình thức dân chủ gián tiếp?",
+    article: "Bài 3",
+    text: "Câu 21: Phương án nào mô tả đúng về hình thức dân chủ gián tiếp?",
     options: [
       "A. Người dân tự tổ chức phong trào xã hội mà không thông qua đại diện.",
       "B. Người dân bầu đại biểu để thay mặt mình quyết định các vấn đề quan trọng tại Quốc hội hoặc cơ quan lập pháp.",
@@ -1284,8 +1272,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 7: Hãy xác định biện pháp để nâng cao hiệu quả hoạt động của Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam.",
+    article: "Bài 3",
+    text: "Câu 22: Hãy xác định biện pháp để nâng cao hiệu quả hoạt động của Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam.",
     options: [
       "A. Xây dựng và từng bước hoàn thiện hệ thống giám sát, phản biện xã hội.",
       "B. Hạn chế vai trò tham gia của các tổ chức xã hội.",
@@ -1296,8 +1284,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 8: Đặc điểm cốt lõi thể hiện tính chất \"pháp quyền\" của Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam là gì?",
+    article: "Bài 3",
+    text: "Câu 23: Đặc điểm cốt lõi thể hiện tính chất \"pháp quyền\" của Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam là gì?",
     options: [
       "A. Đặt dưới sự lãnh đạo của Đảng Cộng sản.",
       "B. Là kết quả của cuộc cách mạng xã hội chủ nghĩa.",
@@ -1308,8 +1296,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 9: Dân chủ trong xã hội nguyên thủy được thể hiện qua những đặc điểm nào? (Hãy chọn 2 đáp án đúng nhất !)",
+    article: "Bài 3",
+    text: "Câu 24: Dân chủ trong xã hội nguyên thủy được thể hiện qua những đặc điểm nào? (Hãy chọn 2 đáp án đúng nhất !)",
     options: [
       "A. Quyền lực tập trung vào tay một số cá nhân.",
       "B. Hình thành bộ máy tổ chức chính trị phức tạp.",
@@ -1320,8 +1308,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 6",
-    text: "Câu 10: Chọn ý không đúng về điểm khác biệt của nền dân chủ xã hội chủ nghĩa so với nền dân chủ tư sản:",
+    article: "Bài 3",
+    text: "Câu 25: Chọn ý không đúng về điểm khác biệt của nền dân chủ xã hội chủ nghĩa so với nền dân chủ tư sản:",
     options: [
       "A. Dựa trên chế độ sở hữu xã hội về những tư liệu sản xuất chủ yếu của toàn xã hội",
       "B. Mang tính nhất nguyên về chính trị",
@@ -1332,8 +1320,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 11: Bản chất dân chủ xã hội chủ nghĩa ở Việt Nam được thực hiện thông qua:",
+    article: "Bài 3",
+    text: "Câu 26: Bản chất dân chủ xã hội chủ nghĩa ở Việt Nam được thực hiện thông qua:",
     options: [
       "A. Các hình thức dân chủ cơ bản và không cơ bản",
       "B. Các hình thức dân chủ tự nguyện",
@@ -1344,8 +1332,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 12: So với các mô hình nhà nước khác trong lịch sử thì nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam có sự khác biệt về chất như thế nào?",
+    article: "Bài 3",
+    text: "Câu 27: So với các mô hình nhà nước khác trong lịch sử thì nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam có sự khác biệt về chất như thế nào?",
     options: [
       "A. Mang bản chất của giai cấp công nhân",
       "B. Mang bản chất của đa số nhân dân lao động",
@@ -1356,8 +1344,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 13: Bằng hiểu biết của bản thân, hãy cho biết đâu là hình thức dân chủ gián tiếp?",
+    article: "Bài 3",
+    text: "Câu 28: Bằng hiểu biết của bản thân, hãy cho biết đâu là hình thức dân chủ gián tiếp?",
     options: [
       "A. Người dân bầu ra đại diện của mình để thay mặt họ quyết định các vấn đề quan trọng trong quốc hội hoặc cơ quan lập pháp",
       "B. Người dân trực tiếp tham gia bỏ phiếu để quyết định các vấn đề quan trọng của đất nước.",
@@ -1368,8 +1356,8 @@ export const questions = [
     type: "single"
   },
   {
-    article: "Bài 6",
-    text: "Câu 14: Bản chất của nền dân chủ xã hội chủ nghĩa là: (Hãy chọn 2 đáp án đúng nhất !)",
+    article: "Bài 3",
+    text: "Câu 29: Bản chất của nền dân chủ xã hội chủ nghĩa là: (Hãy chọn 2 đáp án đúng nhất !)",
     options: [
       "A. Nền dân chủ của giai cấp tư sản",
       "B. Nền dân chủ mang tính tập thể",
@@ -1380,8 +1368,8 @@ export const questions = [
     type: "multiple"
   },
   {
-    article: "Bài 6",
-    text: "Câu 15: Đâu là định nghĩa đúng và đầy đủ về dân chủ?",
+    article: "Bài 3",
+    text: "Câu 30: Đâu là định nghĩa đúng và đầy đủ về dân chủ?",
     options: [
       "A. Dân chủ là giá trị phản ánh quyền cơ bản của con người; là kết quả của sự nghiệp đấu tranh của con người vì lợi ích của con người",
       "B. Dân chủ là một giá trị phản ánh những quyền tối thiểu của con người; là một hình thức tổ chức nhà nước thừa nhận quyền làm chủ của nhân dân; là một giá trị xã hội phản ánh sự nghiệp đấu tranh của con người",

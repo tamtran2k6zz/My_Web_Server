@@ -1,16 +1,31 @@
 import { Topic } from './types';
-import { newTopic } from './newData';
 import { questions } from './questions.js';
 
-export const data: Record<string, Topic> = {};
-
-const TOPIC_NAMES: Record<string, string> = {
-  "1": "CHỦ ĐỀ 1: NHẬP MÔN CNXHKH & TIỀN ĐỀ RA ĐỜI",
-  "2": "CHỦ ĐỀ 2: SỨ MỆNH LỊCH SỬ CỦA GIAI CẤP CÔNG NHÂN",
-  "3": "CHỦ ĐỀ 3: CHỦ NGHĨA XÃ HỘI VÀ ĐẶC TRƯNG BẢN CHẤT",
-  "4": "CHỦ ĐỀ 4: THỜI KỲ QUÁ ĐỘ LÊN CHỦ NGHĨA XÃ HỘI",
-  "5": "CHỦ ĐỀ 5: DÂN CHỦ XÃ HỘI CHỦ NGHĨA",
-  "6": "CHỦ ĐỀ 6: NHÀ NƯỚC XÃ HỘI CHỦ NGHĨA",
+export const data: Record<string, Topic> = {
+  "1": {
+    name: "PHẦN 1: NHẬP MÔN CNXHKH & SỨ MỆNH LỊCH SỬ CỦA GIAI CẤP CÔNG NHÂN",
+    questions: []
+  },
+  "2": {
+    name: "PHẦN 2: CHỦ NGHĨA XÃ HỘI VÀ THỜI KỲ QUÁ ĐỘ LÊN CHỦ NGHĨA XÃ HỘI",
+    questions: []
+  },
+  "3": {
+    name: "PHẦN 3: DÂN CHỦ XÃ HỘI CHỦ NGHĨA VÀ NHÀ NƯỚC XÃ HỘI CHỦ NGHĨA",
+    questions: []
+  },
+  "4": {
+    name: "PHẦN 4: ĐANG CẬP NHẬT",
+    questions: []
+  },
+  "5": {
+    name: "PHẦN 5: ĐANG CẬP NHẬT",
+    questions: []
+  },
+  "6": {
+    name: "PHẦN 6: ĐANG CẬP NHẬT",
+    questions: []
+  }
 };
 
 questions.forEach((q: any) => {
@@ -19,7 +34,7 @@ questions.forEach((q: any) => {
 
   if (!data[articleId]) {
     data[articleId] = {
-      name: TOPIC_NAMES[articleId] || `CHỦ ĐỀ ${articleId}`,
+      name: `PHẦN ${articleId}`,
       questions: []
     };
   }
@@ -68,8 +83,3 @@ questions.forEach((q: any) => {
 
   data[articleId].questions.push(questionObj);
 });
-
-// Thêm chủ đề mới từ newData.ts nếu có
-if (newTopic && newTopic.questions && newTopic.questions.length > 0) {
-  data['new-questions'] = newTopic;
-}

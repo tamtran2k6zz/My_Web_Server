@@ -110,8 +110,7 @@ function App() {
 
     return {
       ...processedStandardTopics,
-      "review-1-3": generateReviewTopic(keys1to3, "ÔN TẬP: CHỦ ĐỀ 1 - 3 (CƠ BẢN)"),
-      "review-4-6": generateReviewTopic(keys4to6, "ÔN TẬP: CHỦ ĐỀ 4 - 6 (NÂNG CAO)"),
+      "review-1-3": generateReviewTopic(keys1to3, "TỔNG HỢP: ÔN TẬP PHẦN 1 - 3 (109 CÂU)"),
       "type-quiz": {
         name: "LUYỆN TẬP: CHUYÊN ĐỀ TRẮC NGHIỆM (A,B,C,D)",
         questions: processQuestions(allQuestionsRaw.filter((q: any) => q.type === 'single' || q.type === 'multi'))
