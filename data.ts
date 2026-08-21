@@ -15,7 +15,7 @@ export const data: Record<string, Topic> = {
     questions: []
   },
   "4": {
-    name: "PHẦN 4: ĐANG CẬP NHẬT",
+    name: "PHẦN 4: CÁC CÂU HỎI MỚI (BỔ SUNG)",
     questions: []
   },
   "5": {
