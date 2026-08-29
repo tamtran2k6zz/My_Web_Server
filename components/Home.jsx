@@ -32,9 +32,10 @@ const stagesConfig = [
       { id: '1', title: 'Phần 1: Nhập môn & Sứ mệnh LS GCCN', icon: BookOpen },
       { id: '2', title: 'Phần 2: CNXH & Thời kỳ quá độ', icon: Sparkles },
       { id: '3', title: 'Phần 3: Dân chủ & Nhà nước XHCN', icon: Layers3 },
-      { id: '4', title: 'Phần 4: Các câu hỏi mới (Bổ sung)', icon: Sparkles },
+      { id: '4', title: 'Phần 4: Cơ cấu XH - Giai cấp & Liên minh', icon: Target },
       { id: '5', title: 'Phần 5: Đang cập nhật', icon: Wand2, isUpdating: true },
       { id: '6', title: 'Phần 6: Đang cập nhật', icon: Puzzle, isUpdating: true },
+      { id: 'new-questions', title: 'Bộ câu hỏi mới (Bổ sung)', icon: Sparkles },
     ],
   },
   {

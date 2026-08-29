@@ -109,7 +109,7 @@ function App() {
 
     return {
       ...processedStandardTopics,
-      "review-1-4": generateReviewTopic(keys1to4, "TỔNG HỢP: ÔN TẬP PHẦN 1 - 4 (121 CÂU)"),
+      "review-1-4": generateReviewTopic(keys1to4, "TỔNG HỢP: ÔN TẬP PHẦN 1 - 4 (138 CÂU)"),
       "type-quiz": {
         name: "LUYỆN TẬP: CHUYÊN ĐỀ TRẮC NGHIỆM (A,B,C,D)",
         questions: processQuestions(allQuestionsRaw.filter((q: any) => q.type === 'single' || q.type === 'multi'))
@@ -122,7 +122,7 @@ function App() {
         name: "LUYỆN TẬP: CHUYÊN ĐỀ KÉO THẢ & GHÉP NỐI",
         questions: processQuestions(allQuestionsRaw.filter((q: any) => q.type === 'drag' || q.type === 'match'))
       },
-      "review-all": generateReviewTopic(keys, "TỔNG HỢP: ÔN TẬP TOÀN BỘ KIẾN THỨC (121 CÂU)")
+      "review-all": generateReviewTopic(keys, "TỔNG HỢP: ÔN TẬP TOÀN BỘ KIẾN THỨC (150 CÂU)")
     };
   }, []);
 

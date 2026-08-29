@@ -15,7 +15,7 @@ export const data: Record<string, Topic> = {
     questions: []
   },
   "4": {
-    name: "PHẦN 4: CÁC CÂU HỎI MỚI (BỔ SUNG)",
+    name: "PHẦN 4: CƠ CẤU XÃ HỘI – GIAI CẤP VÀ LIÊN MINH GIAI CẤP, TẦNG LỚP",
     questions: []
   },
   "5": {
@@ -25,12 +25,16 @@ export const data: Record<string, Topic> = {
   "6": {
     name: "PHẦN 6: ĐANG CẬP NHẬT",
     questions: []
+  },
+  "new-questions": {
+    name: "BỘ CÂU HỎI MỚI (BỔ SUNG)",
+    questions: []
   }
 };
 
 questions.forEach((q: any) => {
   const match = q.article.match(/Bài\s*(\d+)/i);
-  const articleId = match ? match[1] : q.article;
+  const articleId = match ? match[1] : (q.article === 'new-questions' || q.article === 'Bài new-questions' ? 'new-questions' : q.article);
 
   if (!data[articleId]) {
     data[articleId] = {
@@ -45,9 +49,9 @@ questions.forEach((q: any) => {
   if (type === 'multiple') type = 'multi';
 
   if (type === 'single') {
-    correct = q.answer.charCodeAt(0) - 65;
+    correct = typeof q.answer === 'string' ? q.answer.charCodeAt(0) - 65 : 0;
   } else if (type === 'multi') {
-    correct = q.answer.map((ans: string) => ans.charCodeAt(0) - 65);
+    correct = Array.isArray(q.answer) ? q.answer.map((ans: string) => ans.charCodeAt(0) - 65) : [];
   } else if (type === 'drag') {
     correct = {};
     for (const key in q.answer) {
