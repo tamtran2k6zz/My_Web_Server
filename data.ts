@@ -1,5 +1,6 @@
 import { Topic } from './types';
 import { questions } from './questions.js';
+import { newTopic } from './newData';
 
 export const data: Record<string, Topic> = {
   "1": {
@@ -87,3 +88,13 @@ questions.forEach((q: any) => {
 
   data[articleId].questions.push(questionObj);
 });
+
+if (newTopic && Array.isArray(newTopic.questions)) {
+  newTopic.questions.forEach((nq: any) => {
+    const isDuplicate = data["new-questions"].questions.some((eq: any) => eq.q === nq.q);
+    if (!isDuplicate) {
+      data["new-questions"].questions.push(nq);
+    }
+  });
+}
+

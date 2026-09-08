@@ -7,6 +7,12 @@ import { Home } from './components/Home';
 import { auth, loginWithGoogle, logout } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
+// Helper to clean prefix like "A. ", "B. ", "C. ", "D. "
+function cleanOptionText(opt: string): string {
+  if (typeof opt !== 'string') return opt;
+  return opt.replace(/^[A-D]\.\s*/i, '').trim();
+}
+
 // Helper to shuffle an array (Fisher-Yates)
 function shuffleArray<T>(array: T[]): T[] {
   const newArr = [...array];
@@ -22,7 +28,8 @@ function randomizeQuestionOptions(question: any) {
   const newQ = JSON.parse(JSON.stringify(question));
 
   if ((newQ.type === 'single' || newQ.type === 'multi') && Array.isArray(newQ.options)) {
-    const pairs: { opt: string; index: number }[] = newQ.options.map((opt: string, index: number) => ({ opt, index }));
+    const cleanedOptions = newQ.options.map(cleanOptionText);
+    const pairs: { opt: string; index: number }[] = cleanedOptions.map((opt: string, index: number) => ({ opt, index }));
     const shuffledPairs = shuffleArray(pairs);
     newQ.options = shuffledPairs.map((p) => p.opt);
 
@@ -54,6 +61,20 @@ function App() {
   const [loadingAuth, setLoadingAuth] = useState(true);
   const [animDirection, setAnimDirection] = useState<'left' | 'right' | null>(null);
   const [viewMode, setViewMode] = useState<'single' | 'list'>('single');
+  const autoAdvanceTimerRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const clearAdvanceTimer = () => {
+    if (autoAdvanceTimerRef.current) {
+      clearTimeout(autoAdvanceTimerRef.current);
+      autoAdvanceTimerRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      clearAdvanceTimer();
+    };
+  }, []);
 
   useEffect(() => {
     if (!auth) {
@@ -122,6 +143,7 @@ function App() {
   }, []);
 
   const handleTopicSelect = (id: string) => {
+    clearAdvanceTimer();
     setActiveTopicId(id);
     setScore(0);
     setCurrentQuestionIndex(0);
@@ -131,6 +153,7 @@ function App() {
   };
 
   const handleExit = () => {
+    clearAdvanceTimer();
     setActiveTopicId(null);
     setScore(0);
     setCurrentQuestionIndex(0);
@@ -139,6 +162,7 @@ function App() {
   const activeTopic = activeTopicId ? data[activeTopicId] : null;
 
   const handleNext = () => {
+    clearAdvanceTimer();
     if (activeTopic && currentQuestionIndex < activeTopic.questions.length - 1) {
       setAnimDirection('right');
       setCurrentQuestionIndex(prev => prev + 1);
@@ -147,6 +171,7 @@ function App() {
   };
 
   const handlePrev = () => {
+    clearAdvanceTimer();
     if (currentQuestionIndex > 0) {
       setAnimDirection('left');
       setCurrentQuestionIndex(prev => prev - 1);
@@ -156,7 +181,10 @@ function App() {
 
   const handleAnswer = () => {
     if (viewMode === 'single' && activeTopic && currentQuestionIndex < activeTopic.questions.length - 1) {
-      setTimeout(() => handleNext(), 1500);
+      clearAdvanceTimer();
+      autoAdvanceTimerRef.current = setTimeout(() => {
+        handleNext();
+      }, 1500);
     }
   };
 

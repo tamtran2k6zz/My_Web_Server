@@ -77,6 +77,11 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
     if (onAnswer) onAnswer();
   };
 
+  const cleanText = (txt: string) => {
+    if (typeof txt !== 'string') return txt;
+    return txt.replace(/^[A-D]\.\s*/i, '').trim();
+  };
+
   const renderContent = () => {
     if (question.html) {
       return <div dangerouslySetInnerHTML={{ __html: question.q }} />;
@@ -103,20 +108,28 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
             {question.options.map((opt, idx) => {
               const isSelected = selectedSingle === idx;
               const isTargetCorrect = idx === question.correct;
+              const optionLetter = String.fromCharCode(65 + idx);
+              const textContent = cleanText(opt);
 
               let styleClass =
                 "w-full text-left p-4 rounded-xl border-2 transition-all flex items-center justify-between group min-h-[52px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ";
 
+              let badgeClass = "w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 transition-colors ";
+
               if (answered) {
                 if (isTargetCorrect) {
                   styleClass += "bg-emerald-500/15 border-emerald-500 text-emerald-950 dark:text-emerald-200 font-medium";
+                  badgeClass += "bg-emerald-500 text-white shadow-sm";
                 } else if (isSelected) {
                   styleClass += "bg-rose-500/15 border-rose-500 text-rose-950 dark:text-rose-200";
+                  badgeClass += "bg-rose-500 text-white shadow-sm";
                 } else {
                   styleClass += "bg-slate-100/30 dark:bg-slate-800/30 border-transparent text-slate-400 dark:text-slate-500 opacity-60 cursor-not-allowed";
+                  badgeClass += "bg-white/5 text-slate-500";
                 }
               } else {
                 styleClass += "glass-card hover:bg-white/80 dark:hover:bg-slate-700/60 hover:border-primary/50 text-slate-800 dark:text-slate-100 cursor-pointer active:scale-[0.99]";
+                badgeClass += "bg-white/10 text-slate-300 group-hover:bg-primary group-hover:text-slate-950";
               }
 
               return (
@@ -129,7 +142,10 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
                   disabled={answered}
                   className={styleClass}
                 >
-                  <span className="flex-1 text-base leading-relaxed">{opt}</span>
+                  <div className="flex items-start gap-3 flex-1">
+                    <span className={badgeClass}>{optionLetter}</span>
+                    <span className="flex-1 text-base leading-relaxed">{textContent}</span>
+                  </div>
                   {answered && isTargetCorrect && <CheckCircle2 className="text-emerald-600 dark:text-emerald-400 shrink-0 ml-3" size={22} />}
                   {answered && isSelected && !isTargetCorrect && <X className="text-rose-600 dark:text-rose-400 shrink-0 ml-3" size={22} />}
                   {!answered && <Circle className="text-slate-300 dark:text-slate-500 group-hover:text-primary transition-colors shrink-0 ml-3" size={20} />}
@@ -146,23 +162,32 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
               {question.options.map((opt, idx) => {
                 const isSelected = selectedMulti.includes(idx);
                 const isTargetCorrect = question.correct.includes(idx);
+                const optionLetter = String.fromCharCode(65 + idx);
+                const textContent = cleanText(opt);
 
                 let btnClass =
                   "w-full text-left p-4 rounded-xl border-2 transition-all flex items-start gap-3 min-h-[52px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 ";
 
+                let badgeClass = "w-7 h-7 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 transition-colors ";
+
                 if (answered) {
                   if (isTargetCorrect) {
                     btnClass += "bg-emerald-500/15 border-emerald-500 text-emerald-950 dark:text-emerald-200 font-medium";
+                    badgeClass += "bg-emerald-500 text-white shadow-sm";
                   } else if (isSelected && !isTargetCorrect) {
                     btnClass += "bg-rose-500/15 border-rose-500 text-rose-950 dark:text-rose-200";
+                    badgeClass += "bg-rose-500 text-white shadow-sm";
                   } else {
                     btnClass += "bg-slate-100/30 dark:bg-slate-800/30 border-transparent text-slate-400 dark:text-slate-500 opacity-60 cursor-not-allowed";
+                    badgeClass += "bg-white/5 text-slate-500";
                   }
                 } else {
                   if (isSelected) {
                     btnClass += "bg-primary/10 border-primary text-primary font-medium dark:bg-primary/20";
+                    badgeClass += "bg-primary text-slate-950 font-bold";
                   } else {
                     btnClass += "glass-card hover:bg-white/80 dark:hover:bg-slate-700/60 hover:border-primary/40 text-slate-800 dark:text-slate-100 cursor-pointer active:scale-[0.99]";
+                    badgeClass += "bg-white/10 text-slate-300";
                   }
                 }
 
@@ -176,16 +201,17 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
                     disabled={answered}
                     className={btnClass}
                   >
+                    <span className={badgeClass}>{optionLetter}</span>
                     <div
-                      className={`mt-0.5 w-5 h-5 rounded-md border flex items-center justify-center shrink-0 transition-colors ${
+                      className={`mt-1 w-5 h-5 rounded-md border flex items-center justify-center shrink-0 transition-colors ${
                         isSelected
-                          ? 'bg-primary border-primary text-white shadow-sm'
+                          ? 'bg-primary border-primary text-slate-950 shadow-sm'
                           : 'bg-white/80 dark:bg-slate-800/80 border-slate-300 dark:border-slate-500'
                       }`}
                     >
                       {isSelected && <Check size={14} strokeWidth={3} />}
                     </div>
-                    <span className="flex-1 text-base leading-relaxed">{opt}</span>
+                    <span className="flex-1 text-base leading-relaxed">{textContent}</span>
                   </button>
                 );
               })}
