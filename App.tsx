@@ -4,7 +4,8 @@ import { data as sourceData } from './data';
 import { Topic } from './types';
 import QuestionCard from './components/QuestionCard';
 import { Home } from './components/Home';
-import { auth, loginWithGoogle, logout } from './firebase';
+import { LoginGate } from './components/LoginGate';
+import { auth, loginWithGoogle, logout, isValidIctuEmail } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
 // Helper to clean prefix like "A. ", "B. ", "C. ", "D. "
@@ -59,6 +60,8 @@ function App() {
   const [score, setScore] = useState(0);
   const [user, setUser] = useState<any>(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
+  const [authError, setAuthError] = useState<string | null>(null);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [animDirection, setAnimDirection] = useState<'left' | 'right' | null>(null);
   const [viewMode, setViewMode] = useState<'single' | 'list'>('single');
   const autoAdvanceTimerRef = React.useRef<NodeJS.Timeout | null>(null);
@@ -81,8 +84,19 @@ function App() {
       setLoadingAuth(false);
       return;
     }
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        if (isValidIctuEmail(currentUser.email)) {
+          setUser(currentUser);
+          setAuthError(null);
+        } else {
+          await logout();
+          setUser(null);
+          setAuthError(`Tài khoản (${currentUser.email || 'không xác định'}) không hợp lệ. Hệ thống chỉ cho phép tài khoản có đuôi @ictu.edu.vn.`);
+        }
+      } else {
+        setUser(null);
+      }
       setLoadingAuth(false);
     });
     return () => unsubscribe();
@@ -188,6 +202,33 @@ function App() {
     }
   };
 
+  const handleLogin = async () => {
+    setIsLoggingIn(true);
+    setAuthError(null);
+    try {
+      const { user: loggedInUser, error } = await loginWithGoogle();
+      if (error) {
+        setAuthError(error);
+      } else if (loggedInUser) {
+        setUser(loggedInUser);
+        setAuthError(null);
+      }
+    } catch (err: any) {
+      setAuthError(err?.message || "Đăng nhập thất bại");
+    } finally {
+      setIsLoggingIn(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    setUser(null);
+    setActiveTopicId(null);
+    setScore(0);
+    setCurrentQuestionIndex(0);
+    setAuthError(null);
+  };
+
   if (loadingAuth) {
     return (
       <div className="min-h-screen bg-black flex flex-col items-center justify-center">
@@ -197,8 +238,13 @@ function App() {
     );
   }
 
+  // Gatekeeper: Must authenticate with @ictu.edu.vn account to enter
+  if (!user) {
+    return <LoginGate onLogin={handleLogin} authError={authError} isLoggingIn={isLoggingIn} />;
+  }
+
   if (!activeTopic) {
-    return <Home data={data} onTopicSelect={handleTopicSelect} user={user} onLogin={loginWithGoogle} onLogout={logout} />;
+    return <Home data={data} onTopicSelect={handleTopicSelect} user={user} onLogin={handleLogin} onLogout={handleLogout} />;
   }
 
   return (
