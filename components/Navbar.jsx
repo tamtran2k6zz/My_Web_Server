@@ -1,49 +1,168 @@
-import { motion } from 'framer-motion'
-import { Globe2, LogIn, Menu, ToggleLeft } from 'lucide-react'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Globe2, LogIn, LogOut, Sparkles, BookOpen, Layers, CheckCircle2, ChevronRight } from 'lucide-react'
 
 export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
-  return (
-    <motion.header
-      initial={{ opacity: 0, y: -18 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="sticky top-0 z-20 mb-2 rounded-2xl border border-white/10 bg-slate-900/50 px-4 py-4 backdrop-blur-xl shadow-[0_10px_40px_rgba(2,6,23,0.35)]"
-    >
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-cyan-400/15 ring-1 ring-cyan-300/25">
-            <Menu className="h-5 w-5 text-cyan-300" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2 text-sm text-cyan-200/90">
-              <Globe2 className="h-4 w-4" />
-              <span>Premium Learning Hub</span>
-            </div>
-            <h1 className="text-xl font-semibold tracking-tight text-white">{t.brand}</h1>
-          </div>
-        </div>
+  const [menuOpen, setMenuOpen] = useState(false)
 
-        <div className="flex flex-wrap items-center gap-3 sm:justify-end">
-          <LanguageToggle language={language} setLanguage={setLanguage} />
-          {user ? (
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-3 py-2">
-                <img src={user.photoURL} alt="Avatar" className="w-6 h-6 rounded-full" />
-                <span className="text-sm font-medium text-slate-200">{user.displayName}</span>
-              </div>
-              <button onClick={onLogout} className="group inline-flex items-center gap-2 rounded-xl bg-slate-800 px-4 py-2 text-sm font-semibold text-slate-300 shadow-md transition hover:bg-slate-700">
-                {t.logout}
-              </button>
+  const toggleMenu = () => setMenuOpen(prev => !prev)
+  const closeMenu = () => setMenuOpen(false)
+
+  return (
+    <>
+      <motion.header
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className="sticky top-0 z-40 mb-6 rounded-2xl border border-white/10 bg-black/60 px-4 sm:px-6 py-3.5 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.6)]"
+      >
+        <div className="flex items-center justify-between gap-4">
+          {/* Left: Brand Logo with Vesper Mark */}
+          <a href="#top" onClick={closeMenu} className="flex items-center gap-3 group cursor-pointer" aria-label="EduQuiz LMS">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/15 shadow-inner shadow-black/40 text-white transition-transform group-hover:scale-105">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <g transform="rotate(-30 12 12)">
+                  <circle cx="7.3" cy="3.2" r="1.45"/>
+                  <rect x="5.5" y="4.7" width="3.6" height="14.6" rx="1.8"/>
+                  <rect x="14.9" y="4.7" width="3.6" height="14.6" rx="1.8"/>
+                  <circle cx="16.7" cy="20.8" r="1.45"/>
+                </g>
+              </svg>
             </div>
-          ) : (
-            <button onClick={onLogin} className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:scale-[1.02] hover:shadow-cyan-400/30">
-              <LogIn className="h-4 w-4 transition group-hover:translate-x-0.5" />
-              {t.login}
+            <div>
+              <div className="flex items-center gap-1.5 text-xs text-cyan-300 font-medium tracking-wide">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                <span>Operational LMS</span>
+              </div>
+              <h1 className="text-base sm:text-lg font-bold tracking-tight text-white flex items-center">
+                Triết Học<span className="font-normal text-slate-400">.lms</span>
+              </h1>
+            </div>
+          </a>
+
+          {/* Center: Desktop Liquid Metal Navigation Pills */}
+          <nav className="hidden md:flex items-center gap-2">
+            <a href="#phase-1" className="liquid-pill px-4 py-2 rounded-lg text-xs sm:text-sm font-medium">
+              Chủ đề 1 – 4
+            </a>
+            <a href="#phase-2" className="liquid-pill px-4 py-2 rounded-lg text-xs sm:text-sm font-medium">
+              Ôn tập tổng hợp
+            </a>
+            <a href="#phase-3" className="liquid-pill px-4 py-2 rounded-lg text-xs sm:text-sm font-medium">
+              Dạng bài khảo thí
+            </a>
+            <a href="#stats" className="liquid-pill px-4 py-2 rounded-lg text-xs sm:text-sm font-medium">
+              150+ Câu hỏi
+            </a>
+          </nav>
+
+          {/* Right: Actions (Language & Login/User) */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <LanguageToggle language={language} setLanguage={setLanguage} />
+
+            {user ? (
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-3 py-1.5 backdrop-blur-md">
+                  {user.photoURL ? (
+                    <img src={user.photoURL} alt="Avatar" className="w-6 h-6 rounded-full border border-white/20" />
+                  ) : (
+                    <div className="w-6 h-6 rounded-full bg-cyan-400/20 text-cyan-300 flex items-center justify-center text-xs font-bold">
+                      {user.displayName ? user.displayName[0] : 'U'}
+                    </div>
+                  )}
+                  <span className="text-xs sm:text-sm font-medium text-slate-200 hidden sm:inline max-w-[120px] truncate">
+                    {user.displayName || user.email}
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={onLogout}
+                  className="btn-ghost px-3 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white transition flex items-center gap-1.5 cursor-pointer"
+                  title="Đăng xuất"
+                >
+                  <LogOut size={14} />
+                  <span className="hidden sm:inline">{t.logout}</span>
+                </button>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={onLogin}
+                className="btn-solid px-4 py-2 sm:py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 cursor-pointer shadow-lg"
+              >
+                <LogIn size={15} />
+                <span>{t.login}</span>
+              </button>
+            )}
+
+            {/* Mobile Burger Button */}
+            <button
+              type="button"
+              onClick={toggleMenu}
+              className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-xl border border-white/10 bg-white/5 text-white focus:outline-none"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+            >
+              <span className={`block w-4 h-0.5 bg-white transition-transform duration-200 ${menuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} />
+              <span className={`block w-4 h-0.5 bg-white transition-opacity duration-200 ${menuOpen ? 'opacity-0' : 'opacity-100 my-0.5'}`} />
+              <span className={`block w-4 h-0.5 bg-white transition-transform duration-200 ${menuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`} />
             </button>
-          )}
+          </div>
         </div>
-      </div>
-    </motion.header>
+      </motion.header>
+
+      {/* Mobile Backdrop & Navigation Drawer */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-30 md:hidden bg-black/70 backdrop-blur-2xl flex flex-col justify-center px-6 py-12"
+            onClick={closeMenu}
+          >
+            <div className="flex flex-col gap-3 w-full max-w-sm mx-auto" onClick={(e) => e.stopPropagation()}>
+              <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2 px-2">
+                Danh mục khảo thí
+              </div>
+              <a
+                href="#phase-1"
+                onClick={closeMenu}
+                className="liquid-pill px-5 py-4 rounded-xl text-base font-semibold text-white flex items-center justify-between"
+              >
+                <span className="flex items-center gap-3"><BookOpen size={18} className="text-cyan-300" /> Chủ đề 1 – 4 (138 câu)</span>
+                <ChevronRight size={16} className="text-slate-400" />
+              </a>
+              <a
+                href="#phase-2"
+                onClick={closeMenu}
+                className="liquid-pill px-5 py-4 rounded-xl text-base font-semibold text-white flex items-center justify-between"
+              >
+                <span className="flex items-center gap-3"><Layers size={18} className="text-fuchsia-300" /> Ôn tập Tổng hợp 1 – 4</span>
+                <ChevronRight size={16} className="text-slate-400" />
+              </a>
+              <a
+                href="#phase-3"
+                onClick={closeMenu}
+                className="liquid-pill px-5 py-4 rounded-xl text-base font-semibold text-white flex items-center justify-between"
+              >
+                <span className="flex items-center gap-3"><CheckCircle2 size={18} className="text-emerald-300" /> Luyện tập theo dạng bài</span>
+                <ChevronRight size={16} className="text-slate-400" />
+              </a>
+              <a
+                href="#phase-4"
+                onClick={closeMenu}
+                className="liquid-pill px-5 py-4 rounded-xl text-base font-semibold text-white flex items-center justify-between"
+              >
+                <span className="flex items-center gap-3"><Sparkles size={18} className="text-amber-300" /> Tổng hợp toàn bộ 150 câu</span>
+                <ChevronRight size={16} className="text-slate-400" />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
 
@@ -51,21 +170,15 @@ function LanguageToggle({ language, setLanguage }) {
   const isVI = language === 'vi'
   return (
     <button
+      type="button"
       onClick={() => setLanguage(isVI ? 'en' : 'vi')}
-      className="group flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-3 py-2 backdrop-blur-md transition hover:border-cyan-400/40 hover:bg-white/10"
+      className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-2.5 py-1.5 backdrop-blur-md transition hover:border-cyan-400/40 hover:bg-white/10 cursor-pointer"
       aria-label="Toggle language"
     >
-      <span className={`text-xs font-semibold tracking-widest ${isVI ? 'text-cyan-300' : 'text-slate-400'}`}>VI</span>
-      <div className="relative h-6 w-11 rounded-full bg-slate-700/80 p-1 transition">
-        <motion.div
-          layout
-          transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-          className="h-4 w-4 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(103,232,249,0.45)]"
-          style={{ marginLeft: isVI ? 0 : 18 }}
-        />
-      </div>
-      <span className={`text-xs font-semibold tracking-widest ${!isVI ? 'text-cyan-300' : 'text-slate-400'}`}>EN</span>
-      <ToggleLeft className="h-4 w-4 text-slate-400 transition group-hover:text-cyan-300" />
+      <Globe2 className="h-3.5 w-3.5 text-cyan-300" />
+      <span className="text-xs font-semibold tracking-wider text-slate-300">
+        {isVI ? 'VI' : 'EN'}
+      </span>
     </button>
   )
 }

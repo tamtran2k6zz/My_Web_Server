@@ -1,30 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vesper.ai — Operational AI Infrastructure</title>
+  <title>Triết Học & CNXHKH — Hệ Thống Khảo Thí LMS</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cg transform='rotate(-30 12 12)'%3E%3Ccircle cx='7.3' cy='3.2' r='1.45'/%3E%3Crect x='5.5' y='4.7' width='3.6' height='14.6' rx='1.8'/%3E%3Crect x='14.9' y='4.7' width='3.6' height='14.6' rx='1.8'/%3E%3Ccircle cx='16.7' cy='20.8' r='1.45'/%3E%3C/g%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+  
   <style>
     /* Force black immediately so the page can never flash white */
-    html, body { background: #000000 !important; color: #ffffff; }
-
-    @font-face {
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 100 900;
-      font-display: swap;
-      src: url("inter.woff2") format("woff2");
-    }
-    @font-face {
-      font-family: "Instrument Serif";
-      font-style: italic;
-      font-weight: 400;
-      font-display: swap;
-      src: url("instrument-serif-italic.woff2") format("woff2");
+    html, body { 
+      background: #000000 !important; 
+      color: #ffffff; 
     }
 
     :root {
@@ -34,25 +23,7 @@
       --stat: #d8d8d8;
       --border: rgba(255, 255, 255, 0.16);
       --border-soft: rgba(255, 255, 255, 0.12);
-
-      --logo: 15.5px;
-      --logo-mark: 22px;
-      --nav: 14px;
-      --nav-h: 40px;
-      --btn: 13.5px;
-      --btn-h: 40px;
-      --hero-btn-h: 42px;
-      --h1: 48px;
-      --lede: 15.5px;
-      --badge: 12.5px;
-      --stat-size: 13.5px;
-      --header-y: 22px;
-      --header-x: 40px;
-      --stats-x: 72px;
-      --stats-y: 36px;
-      --hero-gap: 85px;
-      --copy-max: 860px;
-      --lede-max: 470px;
+      --color-primary: 34 211 238; /* Cyan */
     }
 
     *, *::before, *::after {
@@ -65,7 +36,7 @@
       scroll-behavior: smooth;
     }
 
-    html, body {
+    body {
       background: #000000;
       background: var(--bg, #000000);
       color: #ffffff;
@@ -76,126 +47,53 @@
       text-rendering: optimizeLegibility;
       overflow-x: hidden;
       position: relative;
+      min-height: 100vh;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font-family: inherit;
-      background: none;
-      border: none;
-      color: inherit;
+    /* Serif italic accent font */
+    .font-serif-accent {
+      font-family: "Instrument Serif", "Times New Roman", Times, serif;
+      font-style: italic;
     }
 
     /* Noise grain overlay */
     .grain {
       position: fixed;
       inset: 0;
-      z-index: 100;
+      z-index: 99;
       pointer-events: none;
-      opacity: 0.032;
+      opacity: 0.035;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Hero photo / video background */
-    .hero-photo {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
+    /* Liquid Glass Panels */
+    .glass-panel {
+      background: rgba(12, 16, 28, 0.65);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5);
     }
 
-    .hero-photo video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      opacity: 1;
+    .glass-card {
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
 
-    .hero-photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    /* Page layout */
-    .page {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      min-height: 100vh;
-      min-height: 100dvh;
-    }
-
-    /* Header */
-    .header {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      padding: var(--header-y) var(--header-x) 10px;
-      z-index: 50;
-      position: relative;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      justify-self: start;
-      font-size: var(--logo);
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      color: #ffffff;
-      cursor: pointer;
-    }
-
-    .logo-mark {
-      width: var(--logo-mark);
-      height: var(--logo-mark);
-      display: block;
-    }
-
-    .logo-suffix {
-      font-weight: 400;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      justify-self: center;
-    }
-
-    /* Liquid-metal pill links */
-    .nav-link {
-      height: var(--nav-h);
-      padding: 0 18px;
-      border-radius: 7px;
-      overflow: hidden;
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(198, 198, 198, 0.55);
-      background: linear-gradient(105deg, #050505 0%, #2a2a2a 48%, #4a4a4a 100%);
+    /* Liquid Metal Pill */
+    .liquid-pill {
+      border: 1px solid rgba(198, 198, 198, 0.45);
+      background: linear-gradient(105deg, #050505 0%, #222222 48%, #3a3a3a 100%);
       color: #f3f3f3;
-      font-size: var(--nav);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease, transform 0.35s ease;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
     }
 
-    .nav-link::before {
+    .liquid-pill::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -205,87 +103,28 @@
       transition: transform 0.6s ease;
     }
 
-    .nav-link:hover::before {
+    .liquid-pill:hover::before {
       transform: translateX(120%);
     }
 
-    .nav-link:hover {
-      border-color: rgba(235, 235, 235, 0.9);
-      background: linear-gradient(105deg, #111111 0%, #3a3a3a 45%, #6a6a6a 100%);
+    .liquid-pill:hover {
+      border-color: rgba(235, 235, 235, 0.85);
+      background: linear-gradient(105deg, #111111 0%, #333333 45%, #555555 100%);
       box-shadow: 0 0 18px rgba(200, 210, 230, 0.18);
     }
 
-    .header-cta {
-      justify-self: end;
-    }
-
-    /* Burger Menu */
-    .burger {
-      display: none;
-      width: 42px;
-      height: 42px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      background: rgba(8, 8, 8, 0.55);
-      z-index: 60;
-      cursor: pointer;
-      padding: 0;
-      align-content: center;
-      justify-items: center;
-      transition: border-color 0.25s ease, background 0.25s ease;
-    }
-
-    .burger-bar {
-      display: block;
-      width: 16px;
-      height: 1.5px;
-      background: #ffffff;
-      border-radius: 1px;
-      margin: 2.5px 0;
-      transition: transform 0.25s ease, opacity 0.2s ease;
-    }
-
-    .burger:hover {
-      border-color: rgba(255, 255, 255, 0.32);
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    body.menu-open .burger .burger-bar:nth-child(1) {
-      transform: translateY(6.5px) rotate(45deg);
-    }
-    body.menu-open .burger .burger-bar:nth-child(2) {
-      opacity: 0;
-    }
-    body.menu-open .burger .burger-bar:nth-child(3) {
-      transform: translateY(-6.5px) rotate(-45deg);
-    }
-
-    .menu-backdrop {
-      display: none;
-    }
-
-    /* Shared Button Styles */
-    .btn {
+    /* Vesper Solid & Ghost Buttons */
+    .btn-solid {
+      background: linear-gradient(180deg, #ffffff 0%, #e7e7e7 48%, #cfcfcf 100%);
+      color: #111111;
+      border: 1px solid #ffffff;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
       position: relative;
-      isolation: isolate;
       overflow: hidden;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      height: var(--btn-h);
-      padding: 0 16px;
-      border-radius: 6px;
-      font-size: var(--btn);
-      font-weight: 500;
-      letter-spacing: -0.02em;
-      line-height: 1;
-      white-space: nowrap;
-      cursor: pointer;
-      font-family: inherit;
-      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease, filter 0.35s ease, transform 0.35s ease;
+      transition: all 0.35s ease;
     }
 
-    .btn::after {
+    .btn-solid::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -295,30 +134,39 @@
       transition: transform 0.65s ease;
     }
 
-    .btn:hover::after {
+    .btn-solid:hover::after {
       transform: translateX(130%);
-    }
-
-    /* Solid Button */
-    .btn-solid {
-      background: linear-gradient(180deg, #ffffff 0%, #e7e7e7 48%, #cfcfcf 100%);
-      color: #111111;
-      border: 1px solid #ffffff;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
     }
 
     .btn-solid:hover {
       background: linear-gradient(180deg, #ffffff 0%, #f3f6ff 42%, #d5def2 100%);
       border-color: #f2f6ff;
-      box-shadow: inset 0 1px 0 #ffffff, 0 0 22px rgba(186, 208, 255, 0.35), 0 8px 18px rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 1px 0 #ffffff, 0 0 24px rgba(186, 208, 255, 0.38), 0 8px 18px rgba(255, 255, 255, 0.14);
     }
 
-    /* Ghost Button (Header level) */
     .btn-ghost {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.45) 50%, rgba(160, 175, 200, 0.08));
       color: #ffffff;
       border: 1px solid rgba(198, 198, 198, 0.45);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+
+    .btn-ghost::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.35) 48%, transparent 76%);
+      transform: translateX(-130%);
+      transition: transform 0.65s ease;
+    }
+
+    .btn-ghost:hover::after {
+      transform: translateX(130%);
     }
 
     .btn-ghost:hover {
@@ -327,729 +175,25 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 20px rgba(170, 200, 255, 0.22);
     }
 
-    /* Hero Action Buttons */
-    .hero-actions .btn {
-      height: var(--hero-btn-h);
-      padding: 0 18px;
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
     }
-
-    .hero-actions .btn-solid:hover {
-      box-shadow: inset 0 1px 0 #ffffff, 0 0 26px rgba(186, 208, 255, 0.4), 0 8px 18px rgba(255, 255, 255, 0.14);
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
     }
-
-    .hero-actions .btn-ghost {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.5) 46%, rgba(150, 170, 200, 0.1));
-      border: 1px solid rgba(198, 198, 198, 0.55);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+    ::-webkit-scrollbar-thumb {
+      background: #2a2a2a;
+      border-radius: 4px;
     }
-
-    .hero-actions .btn-ghost:hover {
-      border-color: rgba(220, 230, 255, 0.8);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 24px rgba(170, 200, 255, 0.28);
-    }
-
-    /* Hero Section */
-    .hero {
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding: 8px 24px var(--hero-gap);
-      min-height: 0;
-    }
-
-    .hero-copy {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      max-width: var(--copy-max);
-      width: 100%;
-    }
-
-    /* Badge */
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 22px;
-      padding: 9px 15px;
-      border: 0;
-      border-radius: 5px;
-      background: linear-gradient(90deg, #7d7d7d 0%, #2a2a2a 52%, #0a0a0a 100%);
-      color: #f2f2f2;
-      font-size: var(--badge);
-      font-weight: 400;
-      letter-spacing: -0.01em;
-    }
-
-    .badge-star {
-      width: 18px;
-      height: 20px;
-      fill: #ffffff;
-      display: block;
-      filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.45));
-      animation: in-star 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
-    }
-
-    /* H1 Headline */
-    h1 {
-      font-size: var(--h1);
-      font-weight: 500;
-      letter-spacing: -0.045em;
-      line-height: 1.12;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .headline-line {
-      display: block;
-      overflow: hidden;
-      padding: 0.06em 0.15em 0.14em;
-    }
-
-    .headline-inner {
-      display: inline-block;
-    }
-
-    h1 em {
-      font-family: "Instrument Serif", "Times New Roman", Times, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.08em;
-      letter-spacing: -0.03em;
-      color: #9a9a9a;
-      animation: in-em 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.72s both;
-    }
-
-    /* Lede */
-    .lede {
-      max-width: var(--lede-max);
-      margin-top: 18px;
-      color: #9a9a9a;
-      font-size: var(--lede);
-      font-weight: 400;
-      line-height: 1.55;
-      letter-spacing: -0.015em;
-    }
-
-    /* Hero Actions */
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-top: 26px;
-    }
-
-    /* Stats Footer */
-    .stats {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 0 var(--stats-x) var(--stats-y);
-      padding-bottom: max(var(--stats-y), env(safe-area-inset-bottom));
-      color: #d8d8d8;
-    }
-
-    .stat {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      font-size: var(--stat-size);
-      letter-spacing: -0.015em;
-      white-space: nowrap;
-    }
-
-    .stat-icon {
-      width: 20px;
-      height: 20px;
-      display: block;
-      flex-shrink: 0;
-    }
-
-    .stat-icon-wide {
-      width: 38px;
-      height: 21px;
-      display: block;
-      flex-shrink: 0;
-    }
-
-    /* Entrance Motion */
-    .appear {
-      opacity: 1;
-      animation-duration: var(--dur, 1.05s);
-      animation-fill-mode: both;
-      animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-      animation-delay: var(--d, 0.08s);
-    }
-
-    .is-in {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-      clip-path: none !important;
-      filter: none !important;
-    }
-
-    @keyframes in-scale {
-      0% { opacity: 0; transform: scale(0.84); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    .appear--scale {
-      animation-name: in-scale;
-    }
-
-    @keyframes in-soft {
-      0% { opacity: 0; transform: translateY(14px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .appear--soft {
-      animation-name: in-soft;
-    }
-
-    @keyframes in-mask {
-      0% { opacity: 0; transform: translateY(40%); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .appear--mask {
-      animation-name: in-mask;
-    }
-
-    @keyframes in-pop {
-      0% { opacity: 0; transform: scale(0.9); }
-      70% { transform: scale(1.03); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    .appear--pop {
-      animation-name: in-pop;
-    }
-
-    @keyframes in-btn {
-      0% { opacity: 0; transform: translateY(18px) scale(0.94); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .appear--btn {
-      animation-name: in-btn;
-    }
-
-    @keyframes in-side {
-      0% { opacity: 0; transform: translateX(22px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
-    .appear--side {
-      animation-name: in-side;
-    }
-
-    @keyframes in-stat {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .appear--stat {
-      animation-name: in-stat;
-    }
-
-    @keyframes in-star {
-      0% { opacity: 0; transform: scale(0.2) rotate(-50deg); }
-      65% { opacity: 1; transform: scale(1.2) rotate(8deg); }
-      100% { opacity: 1; transform: scale(1) rotate(0deg); }
-    }
-
-    @keyframes in-em {
-      0% { opacity: 0.35; filter: blur(4px); }
-      100% { opacity: 1; filter: blur(0px); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        transition: none !important;
-        animation: none !important;
-      }
-      .appear, .hero-photo, .hero h1 em, .badge-star {
-        opacity: 1 !important;
-        transform: none !important;
-        clip-path: none !important;
-        filter: none !important;
-      }
-    }
-
-    /* Responsive Breakpoints */
-
-    /* >=1600 */
-    @media (min-width: 1600px) {
-      :root {
-        --logo: 17px;
-        --logo-mark: 24px;
-        --nav: 15px;
-        --nav-h: 44px;
-        --btn: 15px;
-        --btn-h: 44px;
-        --hero-btn-h: 48px;
-        --h1: 64px;
-        --lede: 18px;
-        --badge: 13.5px;
-        --stat-size: 15px;
-        --header-y: 28px;
-        --header-x: 64px;
-        --stats-x: 96px;
-        --stats-y: 44px;
-        --copy-max: 980px;
-        --lede-max: 540px;
-      }
-      .nav-link { padding: 0 20px; }
-      .badge { margin-bottom: 26px; }
-      .lede { margin-top: 22px; }
-      .hero-actions { margin-top: 30px; gap: 12px; }
-      .stat-icon { width: 22px; height: 22px; }
-      .stat-icon-wide { width: 45px; height: 24px; }
-    }
-
-    /* >=1920 */
-    @media (min-width: 1920px) {
-      :root {
-        --logo: 18px;
-        --logo-mark: 26px;
-        --nav: 16px;
-        --nav-h: 48px;
-        --btn: 16px;
-        --btn-h: 48px;
-        --hero-btn-h: 52px;
-        --h1: 76px;
-        --lede: 20px;
-        --badge: 14.5px;
-        --stat-size: 16px;
-        --header-y: 32px;
-        --header-x: 80px;
-        --stats-x: 120px;
-        --stats-y: 52px;
-        --copy-max: 1120px;
-        --lede-max: 620px;
-      }
-      .nav { gap: 10px; }
-      .nav-link { padding: 0 22px; }
-      .btn { padding: 0 22px; }
-      .badge { padding: 10px 15px; }
-      .stat-icon-wide { width: 48px; height: 26px; }
-    }
-
-    /* >=2560 */
-    @media (min-width: 2560px) {
-      :root {
-        --h1: 88px;
-        --lede: 22px;
-        --header-x: 120px;
-        --stats-x: 160px;
-        --copy-max: 1280px;
-        --lede-max: 680px;
-      }
-    }
-
-    /* 1280 - 1599 */
-    @media (min-width: 1280px) and (max-width: 1599px) {
-      :root {
-        --h1: 54px;
-        --lede: 16px;
-        --header-x: 48px;
-        --stats-x: 80px;
-        --copy-max: 900px;
-      }
-    }
-
-    /* 901 - 1279 */
-    @media (min-width: 901px) and (max-width: 1279px) {
-      :root {
-        --logo: 15px;
-        --nav: 13px;
-        --nav-h: 36px;
-        --btn: 13px;
-        --btn-h: 38px;
-        --hero-btn-h: 40px;
-        --h1: 42px;
-        --lede: 15px;
-        --badge: 12px;
-        --stat-size: 12.5px;
-        --header-y: 16px;
-        --header-x: 28px;
-        --stats-x: 36px;
-        --stats-y: 28px;
-        --hero-gap: 64px;
-        --copy-max: 760px;
-        --lede-max: 440px;
-      }
-      .nav-link { padding: 0 14px; }
-      .badge { margin-bottom: 16px; }
-      .lede { margin-top: 14px; }
-      .hero-actions { margin-top: 20px; }
-    }
-
-    /* >=901 and max-height 850 */
-    @media (min-width: 901px) and (max-height: 850px) {
-      :root {
-        --header-y: 14px;
-        --stats-y: 24px;
-        --hero-gap: 48px;
-        --h1: 40px;
-      }
-      .badge { margin-bottom: 12px; }
-      .lede { margin-top: 12px; }
-      .hero-actions { margin-top: 16px; }
-    }
-
-    /* >=901 and max-height 720 */
-    @media (min-width: 901px) and (max-height: 720px) {
-      :root {
-        --h1: 34px;
-        --lede: 14px;
-        --hero-gap: 32px;
-        --stats-y: 18px;
-        --nav-h: 30px;
-        --btn-h: 34px;
-        --hero-btn-h: 36px;
-      }
-      .badge { margin-bottom: 8px; }
-    }
-
-    /* >=901 desktop lock */
-    @media (min-width: 901px) {
-      html, body {
-        height: 100%;
-        overflow: hidden;
-      }
-      .page {
-        height: 100vh;
-        height: 100dvh;
-        overflow: hidden;
-      }
-    }
-
-    /* <=900 phone */
-    @media (max-width: 900px) {
-      html, body {
-        height: auto;
-        overflow-y: auto;
-      }
-      :root {
-        --logo: 16px;
-        --btn: 15px;
-        --btn-h: 46px;
-        --hero-btn-h: 48px;
-        --h1: 36px;
-        --lede: 16.5px;
-        --badge: 13.5px;
-        --stat-size: 15px;
-        --header-y: 16px;
-        --header-x: 18px;
-        --stats-x: 20px;
-        --stats-y: 28px;
-        --hero-gap: 36px;
-        --copy-max: 100%;
-        --lede-max: 100%;
-      }
-      .header {
-        grid-template-columns: 1fr auto auto;
-        gap: 8px;
-        padding: max(var(--header-y), env(safe-area-inset-top)) max(var(--header-x), env(safe-area-inset-right)) 10px max(var(--header-x), env(safe-area-inset-left));
-      }
-      .logo, .header-cta, .burger {
-        z-index: 80;
-      }
-      .burger {
-        display: grid;
-      }
-      .menu-backdrop {
-        display: block;
-        position: fixed;
-        inset: 0;
-        z-index: 40;
-        background: rgba(8, 8, 8, 0.42);
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.28s ease, visibility 0.28s ease, backdrop-filter 0.28s ease, -webkit-backdrop-filter 0.28s ease;
-      }
-      body.menu-open .menu-backdrop {
-        opacity: 1;
-        visibility: visible;
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-      }
-      .nav {
-        position: fixed;
-        inset: 0;
-        z-index: 45;
-        background: transparent;
-        flex-direction: column;
-        justify-content: center;
-        gap: 12px;
-        padding: 96px 22px 32px;
-        padding-top: max(96px, calc(env(safe-area-inset-top) + 88px));
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 0.28s ease, visibility 0.28s ease;
-      }
-      body.menu-open .nav {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-      }
-      .nav-link {
-        width: 100%;
-        height: 56px;
-        font-size: 19px;
-        border-radius: 10px;
-        justify-content: center;
-      }
-      body.menu-open {
-        overflow: hidden;
-      }
-      .hero {
-        padding: 20px 20px 64px;
-        align-items: flex-end;
-      }
-      .stats {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 16px;
-        white-space: normal;
-        text-align: center;
-      }
-      .stat {
-        white-space: normal;
-      }
-    }
-
-    /* <=560 */
-    @media (max-width: 560px) {
-      :root {
-        --h1: 34px;
-        --lede: 16px;
-        --header-x: 16px;
-      }
-      .hero-actions {
-        flex-direction: column;
-        width: 100%;
-      }
-      .hero-actions .btn {
-        width: 100%;
-      }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444444;
     }
   </style>
 </head>
 <body style="background:#000;color:#fff">
   <div class="grain"></div>
-  <div class="hero-photo">
-    <video autoplay muted loop playsinline preload="auto" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260818_072341_50851634-bbc3-4c33-9acc-7647d4db44aa.mp4"></video>
-  </div>
-  <div class="page">
-    <div class="menu-backdrop"></div>
-    <header class="header">
-      <a href="#top" class="logo appear appear--scale" aria-label="Vesper.ai" style="--d: 0.08s;">
-        <svg class="logo-mark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <g transform="rotate(-30 12 12)">
-            <circle cx="7.3" cy="3.2" r="1.45"/>
-            <rect x="5.5" y="4.7" width="3.6" height="14.6" rx="1.8"/>
-            <rect x="14.9" y="4.7" width="3.6" height="14.6" rx="1.8"/>
-            <circle cx="16.7" cy="20.8" r="1.45"/>
-          </g>
-        </svg>
-        <span>Vesper<span class="logo-suffix">.ai</span></span>
-      </a>
-
-      <nav id="site-nav" class="nav" aria-label="Primary">
-        <a href="#benefits" class="nav-link appear appear--scale" style="--d: 0.16s;">Benefits</a>
-        <a href="#how-it-works" class="nav-link appear appear--soft" style="--d: 0.28s;">How It Works</a>
-        <a href="#faqs" class="nav-link appear appear--scale" style="--d: 0.40s;">FAQs</a>
-        <a href="#pricing" class="nav-link appear appear--soft" style="--d: 0.52s;">Pricing</a>
-      </nav>
-
-      <a href="#start" class="btn btn-solid header-cta appear appear--scale" style="--d: 0.34s;">Start for Free</a>
-
-      <button type="button" class="burger appear appear--scale" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu" style="--d: 0.34s;">
-        <span class="burger-bar"></span>
-        <span class="burger-bar"></span>
-        <span class="burger-bar"></span>
-      </button>
-    </header>
-
-    <main class="hero" id="top">
-      <div class="hero-copy">
-        <div class="badge appear appear--pop" style="--d: 0.22s;">
-          <svg class="badge-star" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2.6C12.55 2.6 12.88 3.15 13.08 4.7c.62 4.7 1.52 5.6 6.22 6.22 1.55.2 2.1.53 2.1 1.08s-.55.88-2.1 1.08c-4.7.62-5.6 1.52-6.22 6.22-.2 1.55-.53 2.1-1.08 2.1s-.88-.55-1.08-2.1c-.62-4.7-1.52-5.6-6.22-6.22C3.15 12.88 2.6 12.55 2.6 12s.55-.88 2.1-1.08c4.7-.62 5.6-1.52 6.22-6.22C11.12 3.15 11.45 2.6 12 2.6Z"/>
-          </svg>
-          <span>Operational AI Infrastructure</span>
-        </div>
-
-        <h1>
-          <span class="headline-line"><span class="headline-inner appear appear--mask" style="--d: 0.42s;">Train <em>AI agents</em> on your</span></span>
-          <span class="headline-line"><span class="headline-inner appear appear--mask" style="--d: 0.62s;">workflows in minutes.</span></span>
-        </h1>
-
-        <p class="lede appear appear--soft" style="--d: 0.82s; --dur: 1.25s;">Deploy adaptive AI agents that learn, execute, and scale operational tasks across your business.</p>
-
-        <div class="hero-actions">
-          <a href="#start" class="btn btn-solid appear appear--btn" style="--d: 0.96s;">Start for Free</a>
-          <a href="#demo" class="btn btn-ghost appear appear--side" style="--d: 1.10s;">See it in action</a>
-        </div>
-      </div>
-    </main>
-
-    <footer class="stats">
-      <div class="stat appear appear--stat" style="--d: 1.12s;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="stat-icon" aria-hidden="true">
-          <defs>
-            <linearGradient id="pill-g1" x1="3" y1="2" x2="14" y2="22" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.38"/>
-              <stop offset="100%" stop-color="#3a3a3a" stop-opacity="0.62"/>
-            </linearGradient>
-            <linearGradient id="pill-g2" x1="13" y1="2" x2="24" y2="22" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#3a3a3a" stop-opacity="0.38"/>
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.62"/>
-            </linearGradient>
-          </defs>
-          <rect x="3.4" y="2.6" width="7.2" height="18.8" rx="3.6" fill="url(#pill-g1)"/>
-          <rect x="13.4" y="2.6" width="7.2" height="18.8" rx="3.6" fill="url(#pill-g2)"/>
-          <rect x="9.2" y="10.9" width="5.6" height="2.2" rx="1.1" fill="#4a4a4a"/>
-        </svg>
-        <span>4.2M+ workflows automated</span>
-      </div>
-
-      <div class="stat appear appear--stat" style="--d: 1.28s;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="stat-icon" aria-hidden="true">
-          <rect x="2.4" y="2.4" width="19.2" height="19.2" rx="6.2" fill="#ffffff"/>
-          <path d="M12 7.1v7.4M8.15 12.35L12 16.2l3.85-3.85" stroke="#111111" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>92% reduction in manual operations</span>
-      </div>
-
-      <div class="stat appear appear--stat" style="--d: 1.44s;">
-        <svg width="38" height="21" viewBox="0 0 40 22" fill="none" class="stat-icon stat-icon-wide" aria-hidden="true">
-          <g>
-            <circle cx="10.2" cy="11" r="9.2" fill="#2b2b2b"/>
-            <path d="M6.8 5.8L5.2 2.8L9.2 4.6Z" fill="#2b2b2b"/>
-            <path d="M13.6 5.8L15.2 2.8L11.2 4.6Z" fill="#2b2b2b"/>
-            <ellipse cx="10.2" cy="12.1" rx="4.15" ry="3.7" fill="#f4f4f4"/>
-            <circle cx="8.9" cy="11.6" r="0.7" fill="#1a1a1a"/>
-            <circle cx="11.5" cy="11.6" r="0.7" fill="#1a1a1a"/>
-          </g>
-          <g>
-            <circle cx="20.2" cy="11" r="9.2" fill="#ffffff"/>
-            <circle cx="18.2" cy="9.8" r="1.7" fill="#111111"/>
-            <circle cx="22.2" cy="9.8" r="1.7" fill="#111111"/>
-            <ellipse cx="20.2" cy="12.6" rx="1.2" ry="0.8" fill="#111111"/>
-            <path d="M18.6 14.6c.9.8 2.3.8 3.2 0" stroke="#111111" stroke-width="1.2" stroke-linecap="round"/>
-          </g>
-          <g>
-            <circle cx="30.2" cy="11" r="9.2" fill="#f26b1d"/>
-            <text x="30.2" y="15.1" font-family="'Inter', sans-serif" font-weight="700" font-size="12.5" fill="#ffffff" text-anchor="middle">e</text>
-          </g>
-        </svg>
-        <span>180+ operational teams onboarded</span>
-      </div>
-    </footer>
-  </div>
-
-  <script>
-    (function () {
-      // 1. Each .appear -> own animationend -> add is-in (once: true)
-      var appears = document.querySelectorAll('.appear, .hero-photo');
-      appears.forEach(function (el) {
-        el.addEventListener('animationend', function () {
-          el.classList.add('is-in');
-        }, { once: true });
-      });
-
-      // 2. Fallback after two rAFs if animations are not running
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          var anyRunning = false;
-          appears.forEach(function (el) {
-            if (typeof el.getAnimations === 'function') {
-              var anims = el.getAnimations();
-              if (anims && anims.some(function (a) { return a.playState === 'running' || a.playState === 'finished'; })) {
-                anyRunning = true;
-              }
-            }
-          });
-          if (!anyRunning) {
-            appears.forEach(function (el) {
-              el.classList.add('is-in');
-            });
-          }
-        });
-      });
-
-      // 3. Burger toggles body.menu-open
-      var burger = document.querySelector('.burger');
-      var nav = document.getElementById('site-nav');
-      var backdrop = document.querySelector('.menu-backdrop');
-
-      function toggleMenu(open) {
-        var shouldOpen = typeof open === 'boolean' ? open : !document.body.classList.contains('menu-open');
-        if (shouldOpen) {
-          document.body.classList.add('menu-open');
-          if (burger) {
-            burger.setAttribute('aria-expanded', 'true');
-            burger.setAttribute('aria-label', 'Close menu');
-          }
-        } else {
-          document.body.classList.remove('menu-open');
-          if (burger) {
-            burger.setAttribute('aria-expanded', 'false');
-            burger.setAttribute('aria-label', 'Open menu');
-          }
-        }
-      }
-
-      if (burger) {
-        burger.addEventListener('click', function () {
-          toggleMenu();
-        });
-      }
-
-      // 4. Nav links, backdrop, and Escape close the menu
-      var navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach(function (link) {
-        link.addEventListener('click', function () {
-          toggleMenu(false);
-        });
-      });
-
-      if (backdrop) {
-        backdrop.addEventListener('click', function () {
-          toggleMenu(false);
-        });
-      }
-
-      window.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' || e.key === 'Esc') {
-          toggleMenu(false);
-        }
-      });
-
-      // 5. Resize to (min-width: 901px) closes the menu
-      var mql = window.matchMedia('(min-width: 901px)');
-      if (mql.addEventListener) {
-        mql.addEventListener('change', function (e) {
-          if (e.matches) {
-            toggleMenu(false);
-          }
-        });
-      } else if (mql.addListener) {
-        mql.addListener(function (e) {
-          if (e.matches) {
-            toggleMenu(false);
-          }
-        });
-      }
-    })();
-  </script>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
 </body>
 </html>
