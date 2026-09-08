@@ -59,7 +59,7 @@ const stagesConfig = [
     title: 'Ôn tập tổng hợp',
     subtitle: 'Tổng hợp ngẫu nhiên các câu hỏi từ Phần 1 đến Phần 4',
     cards: [
-      { id: 'review-1-4', title: 'Ôn tập Tổng hợp Phần 1 - 4 (138 câu)', icon: Layers3 },
+      { id: 'review-1-4', title: 'Ôn tập Tổng hợp Phần 1 - 4 (148 câu)', icon: Layers3 },
     ],
   },
   {

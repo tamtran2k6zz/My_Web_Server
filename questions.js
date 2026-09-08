@@ -1866,6 +1866,211 @@ export const questions = [
     "type": "single"
   },
   {
+    "article": "Bài 4",
+    "text": "Câu 30: Những tầng lớp nào sau đây tham gia cơ cấu xã hội - giai cấp ở Việt Nam? (Chọn 2 đáp án đúng)",
+    "options": [
+      "A. Tín đồ tôn giáo",
+      "B. Phụ nữ",
+      "C. Thanh niên"
+    ],
+    "answer": [
+      "B",
+      "C"
+    ],
+    "type": "multiple"
+  },
+  {
+    "article": "Bài 4",
+    "text": "Câu 31: Những nội dung nào sau đây là nội dung cơ bản của liên minh giai cấp, tầng lớp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án đúng)",
+    "options": [
+      "A. Nội dung giáo dục",
+      "B. Nội dung chính trị",
+      "C. Nội dung kinh tế",
+      "D. Nội dung tôn giáo"
+    ],
+    "answer": [
+      "B",
+      "C"
+    ],
+    "type": "multiple"
+  },
+  {
+    "article": "Bài 4",
+    "text": "Câu 32: Những phương hướng nào sau đây củng cố liên minh giai cấp, tầng lớp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án đúng)",
+    "options": [
+      "A. Phát huy tinh thần đoàn kết",
+      "B. Giảm vai trò kinh tế trong xã hội",
+      "C. Tăng vai trò tôn giáo đối với các giai cấp, tầng lớp",
+      "D. Tạo sự đồng thuận giữa các lực lượng"
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "article": "Bài 4",
+    "text": "Câu 33: Kéo thả các đáp án đúng ứng với từng phát biểu sau đây về vị trí, vai trò của các giai cấp, tầng lớp trong cơ cấu xã hội – giai cấp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội:",
+    "options": [
+      "đặc biệt quan trọng",
+      "đội ngũ vững mạnh",
+      "chiến lược quan trọng",
+      "sáng tạo đặc biệt"
+    ],
+    "targets": [
+      "Giai cấp công nhân Việt Nam có vai trò:",
+      "Đội ngũ doanh nhân được Đảng ta chủ trương xây dựng thành một:",
+      "Giai cấp nông dân cùng với nông nghiệp, nông thôn có vị trí:",
+      "Đội ngũ trí thức là lực lượng:"
+    ],
+    "answer": {
+      "0": [
+        "0"
+      ],
+      "1": [
+        "1"
+      ],
+      "2": [
+        "2"
+      ],
+      "3": [
+        "3"
+      ]
+    },
+    "type": "dragdrop"
+  },
+  {
+    "article": "Bài 4",
+    "text": "Câu 34: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "options": [
+      "Đội ngũ doanh nhân không tham gia liên minh giai cấp, tầng lớp.",
+      "Đồng thuận xã hội là mục tiêu của liên minh giai cấp, tầng lớp ở Việt Nam.",
+      "Xây dựng Nhà nước pháp quyền xã hội chủ nghĩa của nhân dân, do nhân dân, vì nhân dân là nội dung văn hoá của liên minh giai cấp, tầng lớp ở Việt Nam.",
+      "Nội dung tôn giáo là nội dung chính của liên minh giai cấp, tầng lớp."
+    ],
+    "answer": [
+      "Sai",
+      "Đúng",
+      "Sai",
+      "Sai"
+    ],
+    "type": "truefalse"
+  },
+  {
+    "article": "Bài 4",
+    "text": "Câu 35: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "options": [
+      "Chính sách việc làm không hỗ trợ cơ cấu xã hội - giai cấp.",
+      "Đội ngũ doanh nhân là tầng lớp mới trong cơ cấu xã hội - giai cấp.",
+      "Cơ cấu xã hội - giai cấp ở Việt Nam không biến đổi.",
+      "Nâng cao dân trí là chính sách hỗ trợ cơ cấu xã hội - giai cấp."
+    ],
+    "answer": [
+      "Sai",
+      "Đúng",
+      "Sai",
+      "Đúng"
+    ],
+    "type": "truefalse"
+  },
+  {
+    "article": "Bài 4",
+    "text": "Câu 36: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "options": [
+      "Tầng lớp phụ nữ không tham gia cơ cấu xã hội - giai cấp.",
+      "Giai cấp công nhân là trung tâm trong cơ cấu xã hội - giai cấp ở Việt Nam.",
+      "Chính sách tôn giáo là chính sách chính hỗ trợ cơ cấu xã hội - giai cấp.",
+      "Đội ngũ trí thức đóng vai trò quan trọng trong cơ cấu xã hội - giai cấp."
+    ],
+    "answer": [
+      "Sai",
+      "Đúng",
+      "Sai",
+      "Đúng"
+    ],
+    "type": "truefalse"
+  },
+  {
+    "article": "Bài 4",
+    "text": "Câu 37: Kéo thả các yếu tố liên quan đến cơ cấu xã hội - giai cấp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội vào các cột tương ứng:",
+    "options": [
+      "Giai cấp công nhân",
+      "Giai cấp nông dân",
+      "Đội ngũ trí thức",
+      "Bảo vệ quyền lợi",
+      "Nâng cao dân trí",
+      "Chính sách an sinh xã hội",
+      "Phát triển nông thôn mới"
+    ],
+    "targets": [
+      "Giai cấp/tầng lớp trong cơ cấu xã hội:",
+      "Chính sách hỗ trợ:"
+    ],
+    "answer": {
+      "0": [
+        "0",
+        "1",
+        "2"
+      ],
+      "1": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    "type": "dragdrop"
+  },
+  {
+    "article": "Bài 4",
+    "text": "Câu 38: Những phương hướng nào sau đây nhằm phát triển cơ cấu xã hội - giai cấp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án đúng)",
+    "options": [
+      "A. Giảm giáo dục ở những vùng không có điều kiện kinh tế",
+      "B. Tăng dân số ở khu công nghiệp",
+      "C. Xây dựng và hoàn thiện chính sách xã hội tổng thể",
+      "D. Đẩy mạnh công nghiệp hoá, hiện đại hoá"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "article": "Bài 4",
+    "text": "Câu 39: Kéo thả các yếu tố liên quan đến liên minh giai cấp, tầng lớp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội vào các cột tương ứng:",
+    "options": [
+      "Giai cấp nông dân",
+      "Giai cấp công nhân",
+      "Tầng lớp phụ nữ",
+      "Đảng Cộng sản",
+      "Xóa đói giảm nghèo",
+      "Nội dung kinh tế",
+      "Tăng cường liên minh",
+      "Nội dung chính trị"
+    ],
+    "targets": [
+      "Thành phần/yếu tố của liên minh:",
+      "Nội dung/phương hướng của liên minh:"
+    ],
+    "answer": {
+      "0": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "1": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    "type": "dragdrop"
+  },
+  {
     "article": "new-questions",
     "text": "Câu 1: Kéo thả các đáp án khớp với các phát biểu từ 1 – 4 vế trái dưới đây:",
     "options": [

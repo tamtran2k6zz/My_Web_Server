@@ -131,7 +131,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
                 onClick={closeMenu}
                 className="liquid-pill px-5 py-4 rounded-xl text-base font-semibold text-white flex items-center justify-between"
               >
-                <span className="flex items-center gap-3"><BookOpen size={18} className="text-cyan-300 shrink-0" /> <span>Chủ đề 1 – 4 (138 câu)</span></span>
+                <span className="flex items-center gap-3"><BookOpen size={18} className="text-cyan-300 shrink-0" /> <span>Chủ đề 1 – 4 (148 câu)</span></span>
                 <ChevronRight size={16} className="text-slate-400 shrink-0" />
               </a>
               <a

@@ -60,7 +60,7 @@ export function Header({ t, totalQuestions }) {
           className="btn-ghost px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-white flex items-center gap-2 cursor-pointer"
         >
           <Layers size={18} />
-          <span>Ôn tập tổng hợp (138 câu)</span>
+          <span>Ôn tập tổng hợp (148 câu)</span>
         </a>
       </motion.div>
     </div>
