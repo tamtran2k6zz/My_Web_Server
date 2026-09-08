@@ -1,9 +1,8 @@
 import React, { useMemo, useState } from 'react'
-import { ArrowRight, BookOpen, Layers3, Puzzle, Sparkles, SquareCheckBig, Target, Wand2, LogIn, ChevronDown } from 'lucide-react'
+import { ArrowRight, BookOpen, Layers3, Puzzle, Sparkles, SquareCheckBig, Target, Wand2, LogIn } from 'lucide-react'
 import { Navbar } from './Navbar'
 import { Header } from './Header'
 import { QuizCard } from './QuizCard'
-import { ToonHub } from './ToonHub'
 
 const content = {
   vi: {
@@ -88,7 +87,6 @@ const stagesConfig = [
 ]
 
 export function Home({ onTopicSelect, data, user, onLogin, onLogout }) {
-  const [homeViewMode, setHomeViewMode] = useState('toonhub')
   const [language, setLanguage] = useState('vi')
   const t = content[language]
 
@@ -111,44 +109,13 @@ export function Home({ onTopicSelect, data, user, onLogin, onLogout }) {
     return keys.reduce((sum, key) => sum + (data[key]?.questions?.length || 0), 0)
   }, [data])
 
-  if (homeViewMode === 'toonhub') {
-    return (
-      <div className="relative min-h-screen bg-black text-white">
-        <ToonHub
-          onTopicSelect={onTopicSelect}
-          onSwitchToClassic={() => setHomeViewMode('classic')}
-        />
-        {/* Bottom floating button to switch to classic layout */}
-        <div className="fixed bottom-3 inset-x-0 z-50 flex justify-center pointer-events-none">
-          <button
-            type="button"
-            onClick={() => setHomeViewMode('classic')}
-            className="pointer-events-auto px-4 py-2 rounded-full bg-black/70 hover:bg-black/90 border border-white/20 hover:border-white/40 text-white text-xs font-semibold backdrop-blur-xl shadow-2xl flex items-center gap-2 transition-all cursor-pointer hover:scale-105 active:scale-95"
-          >
-            <span>Xem toàn bộ 150 câu & 4 giai đoạn đề thi</span>
-            <ChevronDown size={14} className="animate-bounce" />
-          </button>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="min-h-screen bg-black text-white relative flex flex-col justify-between">
       {/* Background radial glows */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_center,rgba(34,211,238,0.08),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.05),transparent_40%),linear-gradient(180deg,#000000,#05070f)] -z-10" />
 
       <div className="relative mx-auto flex w-full max-w-6xl flex-col px-4 py-5 sm:px-6 lg:px-8 flex-1">
-        <Navbar
-          language={language}
-          setLanguage={setLanguage}
-          t={t}
-          user={user}
-          onLogin={onLogin}
-          onLogout={onLogout}
-          homeViewMode={homeViewMode}
-          setHomeViewMode={setHomeViewMode}
-        />
+        <Navbar language={language} setLanguage={setLanguage} t={t} user={user} onLogin={onLogin} onLogout={onLogout} />
 
         <Header t={t} totalQuestions={totalQuestions} />
 

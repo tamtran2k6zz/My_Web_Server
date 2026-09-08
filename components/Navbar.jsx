@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Globe2, LogIn, LogOut, Sparkles, BookOpen, Layers, CheckCircle2, ChevronRight } from 'lucide-react'
 
-export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, homeViewMode, setHomeViewMode }) {
+export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const toggleMenu = () => setMenuOpen(prev => !prev)
@@ -42,36 +42,6 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, home
 
           {/* Center: Desktop Liquid Metal Navigation Pills */}
           <nav className="hidden md:flex items-center gap-2">
-            {setHomeViewMode && (
-              <div className="flex items-center bg-white/10 rounded-xl p-1 border border-white/15 mr-2">
-                <button
-                  type="button"
-                  onClick={() => setHomeViewMode('toonhub')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-                    homeViewMode === 'toonhub'
-                      ? 'bg-white text-slate-950 shadow-sm font-bold'
-                      : 'text-slate-300 hover:text-white'
-                  }`}
-                  title="Chế độ vòng xoay 3D ToonHub"
-                >
-                  <Sparkles size={13} />
-                  <span>ToonHub 3D</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setHomeViewMode('classic')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-                    homeViewMode === 'classic'
-                      ? 'bg-white text-slate-950 shadow-sm font-bold'
-                      : 'text-slate-300 hover:text-white'
-                  }`}
-                  title="Chế độ danh mục Vesper truyền thống"
-                >
-                  <BookOpen size={13} />
-                  <span>Danh mục</span>
-                </button>
-              </div>
-            )}
             <a href="#phase-1" className="liquid-pill px-4 py-2 rounded-lg text-xs sm:text-sm font-medium">
               Chủ đề 1 – 4
             </a>
@@ -153,40 +123,6 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, home
             onClick={closeMenu}
           >
             <div className="flex flex-col gap-3 w-full max-w-sm mx-auto" onClick={(e) => e.stopPropagation()}>
-              {setHomeViewMode && (
-                <div className="flex items-center bg-white/10 rounded-xl p-1 border border-white/15 mb-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setHomeViewMode('toonhub')
-                      closeMenu()
-                    }}
-                    className={`flex-1 py-2.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-                      homeViewMode === 'toonhub'
-                        ? 'bg-white text-slate-950 shadow-sm font-bold'
-                        : 'text-slate-300 hover:text-white'
-                    }`}
-                  >
-                    <Sparkles size={14} />
-                    <span>ToonHub 3D</span>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setHomeViewMode('classic')
-                      closeMenu()
-                    }}
-                    className={`flex-1 py-2.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-                      homeViewMode === 'classic'
-                        ? 'bg-white text-slate-950 shadow-sm font-bold'
-                        : 'text-slate-300 hover:text-white'
-                    }`}
-                  >
-                    <BookOpen size={14} />
-                    <span>Danh mục Vesper</span>
-                  </button>
-                </div>
-              )}
               <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2 px-2">
                 Danh mục khảo thí
               </div>
