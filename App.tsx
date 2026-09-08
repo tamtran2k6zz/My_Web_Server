@@ -205,31 +205,31 @@ function App() {
     <div className="min-h-screen bg-black font-sans text-slate-100 transition-colors duration-300">
       {/* Header Sticky Liquid Glass */}
       <header className="sticky top-0 z-30 glass-panel border-b border-white/10">
-        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3 min-w-0">
             <button
               type="button"
               onClick={handleExit}
-              className="flex items-center gap-2 text-slate-300 hover:text-white transition group cursor-pointer"
+              className="flex items-center gap-2 text-slate-300 hover:text-white transition group cursor-pointer shrink-0"
               title="Quay lại danh sách"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:border-white/30 transition">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:border-white/30 transition shrink-0">
                 <ChevronLeft size={18} />
               </div>
-              <span className="font-semibold text-sm hidden sm:inline">Quay lại</span>
+              <span className="font-semibold text-sm hidden sm:inline whitespace-nowrap">Quay lại</span>
             </button>
 
-            <div className="h-4 w-px bg-white/15 mx-1 hidden sm:block"></div>
+            <div className="h-4 w-px bg-white/15 mx-1 hidden sm:block shrink-0"></div>
 
-            <h1 className="font-semibold text-sm sm:text-base text-white tracking-tight truncate max-w-[200px] sm:max-w-xs">
+            <h1 className="font-semibold text-sm sm:text-base text-white tracking-tight truncate">
               {activeTopic.name}
             </h1>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Score Chip */}
-            <div className="glass-card px-3.5 py-1.5 rounded-full flex items-center gap-2 font-semibold text-xs sm:text-sm text-slate-200 border border-white/10">
-              <Award size={16} className="text-amber-400" />
+            <div className="glass-card px-3.5 py-1.5 rounded-full flex items-center gap-2 font-semibold text-xs sm:text-sm text-slate-200 border border-white/10 shrink-0 whitespace-nowrap">
+              <Award size={16} className="text-amber-400 shrink-0" />
               <span>{score} / {activeTopic.questions.length}</span>
             </div>
 
