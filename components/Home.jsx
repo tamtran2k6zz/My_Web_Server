@@ -12,8 +12,8 @@ const content = {
     headerTitle: 'Khảo Thí Chủ Nghĩa Xã Hội Khoa Học',
     headerSubtitle: 'Chọn chủ đề để bắt đầu ôn tập...',
     phases: [
-      'Giai đoạn 1 · Học phần trọng tâm (Bài 1 – 4)',
-      'Giai đoạn 2 · Ôn tập tổng hợp liên chương',
+      'Giai đoạn 1 · Học phần trọng tâm (Bài 1 – 6)',
+      'Giai đoạn 2 · Ôn tập tổng hợp (Phần 1-3 & Phần 4-6)',
       'Giai đoạn 3 · Chuyên đề theo dạng bài',
       'Giai đoạn 4 · Khảo thí toàn diện'
     ],
@@ -25,8 +25,8 @@ const content = {
     headerTitle: 'Scientific Socialism Examination',
     headerSubtitle: 'Choose a topic to begin practice...',
     phases: [
-      'Phase 1 · Core Units (Lesson 1 – 4)',
-      'Phase 2 · Comprehensive Review',
+      'Phase 1 · Core Units (Lesson 1 – 6)',
+      'Phase 2 · Segmented Review (Parts 1-3 & 4-6)',
       'Phase 3 · By Question Format',
       'Phase 4 · Complete Assessment'
     ],
@@ -46,7 +46,7 @@ const stagesConfig = [
       { id: '2', title: 'Phần 2: CNXH & Thời kỳ quá độ', icon: Sparkles },
       { id: '3', title: 'Phần 3: Dân chủ & Nhà nước XHCN', icon: Layers3 },
       { id: '4', title: 'Phần 4: Cơ cấu XH - Giai cấp & Liên minh', icon: Target },
-      { id: '5', title: 'Phần 5: Đang cập nhật', icon: Wand2, isUpdating: true },
+      { id: '5', title: 'Phần 5: Dân tộc & Tôn giáo trong TKQĐ', icon: Wand2 },
       { id: '6', title: 'Phần 6: Đang cập nhật', icon: Puzzle, isUpdating: true },
       { id: 'new-questions', title: 'Bộ câu hỏi mới (Bổ sung)', icon: Sparkles },
     ],
@@ -57,9 +57,10 @@ const stagesConfig = [
     icon: Layers3,
     gradient: 'from-fuchsia-400 to-pink-500',
     title: 'Ôn tập tổng hợp',
-    subtitle: 'Tổng hợp ngẫu nhiên các câu hỏi từ Phần 1 đến Phần 4',
+    subtitle: 'Hệ thống hóa kiến thức theo từng chặng ôn tập riêng biệt',
     cards: [
-      { id: 'review-1-4', title: 'Ôn tập Tổng hợp Phần 1 - 4 (148 câu)', icon: Layers3 },
+      { id: 'review-1-3', title: 'Ôn tập Tổng hợp Phần 1 – 3', icon: Layers3 },
+      { id: 'review-4-6', title: 'Ôn tập Tổng hợp Phần 4 – 6', icon: BookOpen },
     ],
   },
   {
@@ -81,8 +82,8 @@ const stagesConfig = [
     icon: ArrowRight,
     gradient: 'from-amber-300 to-orange-500',
     title: 'Khảo thí toàn bộ ngân hàng đề',
-    subtitle: 'Thử thách tối đa với toàn bộ 150 câu hỏi xáo trộn',
-    cards: [{ id: 'review-all', title: 'Tổng hợp toàn bộ kiến thức (150 câu)', icon: ArrowRight }],
+    subtitle: 'Thử thách tối đa với toàn bộ ngân hàng câu hỏi xáo trộn',
+    cards: [{ id: 'review-all', title: 'Tổng hợp toàn bộ kiến thức', icon: ArrowRight }],
   },
 ]
 
@@ -105,7 +106,7 @@ export function Home({ onTopicSelect, data, user, onLogin, onLogout }) {
   }, [data]);
 
   const totalQuestions = useMemo(() => {
-    const keys = ['1', '2', '3', '4', 'new-questions']
+    const keys = ['1', '2', '3', '4', '5', '6', 'new-questions']
     return keys.reduce((sum, key) => sum + (data[key]?.questions?.length || 0), 0)
   }, [data])
 

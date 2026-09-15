@@ -135,11 +135,13 @@ function App() {
     });
 
     const keys = Object.keys(sourceData);
-    const keys1to4 = ['1', '2', '3', '4'];
+    const keys1to3 = ['1', '2', '3'];
+    const keys4to6 = ['4', '5', '6'];
 
     return {
       ...processedStandardTopics,
-      "review-1-4": generateReviewTopic(keys1to4, "TỔNG HỢP: ÔN TẬP PHẦN 1 - 4 (148 CÂU)"),
+      "review-1-3": generateReviewTopic(keys1to3, "TỔNG HỢP: ÔN TẬP PHẦN 1 - 3"),
+      "review-4-6": generateReviewTopic(keys4to6, "TỔNG HỢP: ÔN TẬP PHẦN 4 - 6"),
       "type-quiz": {
         name: "LUYỆN TẬP: CHUYÊN ĐỀ TRẮC NGHIỆM (A,B,C,D)",
         questions: processQuestions(allQuestionsRaw.filter((q: any) => q.type === 'single' || q.type === 'multi'))
@@ -152,7 +154,7 @@ function App() {
         name: "LUYỆN TẬP: CHUYÊN ĐỀ KÉO THẢ & GHÉP NỐI",
         questions: processQuestions(allQuestionsRaw.filter((q: any) => q.type === 'drag' || q.type === 'match'))
       },
-      "review-all": generateReviewTopic(keys, "TỔNG HỢP: ÔN TẬP TOÀN BỘ KIẾN THỨC (150 CÂU)")
+      "review-all": generateReviewTopic(keys, "TỔNG HỢP: ÔN TẬP TOÀN BỘ KIẾN THỨC")
     };
   }, []);
 

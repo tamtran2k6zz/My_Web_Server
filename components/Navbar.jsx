@@ -43,7 +43,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
           {/* Center: Desktop Liquid Metal Navigation Pills */}
           <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0">
             <a href="#phase-1" className="liquid-pill px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-xs xl:text-sm font-medium whitespace-nowrap shrink-0">
-              Chủ đề 1 – 4
+              Chủ đề 1 – 5
             </a>
             <a href="#phase-2" className="liquid-pill px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-xs xl:text-sm font-medium whitespace-nowrap shrink-0">
               Ôn tập tổng hợp
@@ -52,7 +52,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
               Dạng bài khảo thí
             </a>
             <a href="#stats" className="liquid-pill px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-xs xl:text-sm font-medium whitespace-nowrap shrink-0">
-              150+ Câu hỏi
+              200+ Câu hỏi
             </a>
           </nav>
 
@@ -131,7 +131,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
                 onClick={closeMenu}
                 className="liquid-pill px-5 py-4 rounded-xl text-base font-semibold text-white flex items-center justify-between"
               >
-                <span className="flex items-center gap-3"><BookOpen size={18} className="text-cyan-300 shrink-0" /> <span>Chủ đề 1 – 4 (148 câu)</span></span>
+                <span className="flex items-center gap-3"><BookOpen size={18} className="text-cyan-300 shrink-0" /> <span>Học phần trọng tâm (Bài 1 – 5)</span></span>
                 <ChevronRight size={16} className="text-slate-400 shrink-0" />
               </a>
               <a
@@ -139,7 +139,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
                 onClick={closeMenu}
                 className="liquid-pill px-5 py-4 rounded-xl text-base font-semibold text-white flex items-center justify-between"
               >
-                <span className="flex items-center gap-3"><Layers size={18} className="text-fuchsia-300 shrink-0" /> <span>Ôn tập Tổng hợp 1 – 4</span></span>
+                <span className="flex items-center gap-3"><Layers size={18} className="text-fuchsia-300 shrink-0" /> <span>Ôn tập Tổng hợp (Phần 1-3 & 4-6)</span></span>
                 <ChevronRight size={16} className="text-slate-400 shrink-0" />
               </a>
               <a
@@ -155,7 +155,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
                 onClick={closeMenu}
                 className="liquid-pill px-5 py-4 rounded-xl text-base font-semibold text-white flex items-center justify-between"
               >
-                <span className="flex items-center gap-3"><Sparkles size={18} className="text-amber-300 shrink-0" /> <span>Tổng hợp toàn bộ 150 câu</span></span>
+                <span className="flex items-center gap-3"><Sparkles size={18} className="text-amber-300 shrink-0" /> <span>Tổng hợp toàn bộ kiến thức</span></span>
                 <ChevronRight size={16} className="text-slate-400 shrink-0" />
               </a>
             </div>

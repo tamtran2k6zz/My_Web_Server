@@ -8,7 +8,7 @@ export function QuizCard({ card, delay, onClick }) {
 
   const handleClick = () => {
     if (isUpdating) {
-      alert("Phần này đang được cập nhật câu hỏi mới. Vui lòng chọn Phần 1, Phần 2, Phần 3 hoặc Phần 4 để luyện tập nhé!")
+      alert("Phần này đang được cập nhật câu hỏi mới. Vui lòng chọn các phần đã mở để luyện tập nhé!")
       return
     }
     onClick()
