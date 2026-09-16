@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles, Layers, BookOpen } from 'lucide-react'
 
-export function Header({ t, totalQuestions }) {
+export function Header({ t, totalQuestions, activeTopicsCount }) {
   return (
     <div className="relative pt-6 pb-10 flex flex-col items-center text-center">
       {/* Sparkle Badge */}
@@ -16,7 +16,7 @@ export function Header({ t, totalQuestions }) {
           <path d="M12 2.6C12.55 2.6 12.88 3.15 13.08 4.7c.62 4.7 1.52 5.6 6.22 6.22 1.55.2 2.1.53 2.1 1.08s-.55.88-2.1 1.08c-4.7.62-5.6 1.52-6.22 6.22-.2 1.55-.53 2.1-1.08 2.1s-.88-.55-1.08-2.1c-.62-4.7-1.52-5.6-6.22-6.22C3.15 12.88 2.6 12.55 2.6 12s.55-.88 2.1-1.08c4.7-.62 5.6-1.52 6.22-6.22C11.12 3.15 11.45 2.6 12 2.6Z"/>
         </svg>
         <span className="text-xs sm:text-sm font-medium tracking-wide text-slate-200">
-          Nền tảng Khảo thí LMS · 150+ Câu hỏi
+          Nền tảng Khảo thí LMS · {totalQuestions} Câu hỏi
         </span>
       </motion.div>
 
@@ -37,7 +37,7 @@ export function Header({ t, totalQuestions }) {
         transition={{ duration: 0.6, delay: 0.3 }}
         className="mt-5 max-w-2xl text-base sm:text-lg text-slate-400 font-normal leading-relaxed"
       >
-        Ngân hàng câu hỏi chuẩn hóa gồm 4 học phần trọng tâm, hỗ trợ trắc nghiệm A-B-C-D, đúng/sai, và kéo thả cảm ứng tiện lợi trên mọi thiết bị.
+        Ngân hàng câu hỏi chuẩn hóa gồm {activeTopicsCount ? `${activeTopicsCount} học phần` : 'các học phần'} trọng tâm, hỗ trợ trắc nghiệm A-B-C-D, đúng/sai, và kéo thả cảm ứng tiện lợi trên mọi thiết bị.
       </motion.p>
 
       {/* Quick Hero Actions */}
@@ -60,7 +60,7 @@ export function Header({ t, totalQuestions }) {
           className="btn-ghost px-6 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-white flex items-center gap-2 cursor-pointer"
         >
           <Layers size={18} />
-          <span>Ôn tập tổng hợp (148 câu)</span>
+          <span>Ôn tập tổng hợp ({totalQuestions} câu)</span>
         </a>
       </motion.div>
     </div>

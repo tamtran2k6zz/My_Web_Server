@@ -105,10 +105,17 @@ export function Home({ onTopicSelect, data, user, onLogin, onLogout }) {
     }))
   }, [data]);
 
+  // Count how many core units currently have questions (> 0)
+  const activeTopicsCount = useMemo(() => {
+    const standardKeys = ['1', '2', '3', '4', '5', '6'];
+    return standardKeys.filter(key => (data[key]?.questions?.length || 0) > 0).length;
+  }, [data]);
+
+  // Dynamic calculation: sum questions from all base topics, excluding aggregate reviews & specialized categories
   const totalQuestions = useMemo(() => {
-    const keys = ['1', '2', '3', '4', '5', '6', 'new-questions']
-    return keys.reduce((sum, key) => sum + (data[key]?.questions?.length || 0), 0)
-  }, [data])
+    const standardKeys = Object.keys(data).filter(k => !k.startsWith('review-') && !k.startsWith('type-'));
+    return standardKeys.reduce((sum, key) => sum + (data[key]?.questions?.length || 0), 0);
+  }, [data]);
 
   return (
     <div className="min-h-screen bg-black text-white relative flex flex-col justify-between">
@@ -116,9 +123,22 @@ export function Home({ onTopicSelect, data, user, onLogin, onLogout }) {
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_center,rgba(34,211,238,0.08),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.05),transparent_40%),linear-gradient(180deg,#000000,#05070f)] -z-10" />
 
       <div className="relative mx-auto flex w-full max-w-6xl flex-col px-4 py-5 sm:px-6 lg:px-8 flex-1">
-        <Navbar language={language} setLanguage={setLanguage} t={t} user={user} onLogin={onLogin} onLogout={onLogout} />
+        <Navbar
+          language={language}
+          setLanguage={setLanguage}
+          t={t}
+          user={user}
+          onLogin={onLogin}
+          onLogout={onLogout}
+          totalQuestions={totalQuestions}
+          activeTopicsCount={activeTopicsCount}
+        />
 
-        <Header t={t} totalQuestions={totalQuestions} />
+        <Header
+          t={t}
+          totalQuestions={totalQuestions}
+          activeTopicsCount={activeTopicsCount}
+        />
 
         <main className="mt-8 space-y-12">
           {stages.map((stage, stageIndex) => (
