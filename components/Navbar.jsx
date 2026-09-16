@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Globe2, LogIn, LogOut, Sparkles, BookOpen, Layers, CheckCircle2, ChevronRight } from 'lucide-react'
+import { maskEmail } from '../firebase'
 
 export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -71,7 +72,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout }) {
                     </div>
                   )}
                   <span className="text-xs sm:text-sm font-medium text-slate-200 hidden sm:inline max-w-[120px] truncate whitespace-nowrap">
-                    {user.displayName || user.email}
+                    {user.displayName || maskEmail(user.email)}
                   </span>
                 </div>
                 <button

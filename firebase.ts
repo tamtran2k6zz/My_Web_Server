@@ -34,6 +34,26 @@ export const isValidIctuEmail = (email?: string | null): boolean => {
   return email.toLowerCase().trim().endsWith('@ictu.edu.vn');
 };
 
+export const maskEmail = (email?: string | null): string => {
+  if (!email || typeof email !== 'string') return 'không xác định';
+  const trimmed = email.trim();
+  const atIndex = trimmed.indexOf('@');
+  if (atIndex <= 0) return '***';
+
+  const name = trimmed.slice(0, atIndex);
+  const domain = trimmed.slice(atIndex);
+
+  if (name.length <= 2) {
+    return `${name[0]}***${domain}`;
+  }
+  if (name.length <= 4) {
+    return `${name[0]}***${name.slice(-1)}${domain}`;
+  }
+  const prefix = name.slice(0, Math.min(3, Math.floor(name.length / 3)));
+  const suffix = name.slice(-2);
+  return `${prefix}***${suffix}${domain}`;
+};
+
 export const loginWithGoogle = async (): Promise<{ user: any; error?: string }> => {
   if (!auth) {
     return {
@@ -50,7 +70,7 @@ export const loginWithGoogle = async (): Promise<{ user: any; error?: string }> 
       await signOut(auth);
       return {
         user: null,
-        error: `Tài khoản (${user.email || 'không xác định'}) không hợp lệ. Hệ thống chỉ cho phép tài khoản sinh viên/cán bộ có đuôi @ictu.edu.vn.`
+        error: `Tài khoản (${maskEmail(user.email)}) không hợp lệ. Hệ thống chỉ cho phép tài khoản sinh viên/cán bộ có đuôi @ictu.edu.vn.`
       };
     }
 

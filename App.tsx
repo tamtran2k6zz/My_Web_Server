@@ -5,7 +5,7 @@ import { Topic } from './types';
 import QuestionCard from './components/QuestionCard';
 import { Home } from './components/Home';
 import { LoginGate } from './components/LoginGate';
-import { auth, loginWithGoogle, logout, isValidIctuEmail } from './firebase';
+import { auth, loginWithGoogle, logout, isValidIctuEmail, maskEmail } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
 // Helper to clean prefix like "A. ", "B. ", "C. ", "D. "
@@ -92,7 +92,7 @@ function App() {
         } else {
           await logout();
           setUser(null);
-          setAuthError(`Tài khoản (${currentUser.email || 'không xác định'}) không hợp lệ. Hệ thống chỉ cho phép tài khoản có đuôi @ictu.edu.vn.`);
+          setAuthError(`Tài khoản (${maskEmail(currentUser.email)}) không hợp lệ. Hệ thống chỉ cho phép tài khoản có đuôi @ictu.edu.vn.`);
         }
       } else {
         setUser(null);
