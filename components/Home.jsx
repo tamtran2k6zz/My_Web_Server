@@ -87,7 +87,16 @@ const stagesConfig = [
   },
 ]
 
-export function Home({ onTopicSelect, data, user, onLogin, onLogout }) {
+export function Home({ 
+  onTopicSelect, 
+  data, 
+  user, 
+  onLogin, 
+  onLogout,
+  isExamMode,
+  onToggleExamMode,
+  onOpenLeaderboard
+}) {
   const [language, setLanguage] = useState('vi')
   const t = content[language]
 
@@ -132,12 +141,16 @@ export function Home({ onTopicSelect, data, user, onLogin, onLogout }) {
           onLogout={onLogout}
           totalQuestions={totalQuestions}
           activeTopicsCount={activeTopicsCount}
+          onOpenLeaderboard={onOpenLeaderboard}
         />
 
         <Header
           t={t}
           totalQuestions={totalQuestions}
           activeTopicsCount={activeTopicsCount}
+          isExamMode={isExamMode}
+          onToggleExamMode={onToggleExamMode}
+          onOpenLeaderboard={onOpenLeaderboard}
         />
 
         <main className="mt-8 space-y-12">
@@ -166,6 +179,7 @@ export function Home({ onTopicSelect, data, user, onLogin, onLogout }) {
                     card={card}
                     delay={stageIndex * 0.08 + cardIndex * 0.05}
                     onClick={() => onTopicSelect(card.id)}
+                    isExamMode={isExamMode}
                   />
                 ))}
               </div>

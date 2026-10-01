@@ -183,9 +183,9 @@ npm run build
 - [x] Tự động đồng bộ hóa các con số thống kê trên giao diện (6/6 học phần, tổng số câu hỏi).
 - [x] Tối ưu hóa tương tác kéo thả cảm ứng di động (Mobile Tap-to-Place).
 - [x] Đảm bảo tiêu chuẩn trợ năng quốc tế WAI-ARIA & WCAG 2.1 AA.
-- [ ] Tính năng phòng thi bấm giờ (Timed Examination Mode) có tính điểm và xếp loại A, B, C, D, F.
-- [ ] Bảng vinh danh & Xếp hạng thành tích sinh viên (Global Leaderboard).
-- [ ] Xuất báo cáo kết quả ôn thi định dạng PDF / Excel cho giảng viên.
+- [x] Tính năng phòng thi bấm giờ (Timed Examination Mode) có tính điểm và xếp loại A, B, C, D, F.
+- [x] Bảng vinh danh & Xếp hạng thành tích sinh viên (Global Leaderboard & Podium Top 3).
+- [x] Xuất báo cáo kết quả ôn thi định dạng PDF / Excel cho giảng viên và sinh viên.
 
 ---
 

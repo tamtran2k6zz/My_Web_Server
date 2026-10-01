@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Globe2, LogIn, LogOut, Sparkles, BookOpen, Layers, CheckCircle2, ChevronRight } from 'lucide-react'
+import { Globe2, LogIn, LogOut, Sparkles, BookOpen, Layers, CheckCircle2, ChevronRight, Trophy } from 'lucide-react'
 import { maskEmail } from '../firebase'
 
-export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, totalQuestions, activeTopicsCount }) {
+export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, totalQuestions, activeTopicsCount, onOpenLeaderboard }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   const toggleMenu = () => setMenuOpen(prev => !prev)
@@ -57,8 +57,19 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
             </a>
           </nav>
 
-          {/* Right: Actions (Language & Login/User) */}
+          {/* Right: Actions (Leaderboard, Language & Login/User) */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Leaderboard Trophy Button */}
+            <button
+              type="button"
+              onClick={onOpenLeaderboard}
+              className="px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-amber-400/10 hover:bg-amber-400/20 text-amber-300 border border-amber-400/30 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer shrink-0 shadow-sm"
+              title="Bảng vinh danh thành tích sinh viên"
+            >
+              <Trophy size={15} className="text-amber-400 shrink-0" />
+              <span className="hidden sm:inline">Vinh danh</span>
+            </button>
+
             <LanguageToggle language={language} setLanguage={setLanguage} />
 
             {user ? (
@@ -159,6 +170,21 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
                 <span className="flex items-center gap-3"><Sparkles size={18} className="text-amber-300 shrink-0" /> <span>Tổng hợp toàn bộ ({totalQuestions} câu)</span></span>
                 <ChevronRight size={16} className="text-slate-400 shrink-0" />
               </a>
+
+              <button
+                type="button"
+                onClick={() => {
+                  closeMenu();
+                  if (onOpenLeaderboard) onOpenLeaderboard();
+                }}
+                className="liquid-pill px-5 py-4 rounded-xl text-base font-semibold text-amber-300 flex items-center justify-between border border-amber-400/30 bg-amber-500/10 cursor-pointer"
+              >
+                <span className="flex items-center gap-3">
+                  <Trophy size={18} className="text-amber-400 shrink-0" />
+                  <span>Bảng vinh danh sinh viên</span>
+                </span>
+                <ChevronRight size={16} className="text-amber-400 shrink-0" />
+              </button>
             </div>
           </motion.div>
         )}

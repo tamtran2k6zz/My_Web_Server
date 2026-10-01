@@ -9,9 +9,10 @@ interface Props {
   index: number;
   onCorrect: () => void;
   onAnswer?: () => void;
+  onAnswerResult?: (index: number, isCorrect: boolean) => void;
 }
 
-const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer }) => {
+const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, onAnswerResult }) => {
   const [answered, setAnswered] = useState(false);
   const [selectedSingle, setSelectedSingle] = useState<number | null>(null);
   const [selectedMulti, setSelectedMulti] = useState<number[]>([]);
@@ -26,6 +27,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
       const correct = optIdx === question.correct;
       setIsCorrect(correct);
       if (correct) onCorrect();
+      if (onAnswerResult) onAnswerResult(index, correct);
     }
     if (onAnswer) onAnswer();
   };
@@ -51,6 +53,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
 
     setIsCorrect(correct);
     if (correct) onCorrect();
+    if (onAnswerResult) onAnswerResult(index, correct);
     if (onAnswer) onAnswer();
   };
 
@@ -74,6 +77,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
 
     setIsCorrect(allCorrect);
     if (allCorrect) onCorrect();
+    if (onAnswerResult) onAnswerResult(index, allCorrect);
     if (onAnswer) onAnswer();
   };
 
@@ -303,6 +307,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
               setAnswered(true);
               setIsCorrect(valid);
               if (valid && !answered) onCorrect();
+              if (onAnswerResult) onAnswerResult(index, valid);
               if (onAnswer) onAnswer();
             }}
             onReset={() => {
@@ -322,6 +327,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer })
               setAnswered(true);
               setIsCorrect(valid);
               if (valid && !answered) onCorrect();
+              if (onAnswerResult) onAnswerResult(index, valid);
               if (onAnswer) onAnswer();
             }}
             onReset={() => {

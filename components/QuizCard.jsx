@@ -2,7 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, ChevronRight, Clock, Sparkles } from 'lucide-react'
 
-export function QuizCard({ card, delay, onClick }) {
+export function QuizCard({ card, delay, onClick, isExamMode }) {
   const Icon = card.icon
   const isUpdating = card.questions === 0 || card.isUpdating
 
@@ -70,23 +70,29 @@ export function QuizCard({ card, delay, onClick }) {
                   <span className="rounded-full bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 border border-white/10">
                     {card.questions} câu hỏi
                   </span>
-                  <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-300 border border-cyan-400/20 flex items-center gap-1">
-                    <Sparkles size={11} /> Xáo trộn ngẫu nhiên
-                  </span>
+                  {isExamMode ? (
+                    <span className="rounded-full bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-300 border border-amber-400/30 flex items-center gap-1 animate-pulse">
+                      ⏱️ Thi bấm giờ (30p)
+                    </span>
+                  ) : (
+                    <span className="rounded-full bg-cyan-400/10 px-3 py-1 text-xs font-medium text-cyan-300 border border-cyan-400/20 flex items-center gap-1">
+                      <Sparkles size={11} /> Xáo trộn ngẫu nhiên
+                    </span>
+                  )}
                 </>
               )}
             </div>
           </div>
         </div>
 
-        <ChevronRight className="mt-1 h-5 w-5 text-slate-500 transition-all duration-300 group-hover:translate-x-1 group-hover:text-cyan-300 shrink-0" />
+        <ChevronRight className={`mt-1 h-5 w-5 transition-all duration-300 group-hover:translate-x-1 shrink-0 ${isExamMode ? 'text-amber-400' : 'text-slate-500 group-hover:text-cyan-300'}`} />
       </div>
 
       {/* Footer link */}
       <div className="relative mt-5 flex items-center justify-between border-t border-white/10 pt-4 text-xs sm:text-sm text-slate-400">
-        <span>{isUpdating ? 'Tài liệu đang soạn thảo' : 'Khởi động kiểm tra'}</span>
-        <span className={`inline-flex items-center gap-1.5 font-medium ${isUpdating ? 'text-amber-400' : 'text-cyan-300'}`}>
-          {isUpdating ? 'Sắp ra mắt' : 'Bắt đầu ngay'} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+        <span>{isUpdating ? 'Tài liệu đang soạn thảo' : isExamMode ? 'Khảo thí tính điểm xếp loại A-F' : 'Khởi động kiểm tra'}</span>
+        <span className={`inline-flex items-center gap-1.5 font-medium ${isUpdating ? 'text-amber-400' : isExamMode ? 'text-amber-300 font-bold' : 'text-cyan-300'}`}>
+          {isUpdating ? 'Sắp ra mắt' : isExamMode ? 'Vào phòng thi' : 'Bắt đầu ngay'} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
         </span>
       </div>
     </motion.article>

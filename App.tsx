@@ -5,6 +5,10 @@ import { Topic } from './types';
 import QuestionCard from './components/QuestionCard';
 import { Home } from './components/Home';
 import { LoginGate } from './components/LoginGate';
+import { ExamTimer } from './components/ExamTimer';
+import { ExamResultModal } from './components/ExamResultModal';
+import { LeaderboardModal } from './components/LeaderboardModal';
+import { calculateGrade, saveExamResult, ExamRecord, QuestionAnswerRecord } from './services/examService';
 import { auth, loginWithGoogle, logout, isValidIctuEmail, maskEmail } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
@@ -64,6 +68,13 @@ function App() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [animDirection, setAnimDirection] = useState<'left' | 'right' | null>(null);
   const [viewMode, setViewMode] = useState<'single' | 'list'>('single');
+  const [isExamMode, setIsExamMode] = useState(false);
+  const [isResultModalOpen, setIsResultModalOpen] = useState(false);
+  const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
+  const [currentExamRecord, setCurrentExamRecord] = useState<ExamRecord | null>(null);
+  const [examStartTime, setExamStartTime] = useState<number>(Date.now());
+  const [examDuration, setExamDuration] = useState<number>(1800);
+  const [answerResults, setAnswerResults] = useState<Record<number, boolean>>({});
   const autoAdvanceTimerRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const clearAdvanceTimer = () => {
@@ -165,7 +176,57 @@ function App() {
     setCurrentQuestionIndex(0);
     setAnimDirection(null);
     setViewMode('single');
+    setAnswerResults({});
+    setExamStartTime(Date.now());
+
+    const topic = data[id];
+    const qCount = topic ? topic.questions.length : 30;
+    const duration = Math.min(2700, Math.max(600, qCount * 45));
+    setExamDuration(duration);
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleAnswerResult = (idx: number, isCorrect: boolean) => {
+    setAnswerResults(prev => ({ ...prev, [idx]: isCorrect }));
+  };
+
+  const handleFinishExam = () => {
+    if (!activeTopic) return;
+    clearAdvanceTimer();
+    const timeSpent = Math.max(1, Math.min(examDuration, Math.round((Date.now() - examStartTime) / 1000)));
+    const totalQ = activeTopic.questions.length;
+    const grade = calculateGrade(score, totalQ);
+
+    const answers: QuestionAnswerRecord[] = activeTopic.questions.map((q, idx) => ({
+      questionIndex: idx,
+      questionText: q.q,
+      isCorrect: answerResults[idx] === true,
+      type: q.type
+    }));
+
+    const record: ExamRecord = {
+      id: `exam_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+      userId: user?.uid || 'anonymous',
+      userEmail: user?.email || 'student@ictu.edu.vn',
+      maskedEmail: maskEmail(user?.email),
+      displayName: user?.displayName || 'Sinh viên ICTU',
+      topicId: activeTopicId || 'exam',
+      topicName: activeTopic.name,
+      score,
+      totalQuestions: totalQ,
+      percentage: totalQ > 0 ? (score / totalQ) * 100 : 0,
+      grade,
+      timeSpentSeconds: timeSpent,
+      totalDurationSeconds: examDuration,
+      timestamp: Date.now(),
+      dateFormatted: new Date().toLocaleString('vi-VN'),
+      answers
+    };
+
+    saveExamResult(record);
+    setCurrentExamRecord(record);
+    setIsResultModalOpen(true);
   };
 
   const handleExit = () => {
@@ -246,7 +307,25 @@ function App() {
   }
 
   if (!activeTopic) {
-    return <Home data={data} onTopicSelect={handleTopicSelect} user={user} onLogin={handleLogin} onLogout={handleLogout} />;
+    return (
+      <>
+        <Home 
+          data={data} 
+          onTopicSelect={handleTopicSelect} 
+          user={user} 
+          onLogin={handleLogin} 
+          onLogout={handleLogout} 
+          isExamMode={isExamMode}
+          onToggleExamMode={() => setIsExamMode(prev => !prev)}
+          onOpenLeaderboard={() => setIsLeaderboardOpen(true)}
+        />
+        <LeaderboardModal
+          isOpen={isLeaderboardOpen}
+          onClose={() => setIsLeaderboardOpen(false)}
+          currentEmail={user?.email}
+        />
+      </>
+    );
   }
 
   return (
@@ -275,6 +354,15 @@ function App() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Exam Mode Timer */}
+            {isExamMode && (
+              <ExamTimer
+                initialSeconds={examDuration}
+                onTimeUp={handleFinishExam}
+                onSubmit={handleFinishExam}
+              />
+            )}
+
             {/* Score Chip */}
             <div className="glass-card px-3.5 py-1.5 rounded-full flex items-center gap-2 font-semibold text-xs sm:text-sm text-slate-200 border border-white/10 shrink-0 whitespace-nowrap">
               <Award size={16} className="text-amber-400 shrink-0" />
@@ -357,6 +445,7 @@ function App() {
                   index={idx}
                   onCorrect={() => setScore(prev => prev + 1)}
                   onAnswer={handleAnswer}
+                  onAnswerResult={handleAnswerResult}
                 />
               </div>
             ))}
@@ -376,15 +465,37 @@ function App() {
                   <span>Câu trước</span>
                 </button>
 
-                <button
-                  type="button"
-                  onClick={handleNext}
-                  disabled={currentQuestionIndex === activeTopic.questions.length - 1}
-                  className="btn-solid px-6 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed shadow-lg"
-                >
-                  <span>Câu tiếp theo</span>
-                  <ChevronRight size={18} />
-                </button>
+                {isExamMode ? (
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      disabled={currentQuestionIndex === activeTopic.questions.length - 1}
+                      className="btn-solid px-4 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-1.5 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed shadow-md"
+                    >
+                      <span>Tiếp</span>
+                      <ChevronRight size={17} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleFinishExam}
+                      className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-sm flex items-center gap-1.5 cursor-pointer shadow-lg hover:brightness-110 active:scale-95 transition"
+                    >
+                      <span>Nộp bài</span>
+                      <Award size={17} />
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    disabled={currentQuestionIndex === activeTopic.questions.length - 1}
+                    className="btn-solid px-6 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed shadow-lg"
+                  >
+                    <span>Câu tiếp theo</span>
+                    <ChevronRight size={18} />
+                  </button>
+                )}
               </div>
 
               <div className="flex justify-center pt-2">
@@ -398,7 +509,17 @@ function App() {
               </div>
             </div>
           ) : (
-            <div className="flex justify-center pt-8 pb-4">
+            <div className="flex flex-wrap justify-center gap-3 pt-8 pb-4">
+              {isExamMode && (
+                <button
+                  type="button"
+                  onClick={handleFinishExam}
+                  className="px-7 py-3 text-sm font-bold rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 flex items-center gap-2 cursor-pointer shadow-lg hover:brightness-110 active:scale-95 transition"
+                >
+                  <Award size={18} />
+                  <span>Nộp bài thi & Xem xếp loại</span>
+                </button>
+              )}
               <button
                 type="button"
                 onClick={handleExit}
@@ -411,6 +532,28 @@ function App() {
           )}
         </div>
       </main>
+
+      {/* Exam Result Grading & Feedback Modal */}
+      <ExamResultModal
+        record={currentExamRecord}
+        isOpen={isResultModalOpen}
+        onClose={() => setIsResultModalOpen(false)}
+        onRetry={() => {
+          setIsResultModalOpen(false);
+          if (activeTopicId) handleTopicSelect(activeTopicId);
+        }}
+        onViewLeaderboard={() => {
+          setIsResultModalOpen(false);
+          setIsLeaderboardOpen(true);
+        }}
+      />
+
+      {/* Global & Personal Leaderboard Modal */}
+      <LeaderboardModal
+        isOpen={isLeaderboardOpen}
+        onClose={() => setIsLeaderboardOpen(false)}
+        currentEmail={user?.email}
+      />
     </div>
   );
 }
