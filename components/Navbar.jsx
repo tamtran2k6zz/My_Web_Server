@@ -71,8 +71,8 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
                       {user.displayName ? user.displayName[0] : 'U'}
                     </div>
                   )}
-                  <span className="text-xs sm:text-sm font-medium text-slate-200 hidden sm:inline max-w-[120px] truncate whitespace-nowrap">
-                    {user.displayName || maskEmail(user.email)}
+                  <span className="text-xs sm:text-sm font-medium text-slate-200 hidden sm:inline max-w-[150px] truncate whitespace-nowrap">
+                    {maskEmail(user.email)}
                   </span>
                 </div>
                 <button
