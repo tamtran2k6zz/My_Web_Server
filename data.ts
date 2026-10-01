@@ -24,7 +24,7 @@ export const data: Record<string, Topic> = {
     questions: []
   },
   "6": {
-    name: "PHẦN 6: ĐANG CẬP NHẬT",
+    name: "PHẦN 6: VẤN ĐỀ GIA ĐÌNG TRONG THỜI KỲ QUÁ ĐỘ LÊN CHỦ NGHĨA XÃ HỘI",
     questions: []
   },
   "new-questions": {

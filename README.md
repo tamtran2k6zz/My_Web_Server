@@ -8,7 +8,7 @@
 [![Vite](https://img.shields.io/badge/Vite-6.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Firebase](https://img.shields.io/badge/Firebase_Auth-Ready-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
-[![Questions](https://img.shields.io/badge/Question_Bank-188%2B_Items-00C853?style=for-the-badge&logo=quizlet&logoColor=white)](https://github.com/tamtran2k6zz/My_Web_Server)
+[![Questions](https://img.shields.io/badge/Question_Bank-215%2B_Items-00C853?style=for-the-badge&logo=quizlet&logoColor=white)](https://github.com/tamtran2k6zz/My_Web_Server)
 [![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
 [![WCAG 2.1 AA](https://img.shields.io/badge/Accessibility-WCAG_2.1_AA-success?style=for-the-badge&logo=w3c&logoColor=white)](https://www.w3.org/WAI/standards-guidelines/wcag/)
 
@@ -161,13 +161,14 @@ npm run build
 | **Phần 3: Dân chủ & Nhà nước XHCN** | 30 câu hỏi chuyên sâu bản chất dân chủ & nhà nước | Hoàn thành | 100% |
 | **Phần 4: Cơ cấu XH & Liên minh giai cấp** | 39 câu hỏi (Trắc nghiệm, Đúng/Sai & Kéo thả) | Hoàn thành | 100% |
 | **Phần 5: Dân tộc & Tôn giáo trong TKQĐ** | 28 câu hỏi (26 trắc nghiệm đơn, 2 trắc nghiệm nhiều đáp án) | Hoàn thành | 100% |
+| **Phần 6: Gia đình trong TKQĐ lên CNXH** | 27 câu hỏi (Trắc nghiệm đơn, trắc nghiệm nhiều đáp án, Đúng/Sai & Kéo thả) | Hoàn thành | 100% |
 | **Bộ câu hỏi mới (Bổ sung)** | 12 câu hỏi trắc nghiệm vận dụng nâng cao & tình huống | Hoàn thành | 100% |
-| **Phần 6: Gia đình trong TKQĐ lên CNXH** | Ngân hàng câu hỏi Bài 6 | Đang phát triển | 0% |
 | **Chặng 1: Ôn tập Tổng hợp Phần 1 – 3** | Tổng hợp ngẫu nhiên 109 câu hỏi liên chương 1, 2, 3 | Hoàn thành | 100% |
-| **Chặng 2: Ôn tập Tổng hợp Phần 4 – 6** | Tổng hợp ngẫu nhiên 67 câu hỏi liên chương 4, 5, 6 | Hoàn thành | 100% |
-| **Khảo thí Toàn diện Toàn bộ kiến thức** | Xáo trộn 188+ câu hỏi toàn ngân hàng đề | Hoàn thành | 100% |
+| **Chặng 2: Ôn tập Tổng hợp Phần 4 – 6** | Tổng hợp ngẫu nhiên 94 câu hỏi liên chương 4, 5, 6 | Hoàn thành | 100% |
+| **Khảo thí Toàn diện Toàn bộ kiến thức** | Xáo trộn 215+ câu hỏi toàn ngân hàng đề | Hoàn thành | 100% |
 | **Chuyên đề theo Dạng bài** | Tách riêng Trắc nghiệm (A,B,C,D), Đúng/Sai, Kéo thả | Hoàn thành | 100% |
-| **Bảo mật Cổng Google Auth @ictu.edu.vn** | Rào chắn phân quyền sinh viên, chặn email ngoài miền | Hoàn thành | 100% |
+| **Bảo mật Cổng Google Auth @ictu.edu.vn** | Rào chắn phân quyền sinh viên, ẩn/che email sinh viên (@ictu.edu.vn) | Hoàn thành | 100% |
+| **Đồng bộ hóa Chỉ số Động (Counter Sync)** | Đồng bộ chỉ số câu hỏi động trên Navbar, Header, Quiz Cards không hardcode | Hoàn thành | 100% |
 | **Trợ năng & Cảm ứng Di động (Mobile UX)** | Cơ chế Tap-to-Place kéo thả cảm ứng, chuẩn WCAG 2.1 AA | Hoàn thành | 100% |
 
 ---
@@ -175,12 +176,13 @@ npm run build
 ## 🗺️ Kế Hoạch Phát Triển (Roadmap)
 
 - [x] Tích hợp 4 học phần nền tảng (Bài 1 – 4: 148 câu) + Bộ đề mở rộng (12 câu).
-- [x] Bổ sung ngân hàng câu hỏi **Phần 5: Dân tộc & Tôn giáo (28 câu)** $\rightarrow$ Nâng tổng quy mô lên **188+ câu hỏi**.
-- [x] Thiết kế riêng biệt 2 chặng ôn tập liên chương: **Phần 1 – 3 (109 câu)** và **Phần 4 – 6 (67 câu)**.
-- [x] Tích hợp cổng xác thực Google OAuth bắt buộc email trường học (`@ictu.edu.vn`).
+- [x] Bổ sung ngân hàng câu hỏi **Phần 5: Dân tộc & Tôn giáo (28 câu)** $\rightarrow$ Nâng quy mô lên **188+ câu hỏi**.
+- [x] Bổ sung đầy đủ ngân hàng câu hỏi **Phần 6: Vấn đề Gia đình trong TKQĐ (27 câu)** $\rightarrow$ Toàn diện **6/6 bài học (215+ câu hỏi)**.
+- [x] Thiết kế riêng biệt 2 chặng ôn tập liên chương: **Phần 1 – 3 (109 câu)** và **Phần 4 – 6 (94 câu)**.
+- [x] Tích hợp cổng xác thực Google OAuth bắt buộc email trường học (`@ictu.edu.vn`) và cơ chế che email bảo mật.
+- [x] Tự động đồng bộ hóa các con số thống kê trên giao diện (6/6 học phần, tổng số câu hỏi).
 - [x] Tối ưu hóa tương tác kéo thả cảm ứng di động (Mobile Tap-to-Place).
 - [x] Đảm bảo tiêu chuẩn trợ năng quốc tế WAI-ARIA & WCAG 2.1 AA.
-- [ ] Bổ sung ngân hàng câu hỏi **Phần 6 (Vấn đề Gia đình trong thời kỳ quá độ lên CNXH)**.
 - [ ] Tính năng phòng thi bấm giờ (Timed Examination Mode) có tính điểm và xếp loại A, B, C, D, F.
 - [ ] Bảng vinh danh & Xếp hạng thành tích sinh viên (Global Leaderboard).
 - [ ] Xuất báo cáo kết quả ôn thi định dạng PDF / Excel cho giảng viên.

@@ -2413,6 +2413,391 @@ export const questions = [
     "type": "single"
   },
   {
+    "article": "Bài 6",
+    "text": "Câu 1: Hai mối quan hệ cơ bản hình thành gia đình là: (Chọn 2 đáp án)",
+    "options": [
+      "A. Quan hệ hôn nhân",
+      "B. Quan hệ kinh tế",
+      "C. Quan hệ huyết thống",
+      "D. Quan hệ quần tụ trong một không gian sinh tồn"
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "type": "multiple"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 2: Vị trí của gia đình trong xã hội là:",
+    "options": [
+      "A. Mạch máu",
+      "B. Bộ não",
+      "C. Xương sống",
+      "D. Tế bào"
+    ],
+    "answer": "D",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 3: Tình yêu giữa nam và nữ trở thành quan hệ hôn nhân được thể hiện bằng:",
+    "options": [
+      "A. Lời hứa giữa nam và nữ",
+      "B. Thủ tục pháp lý",
+      "C. Lễ cưới",
+      "D. Lễ đính hôn"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 4: Chọn đáp án đúng điền vào chỗ trống trong luận điểm sau: \"Hằng ngày tái tạo ra đời sống của bản thân mình, con người bắt đầu tạo ra những người khác, sinh sôi nẩy nở - đó là quan hệ giữa chồng và vợ, cha mẹ và con cái, đó là....\"",
+    "options": [
+      "A. Gia đình",
+      "B. Làng xóm",
+      "C. Tập thể",
+      "D. Xã hội"
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 5: Quan hệ nào được coi là cơ sở, nền tảng hình thành nên các mối quan hệ khác trong gia đình?",
+    "options": [
+      "A. Quan hệ quần tụ trong một không gian sinh tồn",
+      "B. Quan hệ hôn nhân",
+      "C. Quan hệ nuôi dưỡng",
+      "D. Quan hệ hôn nhân và huyết thống"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 6: Gia đình phải thực hiện chức năng nào để đảm bảo nguồn sinh sống, đáp ứng nhu cầu vật chất, tinh thần của các thành viên trong gia đình?",
+    "options": [
+      "A. Chức năng kinh tế, tổ chức tiêu dùng",
+      "B. Chức năng tái sản xuất ra con người",
+      "C. Chức năng thoả mãn các nhu cầu tâm sinh lý, duy trì tình cảm",
+      "D. Chức năng nuôi dưỡng, giáo dục"
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 7: Chỉ ra chức năng đảm bảo tái sản xuất nguồn lao động và sức lao động cho xã hội của gia đình:",
+    "options": [
+      "A. Chức năng tái sản xuất ra con người",
+      "B. Chức năng kinh tế",
+      "C. Chức năng thoả mãn các nhu cầu tâm sinh lý, duy trì tình cảm",
+      "D. Chức năng nuôi dưỡng, giáo dục"
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 8: Thực hiện chức năng nào của gia đình nhằm góp phần to lớn vào việc đào tạo thế hệ trẻ, thế hệ tương lai của xã hội?",
+    "options": [
+      "A. Chức năng tái sản xuất ra con người",
+      "B. Chức năng nuôi dưỡng, giáo dục",
+      "C. Chức năng thỏa mãn nhu cầu tâm sinh lý, duy trì tình cảm gia đình",
+      "D. Chắc năng kinh tế và tổ chức tiêu dùng"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 9: Với chức năng chính trị, gia đình là:",
+    "options": [
+      "A. Có trách nhiệm nuôi dưỡng, dạy dỗ con cái trở thành người có ích cho gia đình, cộng đồng và xã hội",
+      "B. Là nơi đáp ứng nhu cầu tâm, sinh lý tự nhiên của con người, đáp ứng nhu cầu duy trì nòi giống",
+      "C. Là cầu nối của mối quan hệ giữa nhà nước với công dân",
+      "D. Nơi lưu giữ truyền thống văn hoá của dân tộc cũng như tộc người"
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 10: Gia đình Việt Nam ngày nay có thể được coi là:",
+    "options": [
+      "A. Gia đình lạc hậu",
+      "B. Gia đình hiện đại",
+      "C. Gia đình truyền thống",
+      "D. Gia đình quá độ"
+    ],
+    "answer": "D",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 11: Sự thay đổi quy mô của gia đình hiện nay ở Việt Nam có tác động như thế nào đối với xã hội? (Chọn 2 đáp án)",
+    "options": [
+      "A. Làm cho xã hội trở nên thích nghi và phù hợp hơn với tình hình mới, thời đại mới",
+      "B. Sự bình đẳng nam nữ được đề cao hơn, cuộc sống riêng tư của con người được tôn trọng hơn",
+      "C. Làm cho kinh tế của đất nước chậm phát triển",
+      "D. Không có tác động gì đối với sự phát triển của xã hội"
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "type": "multiple"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 12: Quan điểm sau đây của ai: \"Nhiều gia đình cộng lại mới thành xã hội, xã hội tốt thì gia đình càng tốt, gia đình tốt thì xã hội mới tốt. Hạt nhân của xã hội chính là gia đình\"?",
+    "options": [
+      "A. C. Mác",
+      "B. V.I. Lênin",
+      "C. Ph. Ăngghen",
+      "D. Hồ Chí Minh"
+    ],
+    "answer": "D",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 13: Chức năng của gia đình là:",
+    "options": [
+      "A. Chức năng lãnh đạo cách mạng",
+      "B. Chức năng kinh tế và tổ chức tiêu dùng",
+      "C. Chức năng làm các hoạt động từ thiện",
+      "D. Chức năng tổ chức các sự kiện"
+    ],
+    "answer": "B",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 14: So với các chế độ xã hội trước thì quan hệ gia đình trong thời kỳ quá độ lên chủ nghĩa xã hội có đặc điểm khác biệt gì về chất?",
+    "options": [
+      "A. Quan hệ bình đẳng trong gia đình, giải phóng phụ nữ",
+      "B. Phụ nữ chỉ lo việc nội trợ",
+      "C. Đàn ông là người quyết định mọi việc trong gia đình",
+      "D. Duy trì quan hệ gia trưởng, độc đoán"
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 15: Chọn đáp án sai về mô hình gia đình Việt Nam hiện đại ngày nay?",
+    "options": [
+      "A. Ông bà là người làm chủ gia đình",
+      "B. Người phụ nữ - người vợ làm chủ gia đình",
+      "C. Cả hai vợ chồng cùng làm chủ gia đình",
+      "D. Người đàn ông - người chồng làm chủ gia đình"
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 16: Chức năng tái sản xuất của gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội có những biến đổi như thế nào? (Chọn 2 đáp án)",
+    "options": [
+      "A. Tăng nhu cầu có con trai",
+      "B. Tăng sản xuất hàng hóa",
+      "C. Chủ động trong việc sinh con",
+      "D. Giảm số con mong muốn"
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 17: Gia đình là:",
+    "options": [
+      "A. Tập đoàn xã hội ổn định",
+      "B. Một tộc người",
+      "C. Hình thức cộng đồng xã hội đặc biệt",
+      "D. Một nhóm người"
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 18: Trong gia đình Việt Nam hiện đại ngày nay, nhu cầu về con cái đã có những thay đổi căn bản như thế nào?",
+    "options": [
+      "A. Phải có con, càng đông con càng tốt và nhất thiết phải có con trai nối dõi",
+      "B. Tỷ lệ sinh thấp, nhu cầu phải có con trai tăng",
+      "C. Các gia đình không muốn có con để không bị gánh nặng kinh tế",
+      "D. Giảm mức sinh của phụ nữ, giảm số con mong muốn và giảm nhu cầu nhất thiết phải có con trai của các cặp vợ chồng"
+    ],
+    "answer": "D",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 19: Sự biến đổi quan hệ giữa các thế hệ, các giá trị, chuẩn mực văn hóa của gia đình hạt nhân ngày nay có tác động tiêu cực như thế nào đối với người cao tuổi?",
+    "options": [
+      "A. Người cao tuổi được đáp ứng đầy đủ nhu cầu về tâm lý, tình cảm",
+      "B. Người cao tuổi được sống trong gia đình có nhiều thế hệ",
+      "C. Người cao tuổi phải đối mặt với sự cô đơn thiếu thốn về tình cảm",
+      "D. Người cao tuổi được con cái dành nhiều thời gian quan tâm, chăm sóc"
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 20: Sự biến đổi trong việc thực hiện chức năng giáo dục của gia đình Việt Nam hiện nay là gì?",
+    "options": [
+      "A. Sự đầu tư tài chính của gia đình cho giáo dục con cái tăng lên",
+      "B. Chi giáo dục đạo đức mà không hướng tới giáo dục kiến thức khoa học hiện đại",
+      "C. Không hướng tới giáo dục đạo đức, lối sống.",
+      "D. Giảm chi tiêu cho giáo dục"
+    ],
+    "answer": "A",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 21: Quy mô của gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội có những biến đổi như thế nào? (Chọn 2 đáp án)",
+    "options": [
+      "A. Ngày càng thu nhỏ",
+      "B. Kinh tế tự cấp",
+      "C. Quy mô lớn",
+      "D. Gia đình hạt nhân tăng lên"
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 22: Xu hướng phát triển của quy mô gia đình Việt Nam ngày nay như thế nào?",
+    "options": [
+      "A. Có xu hướng vừa tăng lên vừa thu nhỏ lại",
+      "B. Có xu hướng ổn định không thay đổi so với trước đây",
+      "C. Ngày càng được thu nhỏ lại",
+      "D. Ngày càng được mở rộng ra"
+    ],
+    "answer": "C",
+    "type": "single"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 23: Những vấn đề xã hội nào có dấu hiệu gia tăng đối với gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội? (Chọn 2 đáp án)",
+    "options": [
+      "A. Sản xuất hàng hóa",
+      "B. Ly hôn",
+      "C. Giáo dục đạo đức",
+      "D. Bạo lực gia đình"
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "type": "multiple"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 24: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "options": [
+      "Tăng số con mong muốn và tăng nhu cầu nhất thiết phải có con trai của các cặp vợ chồng",
+      "Trong gia đình hiện đại, sự bền vững của hôn nhân không phụ thuộc vào các yếu tố tâm lý, tình cảm, kinh tế",
+      "Gia đình từ đơn vị kinh tế tự cung tự cấp sang đơn vị kinh tế hàng hoá",
+      "Hiện nay việc sinh đẻ được các gia đình tiến hành một cách chủ động, tự giác"
+    ],
+    "answer": [
+      "Sai",
+      "Sai",
+      "Đúng",
+      "Đúng"
+    ],
+    "type": "truefalse"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 25: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+    "options": [
+      "Nội dung giáo dục trong gia đình hiện nay chỉ tập trung giáo dục đạo đức",
+      "Hiện nay, độ bền vững của gia đình không bị chi phối bởi các mối quan hệ hòa hợp tình cảm giữa chồng và vợ, cha mẹ và con cái",
+      "Giáo dục gia đình tiếp tục nhấn mạnh sự hy sinh của cá nhân cho cộng đồng",
+      "Hiện nay, kinh tế gia đình đang trở thành một bộ phận quan trọng trong nền kinh tế quốc dân"
+    ],
+    "answer": [
+      "Sai",
+      "Sai",
+      "Sai",
+      "Đúng"
+    ],
+    "type": "truefalse"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 26: Kéo thả các yếu tố liên quan đến biến đổi gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội vào các cột tương ứng:",
+    "options": [
+      "Đầu tư tài chính của gia đình cho giáo dục con cái tăng lên",
+      "Hướng đến giáo dục kiến thức khoa học hiện đại",
+      "Vai trò giáo dục của các chủ thể trong gia đình có xu hướng giảm",
+      "Xu hướng thu nhỏ",
+      "Gia đình hạt nhân",
+      "Gia đình đơn thân"
+    ],
+    "targets": [
+      "Biến đổi về chức năng gia đình:",
+      "Biến đổi về quy mô gia đình:"
+    ],
+    "answer": {
+      "0": [
+        "0",
+        "1",
+        "2"
+      ],
+      "1": [
+        "3",
+        "4",
+        "5"
+      ]
+    },
+    "type": "dragdrop"
+  },
+  {
+    "article": "Bài 6",
+    "text": "Câu 27: Kéo thả các khái niệm khớp với các phát biểu về biến đổi gia đình Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội dưới đây:",
+    "options": [
+      "Gia đình hạt nhân",
+      "Giảm số con",
+      "Mâu thuẫn giữa các thế hệ",
+      "Kinh tế hàng hóa"
+    ],
+    "targets": [
+      "Biến đổi về quy mô gia đình",
+      "Biến đổi về chức năng tái sản xuất",
+      "Biến đổi về quan hệ gia đình",
+      "Biến đổi về chức năng kinh tế"
+    ],
+    "answer": {
+      "0": [
+        "0"
+      ],
+      "1": [
+        "1"
+      ],
+      "2": [
+        "2"
+      ],
+      "3": [
+        "3"
+      ]
+    },
+    "type": "dragdrop"
+  },
+  {
     "article": "new-questions",
     "text": "Câu 1: Kéo thả các đáp án khớp với các phát biểu từ 1 – 4 vế trái dưới đây:",
     "options": [

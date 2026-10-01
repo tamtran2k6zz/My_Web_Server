@@ -47,7 +47,7 @@ const stagesConfig = [
       { id: '3', title: 'Phần 3: Dân chủ & Nhà nước XHCN', icon: Layers3 },
       { id: '4', title: 'Phần 4: Cơ cấu XH - Giai cấp & Liên minh', icon: Target },
       { id: '5', title: 'Phần 5: Dân tộc & Tôn giáo trong TKQĐ', icon: Wand2 },
-      { id: '6', title: 'Phần 6: Đang cập nhật', icon: Puzzle, isUpdating: true },
+      { id: '6', title: 'Phần 6: Vấn đề Gia đình trong TKQĐ', icon: Puzzle },
       { id: 'new-questions', title: 'Bộ câu hỏi mới (Bổ sung)', icon: Sparkles },
     ],
   },
