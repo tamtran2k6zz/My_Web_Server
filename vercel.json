@@ -1,4 +1,9 @@
 {
-  "name": "triet-hoc-quiz",
-  "framework": "vite"
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
