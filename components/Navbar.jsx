@@ -42,8 +42,8 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
             </div>
           </a>
 
-          {/* Center: Desktop Liquid Metal Navigation Pills */}
-          <nav className="hidden xl:flex items-center gap-1.5 shrink-0">
+          {/* Center: Desktop Liquid Metal Navigation Pills - Only on 2xl ultra-wide to preserve layout on laptops */}
+          <nav className="hidden 2xl:flex items-center gap-1.5 shrink-0">
             <a href="#phase-1" className="liquid-pill px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap">
               Chủ đề 1 – {activeTopicsCount || 6}
             </a>
@@ -58,13 +58,13 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
             </a>
           </nav>
 
-          {/* Right: Actions (Leaderboard, Language & Login/User) */}
+          {/* Right: Actions (Leaderboard, Theme, Language & Combined User+Logout Box) */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            {/* Leaderboard Trophy Button */}
+            {/* Leaderboard Trophy Button - Hidden on mobile, accessible via Hero & Drawer */}
             <button
               type="button"
               onClick={onOpenLeaderboard}
-              className="px-2.5 py-1.5 rounded-xl bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 dark:text-amber-300 border border-amber-400/30 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer shrink-0 shadow-sm"
+              className="hidden sm:flex px-2 py-1.5 sm:px-2.5 sm:py-2 rounded-xl bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 dark:text-amber-300 border border-amber-400/30 text-xs font-semibold items-center gap-1.5 transition cursor-pointer shrink-0 shadow-sm"
               title="Bảng vinh danh thành tích sinh viên"
               aria-label="Bảng vinh danh thành tích sinh viên"
             >
@@ -72,58 +72,62 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
               <span className="hidden 2xl:inline">Vinh danh</span>
             </button>
 
-            {/* Theme Switcher (Light / Dark / System) */}
+            {/* Theme Switcher (Compact icon on mobile, icon+text on desktop) */}
             <ThemeToggle variant="compact" />
 
-            <LanguageToggle language={language} setLanguage={setLanguage} />
+            {/* Language Switcher - Hidden on mobile top bar to save width, available in Drawer */}
+            <div className="hidden sm:block shrink-0">
+              <LanguageToggle language={language} setLanguage={setLanguage} />
+            </div>
 
+            {/* User & Logout Unified Compact Frame (Chỗ đăng xuất làm nhỏ lại cùng với khung) */}
             {user ? (
-              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <div className="flex items-center gap-2 rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-2.5 py-1.5 backdrop-blur-md shrink-0">
-                  {user.photoURL ? (
-                    <img src={user.photoURL} alt="Avatar" className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-slate-300 dark:border-white/20 shrink-0" />
-                  ) : (
-                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-cyan-400/20 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-xs font-bold shrink-0">
-                      {user.displayName ? user.displayName[0] : 'U'}
-                    </div>
-                  )}
-                  <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 hidden md:inline max-w-[105px] 2xl:max-w-[145px] truncate whitespace-nowrap font-mono" title={user.email}>
-                    {maskEmail(user.email)}
-                  </span>
-                </div>
+              <div className="flex items-center rounded-xl bg-slate-100/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-1 pl-1.5 sm:pl-2 gap-1.5 backdrop-blur-md shrink-0 shadow-sm">
+                {user.photoURL ? (
+                  <img src={user.photoURL} alt="Avatar" className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-slate-300 dark:border-white/20 shrink-0" />
+                ) : (
+                  <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-cyan-400/20 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0">
+                    {user.displayName ? user.displayName[0] : 'U'}
+                  </div>
+                )}
+                <span className="text-xs font-medium text-slate-700 dark:text-slate-200 hidden lg:inline max-w-[95px] 2xl:max-w-[130px] truncate whitespace-nowrap font-mono" title={user.email}>
+                  {maskEmail(user.email)}
+                </span>
+                <div className="h-3.5 w-px bg-slate-300 dark:bg-white/15 mx-0.5" />
                 <button
                   type="button"
                   onClick={onLogout}
-                  className="px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-500/10 border border-slate-200/60 dark:border-white/10 hover:border-rose-500/30 transition flex items-center gap-1.5 cursor-pointer shrink-0"
+                  className="px-1.5 py-1 rounded-lg text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-400 hover:bg-rose-500/10 transition cursor-pointer flex items-center gap-1 text-[11px] font-medium"
                   title="Đăng xuất"
                   aria-label="Đăng xuất"
                 >
-                  <LogOut size={14} className="shrink-0" />
-                  <span className="hidden 2xl:inline">{t.logout}</span>
+                  <LogOut size={13} className="shrink-0" />
+                  <span className="hidden xl:inline text-[11px]">Đăng xuất</span>
                 </button>
               </div>
             ) : (
               <button
                 type="button"
                 onClick={onLogin}
-                className="btn-solid px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-2 cursor-pointer shadow-lg shrink-0 whitespace-nowrap"
+                className="btn-solid px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold flex items-center gap-1.5 cursor-pointer shadow-lg shrink-0 whitespace-nowrap"
               >
-                <LogIn size={15} className="shrink-0" />
-                <span>{t.login}</span>
+                <LogIn size={14} className="shrink-0" />
+                <span className="hidden xs:inline">{t.login}</span>
+                <span className="xs:hidden">Đăng nhập</span>
               </button>
             )}
 
-            {/* Mobile / Tablet Burger Button (shown below xl: 1280px) */}
+            {/* Mobile / Tablet Burger Button (shown below 2xl) */}
             <button
               type="button"
               onClick={toggleMenu}
-              className="xl:hidden flex flex-col justify-center items-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-slate-300/80 dark:border-white/10 bg-slate-100/80 dark:bg-white/5 text-slate-800 dark:text-white focus:outline-none shrink-0"
+              className="2xl:hidden flex flex-col justify-center items-center w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-slate-300/80 dark:border-white/10 bg-slate-100/80 dark:bg-white/5 text-slate-800 dark:text-white focus:outline-none shrink-0"
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
             >
-              <span className={`block w-4 h-0.5 bg-slate-700 dark:bg-white transition-transform duration-200 ${menuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} />
-              <span className={`block w-4 h-0.5 bg-slate-700 dark:bg-white transition-opacity duration-200 ${menuOpen ? 'opacity-0' : 'opacity-100 my-0.5'}`} />
-              <span className={`block w-4 h-0.5 bg-slate-700 dark:bg-white transition-transform duration-200 ${menuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`} />
+              <span className={`block w-3.5 h-0.5 bg-slate-700 dark:bg-white transition-transform duration-200 ${menuOpen ? 'rotate-45 translate-y-1' : '-translate-y-1'}`} />
+              <span className={`block w-3.5 h-0.5 bg-slate-700 dark:bg-white transition-opacity duration-200 ${menuOpen ? 'opacity-0' : 'opacity-100 my-0.5'}`} />
+              <span className={`block w-3.5 h-0.5 bg-slate-700 dark:bg-white transition-transform duration-200 ${menuOpen ? '-rotate-45 -translate-y-1' : 'translate-y-1'}`} />
             </button>
           </div>
         </div>
@@ -137,11 +141,15 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 xl:hidden bg-slate-950/80 dark:bg-black/85 backdrop-blur-2xl flex flex-col justify-center px-6 py-12"
+            className="fixed inset-0 z-50 2xl:hidden bg-slate-950/80 dark:bg-black/85 backdrop-blur-2xl flex flex-col justify-center px-6 py-12"
             onClick={closeMenu}
           >
             <div className="flex flex-col gap-3 w-full max-w-sm mx-auto" onClick={(e) => e.stopPropagation()}>
-              {/* Theme selector in mobile drawer */}
+              {/* Language & Theme selector in mobile drawer */}
+              <div className="flex items-center justify-between px-1">
+                <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">Ngôn ngữ:</span>
+                <LanguageToggle language={language} setLanguage={setLanguage} />
+              </div>
               <ThemeToggle variant="expanded" className="mb-2" />
 
               <div className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1 px-2">

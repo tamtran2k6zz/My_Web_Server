@@ -169,7 +169,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '', varian
         {themeMode === 'system' && (
           <Laptop size={15} className="text-cyan-500 dark:text-cyan-300 shrink-0" />
         )}
-        <span className="text-xs font-semibold">
+        <span className="text-xs font-semibold hidden md:inline">
           {themeMode === 'light' ? 'Ngày' : themeMode === 'dark' ? 'Đêm' : 'Hệ thống'}
         </span>
       </button>
