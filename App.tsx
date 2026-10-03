@@ -8,6 +8,7 @@ import { LoginGate } from './components/LoginGate';
 import { ExamTimer } from './components/ExamTimer';
 import { ExamResultModal } from './components/ExamResultModal';
 import { LeaderboardModal } from './components/LeaderboardModal';
+import { ThemeToggle } from './components/ThemeToggle';
 import { calculateGrade, saveExamResult, ExamRecord, QuestionAnswerRecord } from './services/examService';
 import { auth, loginWithGoogle, logout, isValidIctuEmail, maskEmail } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -329,31 +330,34 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-black font-sans text-slate-100 transition-colors duration-300">
+    <div className="min-h-screen bg-slate-50 dark:bg-black font-sans text-slate-900 dark:text-slate-100 transition-colors duration-300">
       {/* Header Sticky Liquid Glass */}
-      <header className="sticky top-0 z-30 glass-panel border-b border-white/10">
+      <header className="sticky top-0 z-30 glass-panel border-b border-slate-200/80 dark:border-white/10">
         <div className="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
           <div className="flex items-center gap-3 min-w-0">
             <button
               type="button"
               onClick={handleExit}
-              className="flex items-center gap-2 text-slate-300 hover:text-white transition group cursor-pointer shrink-0"
+              className="flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition group cursor-pointer shrink-0"
               title="Quay lại danh sách"
             >
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/5 border border-white/10 group-hover:border-white/30 transition shrink-0">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-300/80 dark:border-white/10 group-hover:border-slate-400 dark:group-hover:border-white/30 transition shrink-0">
                 <ChevronLeft size={18} />
               </div>
               <span className="font-semibold text-sm hidden sm:inline whitespace-nowrap">Quay lại</span>
             </button>
 
-            <div className="h-4 w-px bg-white/15 mx-1 hidden sm:block shrink-0"></div>
+            <div className="h-4 w-px bg-slate-300 dark:bg-white/15 mx-1 hidden sm:block shrink-0"></div>
 
-            <h1 className="font-semibold text-sm sm:text-base text-white tracking-tight truncate">
+            <h1 className="font-semibold text-sm sm:text-base text-slate-900 dark:text-white tracking-tight truncate">
               {activeTopic.name}
             </h1>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Theme Toggle in Exam/Quiz Header */}
+            <ThemeToggle variant="compact" />
+
             {/* Exam Mode Timer */}
             {isExamMode && (
               <ExamTimer
@@ -364,20 +368,20 @@ function App() {
             )}
 
             {/* Score Chip */}
-            <div className="glass-card px-3.5 py-1.5 rounded-full flex items-center gap-2 font-semibold text-xs sm:text-sm text-slate-200 border border-white/10 shrink-0 whitespace-nowrap">
-              <Award size={16} className="text-amber-400 shrink-0" />
+            <div className="glass-card px-3.5 py-1.5 rounded-full flex items-center gap-2 font-semibold text-xs sm:text-sm text-slate-800 dark:text-slate-200 border border-slate-300/80 dark:border-white/10 shrink-0 whitespace-nowrap">
+              <Award size={16} className="text-amber-500 dark:text-amber-400 shrink-0" />
               <span>{score} / {activeTopic.questions.length}</span>
             </div>
 
             {/* View Mode Toggle */}
-            <div className="flex bg-white/5 rounded-xl p-1 gap-1 shrink-0 border border-white/10">
+            <div className="flex bg-slate-200/80 dark:bg-white/5 rounded-xl p-1 gap-1 shrink-0 border border-slate-300/80 dark:border-white/10">
               <button
                 type="button"
                 onClick={() => setViewMode('single')}
                 className={`min-h-[32px] px-2.5 flex items-center justify-center rounded-lg text-xs transition-all cursor-pointer ${
                   viewMode === 'single'
-                    ? 'bg-white text-slate-950 font-bold shadow-sm'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white dark:bg-slate-800 text-slate-950 dark:text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white'
                 }`}
                 title="Từng câu"
               >
@@ -389,8 +393,8 @@ function App() {
                 onClick={() => setViewMode('list')}
                 className={`min-h-[32px] px-2.5 flex items-center justify-center rounded-lg text-xs transition-all cursor-pointer ${
                   viewMode === 'list'
-                    ? 'bg-white text-slate-950 font-bold shadow-sm'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white dark:bg-slate-800 text-slate-950 dark:text-white font-bold shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white'
                 }`}
                 title="Danh sách"
               >
@@ -405,23 +409,23 @@ function App() {
       <main className="max-w-3xl mx-auto p-4 sm:p-6 pb-24">
         <div className="space-y-6">
           {/* Active Topic Banner */}
-          <div className="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-2xl border border-white/10">
+          <div className="glass-panel rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-2xl border border-slate-200/80 dark:border-white/10">
             <div className="flex items-start justify-between gap-4 relative z-10">
               <div>
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-cyan-300 mb-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-cyan-600 dark:text-cyan-300 mb-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse"></span>
                   <span>Chủ đề đang làm bài</span>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-white mb-3 leading-snug">
+                <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-3 leading-snug">
                   {activeTopic.name}
                 </h2>
-                <div className="flex flex-wrap items-center gap-3 font-medium text-xs sm:text-sm text-slate-300">
-                  <span className="bg-white/10 text-white px-3 py-1 rounded-full font-semibold border border-white/15">
+                <div className="flex flex-wrap items-center gap-3 font-medium text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                  <span className="bg-slate-200/80 dark:bg-white/10 text-slate-800 dark:text-white px-3 py-1 rounded-full font-semibold border border-slate-300 dark:border-white/15">
                     {viewMode === 'single'
                       ? `Câu ${currentQuestionIndex + 1} / ${activeTopic.questions.length}`
                       : `Tổng cộng: ${activeTopic.questions.length} câu`}
                   </span>
-                  <span className="text-slate-400">• Tự động lưu tiến độ</span>
+                  <span className="text-slate-500 dark:text-slate-400">• Tự động lưu tiến độ</span>
                 </div>
               </div>
             </div>

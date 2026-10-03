@@ -9,6 +9,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@1,6..72,300..600&display=swap" rel="stylesheet">
   
+  <meta name="theme-color" content="#000000">
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('theme-mode') || 'system';
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = saved === 'dark' || (saved === 'system' && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -52,20 +68,25 @@
   </script>
 
   <style>
-    /* Force black immediately so the page can never flash white */
-    html, body { 
-      background: #000000 !important; 
-      color: #ffffff; 
+    /* Theme CSS Variables */
+    :root {
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --stat: #334155;
+      --border: rgba(0, 0, 0, 0.1);
+      --border-soft: rgba(0, 0, 0, 0.06);
+      --color-primary: 6 182 212; /* Cyan-600 */
     }
 
-    :root {
+    html.dark {
       --bg: #000000;
       --text: #ffffff;
       --muted: #9a9a9a;
       --stat: #d8d8d8;
       --border: rgba(255, 255, 255, 0.16);
       --border-soft: rgba(255, 255, 255, 0.12);
-      --color-primary: 34 211 238; /* Cyan */
+      --color-primary: 34 211 238; /* Cyan-400 */
     }
 
     *, *::before, *::after {
@@ -79,10 +100,8 @@
     }
 
     body {
-      background: #000000;
-      background: var(--bg, #000000);
-      color: #ffffff;
-      color: var(--text, #ffffff);
+      background-color: var(--bg);
+      color: var(--text);
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -90,6 +109,7 @@
       overflow-x: hidden;
       position: relative;
       min-height: 100vh;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     /* Serif italic accent font with Vietnamese diacritics support */
@@ -108,8 +128,8 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Liquid Glass Panels */
-    .glass-panel {
+    /* Liquid Glass Panels - Dark */
+    html.dark .glass-panel {
       background: rgba(12, 16, 28, 0.65);
       backdrop-filter: blur(20px) saturate(180%);
       -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -117,7 +137,7 @@
       box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.5);
     }
 
-    .glass-card {
+    html.dark .glass-card {
       background: rgba(255, 255, 255, 0.04);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -125,8 +145,25 @@
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
 
-    /* Liquid Metal Pill */
-    .liquid-pill {
+    /* Liquid Glass Panels - Light */
+    html:not(.dark) .glass-panel {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 16px 40px 0 rgba(148, 163, 184, 0.16);
+    }
+
+    html:not(.dark) .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 8px 24px 0 rgba(148, 163, 184, 0.1);
+    }
+
+    /* Liquid Metal Pill - Dark */
+    html.dark .liquid-pill {
       border: 1px solid rgba(198, 198, 198, 0.45);
       background: linear-gradient(105deg, #050505 0%, #222222 48%, #3a3a3a 100%);
       color: #f3f3f3;
@@ -136,12 +173,35 @@
       white-space: nowrap;
     }
 
+    html.dark .liquid-pill:hover {
+      border-color: rgba(235, 235, 235, 0.85);
+      background: linear-gradient(105deg, #111111 0%, #333333 45%, #555555 100%);
+      box-shadow: 0 0 18px rgba(200, 210, 230, 0.18);
+    }
+
+    /* Liquid Metal Pill - Light */
+    html:not(.dark) .liquid-pill {
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      background: linear-gradient(105deg, #ffffff 0%, #f8fafc 48%, #e2e8f0 100%);
+      color: #0f172a;
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    html:not(.dark) .liquid-pill:hover {
+      border-color: rgba(148, 163, 184, 1);
+      background: linear-gradient(105deg, #ffffff 0%, #f1f5f9 45%, #cbd5e1 100%);
+      box-shadow: 0 0 16px rgba(148, 163, 184, 0.25);
+    }
+
     .liquid-pill::before {
       content: "";
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.16) 50%, transparent 70%);
+      background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
       transform: translateX(-120%);
       transition: transform 0.6s ease;
     }
@@ -150,14 +210,8 @@
       transform: translateX(120%);
     }
 
-    .liquid-pill:hover {
-      border-color: rgba(235, 235, 235, 0.85);
-      background: linear-gradient(105deg, #111111 0%, #333333 45%, #555555 100%);
-      box-shadow: 0 0 18px rgba(200, 210, 230, 0.18);
-    }
-
-    /* Vesper Solid & Ghost Buttons */
-    .btn-solid {
+    /* Vesper Solid Button - Dark */
+    html.dark .btn-solid {
       background: linear-gradient(180deg, #ffffff 0%, #e7e7e7 48%, #cfcfcf 100%);
       color: #111111;
       border: 1px solid #ffffff;
@@ -165,6 +219,29 @@
       position: relative;
       overflow: hidden;
       transition: all 0.35s ease;
+    }
+
+    html.dark .btn-solid:hover {
+      background: linear-gradient(180deg, #ffffff 0%, #f3f6ff 42%, #d5def2 100%);
+      border-color: #f2f6ff;
+      box-shadow: inset 0 1px 0 #ffffff, 0 0 24px rgba(186, 208, 255, 0.38), 0 8px 18px rgba(255, 255, 255, 0.14);
+    }
+
+    /* Vesper Solid Button - Light */
+    html:not(.dark) .btn-solid {
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 48%, #334155 100%);
+      color: #ffffff;
+      border: 1px solid #0f172a;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 4px 12px rgba(15, 23, 42, 0.15);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+
+    html:not(.dark) .btn-solid:hover {
+      background: linear-gradient(180deg, #1e293b 0%, #334155 42%, #475569 100%);
+      border-color: #1e293b;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0 20px rgba(51, 65, 85, 0.25);
     }
 
     .btn-solid::after {
@@ -181,13 +258,8 @@
       transform: translateX(130%);
     }
 
-    .btn-solid:hover {
-      background: linear-gradient(180deg, #ffffff 0%, #f3f6ff 42%, #d5def2 100%);
-      border-color: #f2f6ff;
-      box-shadow: inset 0 1px 0 #ffffff, 0 0 24px rgba(186, 208, 255, 0.38), 0 8px 18px rgba(255, 255, 255, 0.14);
-    }
-
-    .btn-ghost {
+    /* Vesper Ghost Button - Dark */
+    html.dark .btn-ghost {
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.45) 50%, rgba(160, 175, 200, 0.08));
       color: #ffffff;
       border: 1px solid rgba(198, 198, 198, 0.45);
@@ -196,6 +268,31 @@
       position: relative;
       overflow: hidden;
       transition: all 0.35s ease;
+    }
+
+    html.dark .btn-ghost:hover {
+      background: linear-gradient(135deg, rgba(210, 225, 255, 0.18), rgba(0, 0, 0, 0.35) 48%, rgba(180, 195, 220, 0.16));
+      border-color: rgba(220, 230, 255, 0.75);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 20px rgba(170, 200, 255, 0.22);
+    }
+
+    /* Vesper Ghost Button - Light */
+    html:not(.dark) .btn-ghost {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(241, 245, 249, 0.95) 50%, rgba(226, 232, 240, 0.85));
+      color: #0f172a;
+      border: 1px solid rgba(203, 213, 225, 0.9);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 6px rgba(0, 0, 0, 0.04);
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+    }
+
+    html:not(.dark) .btn-ghost:hover {
+      background: linear-gradient(135deg, #ffffff, #e2e8f0 50%, #cbd5e1);
+      border-color: rgba(148, 163, 184, 1);
+      color: #020617;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 4px 12px rgba(148, 163, 184, 0.2);
     }
 
     .btn-ghost::after {
@@ -212,29 +309,38 @@
       transform: translateX(130%);
     }
 
-    .btn-ghost:hover {
-      background: linear-gradient(135deg, rgba(210, 225, 255, 0.18), rgba(0, 0, 0, 0.35) 48%, rgba(180, 195, 220, 0.16));
-      border-color: rgba(220, 230, 255, 0.75);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 0 20px rgba(170, 200, 255, 0.22);
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
+    /* Custom Scrollbar - Dark */
+    html.dark ::-webkit-scrollbar {
       width: 8px;
     }
-    ::-webkit-scrollbar-track {
+    html.dark ::-webkit-scrollbar-track {
       background: #0a0a0a;
     }
-    ::-webkit-scrollbar-thumb {
+    html.dark ::-webkit-scrollbar-thumb {
       background: #2a2a2a;
       border-radius: 4px;
     }
-    ::-webkit-scrollbar-thumb:hover {
+    html.dark ::-webkit-scrollbar-thumb:hover {
       background: #444444;
+    }
+
+    /* Custom Scrollbar - Light */
+    html:not(.dark) ::-webkit-scrollbar {
+      width: 8px;
+    }
+    html:not(.dark) ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    html:not(.dark) ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
     }
   </style>
 </head>
-<body style="background:#000;color:#fff">
+<body>
   <div class="grain"></div>
   <div id="root"></div>
   <script type="module" src="/index.tsx"></script>

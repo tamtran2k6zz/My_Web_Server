@@ -127,9 +127,9 @@ export function Home({
   }, [data]);
 
   return (
-    <div className="min-h-screen bg-black text-white relative flex flex-col justify-between">
+    <div className="min-h-screen bg-slate-50 dark:bg-black text-slate-900 dark:text-white relative flex flex-col justify-between transition-colors duration-300">
       {/* Background radial glows */}
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_center,rgba(34,211,238,0.08),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.05),transparent_40%),linear-gradient(180deg,#000000,#05070f)] -z-10" />
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top_center,rgba(6,182,212,0.1),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.06),transparent_40%),linear-gradient(180deg,#f8fafc,#f1f5f9)] dark:bg-[radial-gradient(circle_at_top_center,rgba(34,211,238,0.08),transparent_50%),radial-gradient(circle_at_80%_30%,rgba(168,85,247,0.05),transparent_40%),linear-gradient(180deg,#000000,#05070f)] -z-10" />
 
       <div className="relative mx-auto flex w-full max-w-6xl flex-col px-4 py-5 sm:px-6 lg:px-8 flex-1">
         <Navbar
@@ -158,14 +158,14 @@ export function Home({
             <section key={stage.key} id={stage.id} className="space-y-4">
               {/* Section Header */}
               <div className="flex items-center gap-3">
-                <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${stage.gradient} text-slate-950 font-bold shadow-lg shadow-black/40`}>
+                <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${stage.gradient} text-slate-950 font-bold shadow-lg shadow-black/20 dark:shadow-black/40`}>
                   <stage.icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <h2 className="text-lg sm:text-xl font-bold text-white tracking-tight">
+                  <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">
                     {t.phases[stageIndex]}
                   </h2>
-                  <p className="text-xs sm:text-sm text-slate-400">
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                     {stage.subtitle}
                   </p>
                 </div>
@@ -189,8 +189,8 @@ export function Home({
       </div>
 
       {/* Vesper 3-Stats Footer */}
-      <footer id="stats" className="relative mt-16 border-t border-white/10 bg-black/60 py-8 px-6 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-slate-300 text-xs sm:text-sm">
+      <footer id="stats" className="relative mt-16 border-t border-slate-200/80 dark:border-white/10 bg-white/70 dark:bg-black/60 py-8 px-6 backdrop-blur-xl">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-slate-700 dark:text-slate-300 text-xs sm:text-sm">
           {/* Stat 1 */}
           <div className="inline-flex items-center gap-3.5">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="shrink-0" aria-hidden="true">
