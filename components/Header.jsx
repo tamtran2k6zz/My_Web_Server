@@ -52,7 +52,7 @@ export function Header({ t, totalQuestions, activeTopicsCount, isExamMode, onTog
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="mt-5 max-w-2xl text-base sm:text-lg text-slate-600 dark:text-slate-400 font-normal leading-relaxed"
+        className="mt-5 max-w-2xl text-base sm:text-lg text-slate-600 dark:text-slate-300 font-normal leading-relaxed text-pretty"
       >
         {isExamMode 
           ? "Phòng thi bấm giờ đang kích hoạt: Thời gian làm bài 30 phút, tự động chấm điểm thang 10 & 4, xếp loại học lực A-B-C-D-F, vinh danh bảng vàng và xuất phiếu báo cáo PDF/Excel."

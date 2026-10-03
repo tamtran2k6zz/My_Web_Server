@@ -72,7 +72,7 @@ export const LoginGate: React.FC<LoginGateProps> = ({ onLogin, authError, isLogg
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-3">
               Hệ Thống Khảo Thí LMS
             </h2>
-            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed text-pretty">
               Ôn luyện <span className="font-serif-accent italic text-slate-900 dark:text-white font-normal">Chủ nghĩa xã hội khoa học</span> dành riêng cho sinh viên và cán bộ Trường Đại học CNTT & Truyền thông (ICTU).
             </p>
           </div>
@@ -85,7 +85,7 @@ export const LoginGate: React.FC<LoginGateProps> = ({ onLogin, authError, isLogg
               className="mb-6 rounded-2xl border border-rose-500/40 bg-rose-500/15 p-4 text-rose-800 dark:text-rose-200 text-sm flex items-start gap-3"
             >
               <AlertCircle size={20} className="text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
-              <div className="flex-1 text-xs sm:text-sm leading-relaxed">
+              <div className="flex-1 text-xs sm:text-sm leading-relaxed text-pretty">
                 <p className="font-semibold text-rose-900 dark:text-white mb-1">Xác thực không thành công</p>
                 <p>{authError}</p>
               </div>
@@ -95,13 +95,13 @@ export const LoginGate: React.FC<LoginGateProps> = ({ onLogin, authError, isLogg
           {/* Allowed Domain Notice Card */}
           <div className="mb-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-100/60 dark:bg-white/[0.03] p-4 text-xs sm:text-sm">
             <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-slate-200 dark:border-white/10">
-              <span className="text-slate-600 dark:text-slate-400 font-medium">Tên miền được phép:</span>
+              <span className="text-slate-700 dark:text-slate-300 font-medium">Tên miền được phép:</span>
               <span className="font-mono font-bold text-cyan-600 dark:text-cyan-300 bg-cyan-400/10 px-2.5 py-0.5 rounded-md border border-cyan-400/20">
                 @ictu.edu.vn
               </span>
             </div>
-            <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">
-              Vui lòng sử dụng địa chỉ email do trường cấp (ví dụ: <span className="text-slate-800 dark:text-slate-200 font-mono font-semibold">DTCxxxxxx@ictu.edu.vn</span>) để đăng nhập Google. Các tài khoản cá nhân khác (@gmail.com, ...) sẽ tự động bị từ chối.
+            <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed text-pretty">
+              Vui lòng sử dụng địa chỉ email do trường cấp (ví dụ: <span className="text-slate-900 dark:text-slate-200 font-mono font-semibold">DTCxxxxxx@ictu.edu.vn</span>) để đăng nhập Google. Các tài khoản cá nhân khác (@gmail.com, ...) sẽ tự động bị từ chối.
             </p>
           </div>
 
@@ -110,7 +110,7 @@ export const LoginGate: React.FC<LoginGateProps> = ({ onLogin, authError, isLogg
             type="button"
             onClick={onLogin}
             disabled={isLoggingIn}
-            className="w-full btn-solid py-4 px-6 rounded-2xl text-sm sm:text-base font-bold flex items-center justify-center gap-3 cursor-pointer shadow-xl transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full btn-solid py-4 px-6 min-h-[48px] rounded-2xl text-sm sm:text-base font-bold flex items-center justify-center gap-3 cursor-pointer shadow-xl transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500"
           >
             {isLoggingIn ? (
               <>
@@ -135,27 +135,27 @@ export const LoginGate: React.FC<LoginGateProps> = ({ onLogin, authError, isLogg
           <div className="mt-8 pt-6 border-t border-slate-200 dark:border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
             <div className="p-3 rounded-xl bg-slate-100/70 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5">
               <BookOpen size={16} className="text-cyan-600 dark:text-cyan-300 mx-auto mb-1.5" />
-              <p className="font-semibold text-xs text-slate-800 dark:text-white">150+ Câu hỏi</p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">4 phần chuẩn hóa</p>
+              <p className="font-semibold text-xs text-slate-800 dark:text-white">Toàn bộ ngân hàng đề</p>
+              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">4 giai đoạn chuẩn hóa</p>
             </div>
             <div className="p-3 rounded-xl bg-slate-100/70 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5">
               <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-300 mx-auto mb-1.5" />
               <p className="font-semibold text-xs text-slate-800 dark:text-white">Chấm tức thì</p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Hiển thị đáp án ngay</p>
+              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">Hiển thị đáp án ngay</p>
             </div>
             <div className="p-3 rounded-xl bg-slate-100/70 dark:bg-white/[0.02] border border-slate-200/80 dark:border-white/5">
               <Sparkles size={16} className="text-amber-500 dark:text-amber-300 mx-auto mb-1.5" />
               <p className="font-semibold text-xs text-slate-800 dark:text-white">Xáo trộn đề</p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Chống học vẹt</p>
+              <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5">Chống học vẹt</p>
             </div>
           </div>
         </motion.div>
       </main>
 
       {/* Footer */}
-      <footer className="relative mx-auto w-full max-w-6xl py-6 px-6 text-center text-xs text-slate-500 border-t border-slate-200 dark:border-white/10">
+      <footer className="relative mx-auto w-full max-w-6xl py-6 px-6 text-center text-xs text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-white/10">
         <p>© 2026 Trường Đại học Công nghệ Thông tin & Truyền thông — Đại học Thái Nguyên</p>
-        <p className="mt-1 text-[11px] text-slate-500">Hệ thống khảo thí trực tuyến môn Triết học Mác – Lênin & Chủ nghĩa xã hội khoa học</p>
+        <p className="mt-1 text-[11px] text-slate-500 dark:text-slate-500">Hệ thống khảo thí trực tuyến môn Triết học Mác – Lênin & Chủ nghĩa xã hội khoa học</p>
       </footer>
     </div>
   );

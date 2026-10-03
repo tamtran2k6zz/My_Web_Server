@@ -148,7 +148,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
               <a
                 href="#phase-1"
                 onClick={closeMenu}
-                className="liquid-pill px-5 py-3.5 rounded-xl text-sm font-semibold flex items-center justify-between"
+                className="liquid-pill min-h-[48px] px-5 py-3.5 rounded-xl text-sm font-semibold flex items-center justify-between"
               >
                 <span className="flex items-center gap-3"><BookOpen size={18} className="text-cyan-600 dark:text-cyan-300 shrink-0" /> <span>Học phần trọng tâm (Bài 1 – {activeTopicsCount || 5})</span></span>
                 <ChevronRight size={16} className="text-slate-400 shrink-0" />
@@ -156,7 +156,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
               <a
                 href="#phase-2"
                 onClick={closeMenu}
-                className="liquid-pill px-5 py-3.5 rounded-xl text-sm font-semibold flex items-center justify-between"
+                className="liquid-pill min-h-[48px] px-5 py-3.5 rounded-xl text-sm font-semibold flex items-center justify-between"
               >
                 <span className="flex items-center gap-3"><Layers size={18} className="text-fuchsia-600 dark:text-fuchsia-300 shrink-0" /> <span>Ôn tập Tổng hợp (Phần 1-3 & 4-6)</span></span>
                 <ChevronRight size={16} className="text-slate-400 shrink-0" />
@@ -164,7 +164,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
               <a
                 href="#phase-3"
                 onClick={closeMenu}
-                className="liquid-pill px-5 py-3.5 rounded-xl text-sm font-semibold flex items-center justify-between"
+                className="liquid-pill min-h-[48px] px-5 py-3.5 rounded-xl text-sm font-semibold flex items-center justify-between"
               >
                 <span className="flex items-center gap-3"><CheckCircle2 size={18} className="text-emerald-600 dark:text-emerald-300 shrink-0" /> <span>Luyện tập theo dạng bài</span></span>
                 <ChevronRight size={16} className="text-slate-400 shrink-0" />
@@ -172,7 +172,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
               <a
                 href="#phase-4"
                 onClick={closeMenu}
-                className="liquid-pill px-5 py-3.5 rounded-xl text-sm font-semibold flex items-center justify-between"
+                className="liquid-pill min-h-[48px] px-5 py-3.5 rounded-xl text-sm font-semibold flex items-center justify-between"
               >
                 <span className="flex items-center gap-3"><Sparkles size={18} className="text-amber-500 dark:text-amber-300 shrink-0" /> <span>Tổng hợp toàn bộ ({totalQuestions} câu)</span></span>
                 <ChevronRight size={16} className="text-slate-400 shrink-0" />
@@ -184,7 +184,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
                   closeMenu();
                   if (onOpenLeaderboard) onOpenLeaderboard();
                 }}
-                className="liquid-pill px-5 py-3.5 rounded-xl text-sm font-semibold text-amber-600 dark:text-amber-300 flex items-center justify-between border border-amber-400/40 bg-amber-500/10 cursor-pointer"
+                className="liquid-pill min-h-[48px] px-5 py-3.5 rounded-xl text-sm font-semibold text-amber-600 dark:text-amber-300 flex items-center justify-between border border-amber-400/40 bg-amber-500/10 cursor-pointer"
               >
                 <span className="flex items-center gap-3">
                   <Trophy size={18} className="text-amber-500 dark:text-amber-400 shrink-0" />

@@ -43,29 +43,29 @@ export const ExamTimer: React.FC<Props> = ({ initialSeconds, onTimeUp, onSubmit,
   const isDanger = timeLeft <= 60; // < 1 min
 
   return (
-    <div className={`flex items-center gap-2 sm:gap-3 px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl border transition-all duration-300 ${
+    <div className={`flex items-center gap-2 sm:gap-3 px-3 py-1.5 sm:px-4 sm:py-2 rounded-2xl border transition-all duration-300 shrink-0 ${
       isDanger
-        ? 'bg-rose-950/60 border-rose-500/60 text-rose-300 shadow-lg shadow-rose-950/50 animate-pulse'
+        ? 'bg-rose-100/90 dark:bg-rose-950/60 border-rose-400 dark:border-rose-500/60 text-rose-800 dark:text-rose-300 shadow-lg shadow-rose-950/20 dark:shadow-rose-950/50 animate-pulse'
         : isWarning
-        ? 'bg-amber-950/50 border-amber-500/50 text-amber-300 shadow-md shadow-amber-950/40'
-        : 'bg-white/5 border-white/10 text-cyan-300 backdrop-blur-md'
+        ? 'bg-amber-100/90 dark:bg-amber-950/50 border-amber-400 dark:border-amber-500/50 text-amber-800 dark:text-amber-300 shadow-md'
+        : 'bg-slate-100/90 dark:bg-white/5 border-slate-300/80 dark:border-white/10 text-cyan-700 dark:text-cyan-300 backdrop-blur-md shadow-sm'
     }`}>
       <div className="flex items-center gap-1.5 shrink-0">
         {isDanger ? (
-          <AlertTriangle size={16} className="text-rose-400 animate-bounce" />
+          <AlertTriangle size={16} className="text-rose-600 dark:text-rose-400 animate-bounce" />
         ) : (
-          <Timer size={16} className={isWarning ? 'text-amber-400' : 'text-cyan-400'} />
+          <Timer size={16} className={isWarning ? 'text-amber-600 dark:text-amber-400' : 'text-cyan-600 dark:text-cyan-400'} />
         )}
-        <span className="font-mono font-bold text-xs sm:text-sm tracking-wider">
+        <span className="font-mono font-bold tabular-nums select-none text-xs sm:text-sm tracking-wider">
           {formatDuration(timeLeft)}
         </span>
       </div>
 
       {/* Mini Progress Bar */}
-      <div className="w-12 sm:w-16 h-1.5 bg-white/10 rounded-full overflow-hidden shrink-0 hidden sm:block">
+      <div className="w-12 sm:w-16 h-1.5 bg-slate-300/80 dark:bg-white/10 rounded-full overflow-hidden shrink-0 hidden sm:block">
         <div
           className={`h-full rounded-full transition-all duration-1000 ${
-            isDanger ? 'bg-rose-500' : isWarning ? 'bg-amber-400' : 'bg-gradient-to-r from-cyan-400 to-blue-500'
+            isDanger ? 'bg-rose-500' : isWarning ? 'bg-amber-500 dark:bg-amber-400' : 'bg-gradient-to-r from-cyan-500 to-blue-500'
           }`}
           style={{ width: `${percentage}%` }}
         />

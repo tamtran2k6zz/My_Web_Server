@@ -101,7 +101,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, o
           <span className="text-primary font-bold whitespace-nowrap bg-primary/10 dark:bg-primary/20 px-2.5 py-0.5 rounded-md text-sm self-start mt-0.5">
             Câu {index + 1}
           </span>
-          <span className="text-slate-800 dark:text-slate-100 flex-1">{renderContent()}</span>
+          <span className="text-slate-900 dark:text-slate-100 flex-1 text-pretty leading-relaxed">{renderContent()}</span>
         </h3>
       </div>
 
@@ -148,7 +148,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, o
                 >
                   <div className="flex items-start gap-3 flex-1">
                     <span className={badgeClass}>{optionLetter}</span>
-                    <span className="flex-1 text-base leading-relaxed">{textContent}</span>
+                    <span className="flex-1 text-base text-pretty leading-relaxed">{textContent}</span>
                   </div>
                   {answered && isTargetCorrect && <CheckCircle2 className="text-emerald-600 dark:text-emerald-400 shrink-0 ml-3" size={22} />}
                   {answered && isSelected && !isTargetCorrect && <X className="text-rose-600 dark:text-rose-400 shrink-0 ml-3" size={22} />}
@@ -215,7 +215,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, o
                     >
                       {isSelected && <Check size={14} strokeWidth={3} />}
                     </div>
-                    <span className="flex-1 text-base leading-relaxed">{textContent}</span>
+                    <span className="flex-1 text-base text-pretty leading-relaxed">{textContent}</span>
                   </button>
                 );
               })}
@@ -251,7 +251,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, o
 
                 return (
                   <div key={idx} className={rowBoxClass}>
-                    <div className="mb-3 font-medium text-slate-800 dark:text-slate-100 text-base leading-relaxed">
+                    <div className="mb-3 font-medium text-slate-900 dark:text-slate-100 text-base text-pretty leading-relaxed">
                       {row.text}
                     </div>
                     <div className="flex gap-3">

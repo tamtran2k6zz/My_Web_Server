@@ -208,7 +208,7 @@ export function Home({
               <rect x="13.4" y="2.6" width="7.2" height="18.8" rx="3.6" fill="url(#pill-g2)"/>
               <rect x="9.2" y="10.9" width="5.6" height="2.2" rx="1.1" fill="#4a4a4a"/>
             </svg>
-            <span><strong>150+ câu hỏi</strong> chuẩn hoá theo giáo trình 2026</span>
+            <span><strong className="tabular-nums font-bold">{totalQuestions} câu hỏi</strong> chuẩn hoá theo giáo trình 2026</span>
           </div>
 
           {/* Stat 2 */}

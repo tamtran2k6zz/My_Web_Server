@@ -55,27 +55,27 @@ export function QuizCard({ card, delay, onClick, isExamMode }) {
           </motion.div>
 
           {/* Title & Badges */}
-          <div>
-            <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-cyan-600 dark:group-hover:text-cyan-100 transition-colors">
+            <div>
+            <h3 className="text-lg sm:text-xl font-semibold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-cyan-600 dark:group-hover:text-cyan-100 transition-colors text-pretty">
               {card.title}
             </h3>
 
             <div className="mt-3 flex flex-wrap items-center gap-2">
               {isUpdating ? (
-                <span className="rounded-full bg-amber-500/15 px-3 py-1 text-xs font-semibold text-amber-600 dark:text-amber-300 border border-amber-500/30 flex items-center gap-1.5">
+                <span className="rounded-full bg-amber-500/15 px-3 py-1 text-xs font-semibold text-amber-600 dark:text-amber-300 border border-amber-500/30 flex items-center gap-1.5 select-none">
                   <Clock size={12} /> Đang cập nhật
                 </span>
               ) : (
                 <>
-                  <span className="rounded-full bg-slate-100 dark:bg-white/5 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300 border border-slate-300/80 dark:border-white/10">
-                    {card.questions} câu hỏi
+                  <span className="rounded-full bg-slate-100 dark:bg-white/5 px-3 py-1 text-xs font-semibold text-slate-700 dark:text-slate-300 border border-slate-300/80 dark:border-white/10 select-none">
+                    <span className="tabular-nums">{card.questions}</span> câu hỏi
                   </span>
                   {isExamMode ? (
-                    <span className="rounded-full bg-amber-500/15 px-3 py-1 text-xs font-bold text-amber-600 dark:text-amber-300 border border-amber-400/30 flex items-center gap-1 animate-pulse">
+                    <span className="rounded-full bg-amber-500/15 px-3 py-1 text-xs font-bold text-amber-600 dark:text-amber-300 border border-amber-400/30 flex items-center gap-1 animate-pulse select-none">
                       ⏱️ Thi bấm giờ (30p)
                     </span>
                   ) : (
-                    <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-600 dark:text-cyan-300 border border-cyan-400/20 flex items-center gap-1">
+                    <span className="rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-600 dark:text-cyan-300 border border-cyan-400/20 flex items-center gap-1 select-none">
                       <Sparkles size={11} /> Xáo trộn ngẫu nhiên
                     </span>
                   )}
@@ -89,7 +89,7 @@ export function QuizCard({ card, delay, onClick, isExamMode }) {
       </div>
 
       {/* Footer link */}
-      <div className="relative mt-5 flex items-center justify-between border-t border-slate-200 dark:border-white/10 pt-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+      <div className="relative mt-5 flex items-center justify-between border-t border-slate-200 dark:border-white/10 pt-4 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
         <span>{isUpdating ? 'Tài liệu đang soạn thảo' : isExamMode ? 'Khảo thí tính điểm xếp loại A-F' : 'Khởi động kiểm tra'}</span>
         <span className={`inline-flex items-center gap-1.5 font-medium ${isUpdating ? 'text-amber-600 dark:text-amber-400' : isExamMode ? 'text-amber-600 dark:text-amber-300 font-bold' : 'text-cyan-600 dark:text-cyan-300'}`}>
           {isUpdating ? 'Sắp ra mắt' : isExamMode ? 'Vào phòng thi' : 'Bắt đầu ngay'} <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
