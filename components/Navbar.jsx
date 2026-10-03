@@ -43,32 +43,33 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
           </a>
 
           {/* Center: Desktop Liquid Metal Navigation Pills */}
-          <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2 shrink-0">
-            <a href="#phase-1" className="liquid-pill px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-xs xl:text-sm font-medium whitespace-nowrap shrink-0">
-              Chủ đề 1 – {activeTopicsCount || 5}
+          <nav className="hidden xl:flex items-center gap-1.5 shrink-0">
+            <a href="#phase-1" className="liquid-pill px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap">
+              Chủ đề 1 – {activeTopicsCount || 6}
             </a>
-            <a href="#phase-2" className="liquid-pill px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-xs xl:text-sm font-medium whitespace-nowrap shrink-0">
-              Ôn tập tổng hợp
+            <a href="#phase-2" className="liquid-pill px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap">
+              Ôn tập
             </a>
-            <a href="#phase-3" className="liquid-pill px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-xs xl:text-sm font-medium whitespace-nowrap shrink-0">
-              Dạng bài khảo thí
+            <a href="#phase-3" className="liquid-pill px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap">
+              Dạng bài
             </a>
-            <a href="#phase-4" className="liquid-pill px-3 py-1.5 xl:px-4 xl:py-2 rounded-lg text-xs xl:text-sm font-medium whitespace-nowrap shrink-0">
-              {totalQuestions} Câu hỏi
+            <a href="#phase-4" className="liquid-pill px-2.5 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap">
+              <span className="tabular-nums">{totalQuestions}</span> Câu hỏi
             </a>
           </nav>
 
           {/* Right: Actions (Leaderboard, Language & Login/User) */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Leaderboard Trophy Button */}
             <button
               type="button"
               onClick={onOpenLeaderboard}
-              className="px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-amber-400/10 hover:bg-amber-400/20 text-amber-300 border border-amber-400/30 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer shrink-0 shadow-sm"
+              className="px-2.5 py-1.5 rounded-xl bg-amber-400/10 hover:bg-amber-400/20 text-amber-600 dark:text-amber-300 border border-amber-400/30 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer shrink-0 shadow-sm"
               title="Bảng vinh danh thành tích sinh viên"
+              aria-label="Bảng vinh danh thành tích sinh viên"
             >
-              <Trophy size={15} className="text-amber-400 shrink-0" />
-              <span className="hidden sm:inline">Vinh danh</span>
+              <Trophy size={15} className="text-amber-500 dark:text-amber-400 shrink-0" />
+              <span className="hidden 2xl:inline">Vinh danh</span>
             </button>
 
             {/* Theme Switcher (Light / Dark / System) */}
@@ -77,27 +78,28 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
             <LanguageToggle language={language} setLanguage={setLanguage} />
 
             {user ? (
-              <div className="flex items-center gap-2 shrink-0">
-                <div className="flex items-center gap-2 rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1.5 backdrop-blur-md shrink-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <div className="flex items-center gap-2 rounded-xl bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-2.5 py-1.5 backdrop-blur-md shrink-0">
                   {user.photoURL ? (
-                    <img src={user.photoURL} alt="Avatar" className="w-6 h-6 rounded-full border border-slate-300 dark:border-white/20 shrink-0" />
+                    <img src={user.photoURL} alt="Avatar" className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border border-slate-300 dark:border-white/20 shrink-0" />
                   ) : (
-                    <div className="w-6 h-6 rounded-full bg-cyan-400/20 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-xs font-bold shrink-0">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-cyan-400/20 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-xs font-bold shrink-0">
                       {user.displayName ? user.displayName[0] : 'U'}
                     </div>
                   )}
-                  <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 hidden sm:inline max-w-[150px] truncate whitespace-nowrap">
+                  <span className="text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 hidden md:inline max-w-[105px] 2xl:max-w-[145px] truncate whitespace-nowrap font-mono" title={user.email}>
                     {maskEmail(user.email)}
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={onLogout}
-                  className="btn-ghost px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition flex items-center gap-1.5 cursor-pointer shrink-0 whitespace-nowrap"
+                  className="px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-rose-500/10 border border-slate-200/60 dark:border-white/10 hover:border-rose-500/30 transition flex items-center gap-1.5 cursor-pointer shrink-0"
                   title="Đăng xuất"
+                  aria-label="Đăng xuất"
                 >
                   <LogOut size={14} className="shrink-0" />
-                  <span className="hidden sm:inline">{t.logout}</span>
+                  <span className="hidden 2xl:inline">{t.logout}</span>
                 </button>
               </div>
             ) : (
@@ -111,11 +113,11 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
               </button>
             )}
 
-            {/* Mobile / Tablet Burger Button (shown below lg: 1024px) */}
+            {/* Mobile / Tablet Burger Button (shown below xl: 1280px) */}
             <button
               type="button"
               onClick={toggleMenu}
-              className="lg:hidden flex flex-col justify-center items-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-slate-300/80 dark:border-white/10 bg-slate-100/80 dark:bg-white/5 text-slate-800 dark:text-white focus:outline-none shrink-0"
+              className="xl:hidden flex flex-col justify-center items-center w-9 h-9 sm:w-10 sm:h-10 rounded-xl border border-slate-300/80 dark:border-white/10 bg-slate-100/80 dark:bg-white/5 text-slate-800 dark:text-white focus:outline-none shrink-0"
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={menuOpen}
             >
@@ -135,7 +137,7 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-50 lg:hidden bg-slate-950/80 dark:bg-black/85 backdrop-blur-2xl flex flex-col justify-center px-6 py-12"
+            className="fixed inset-0 z-50 xl:hidden bg-slate-950/80 dark:bg-black/85 backdrop-blur-2xl flex flex-col justify-center px-6 py-12"
             onClick={closeMenu}
           >
             <div className="flex flex-col gap-3 w-full max-w-sm mx-auto" onClick={(e) => e.stopPropagation()}>
@@ -192,6 +194,34 @@ export function Navbar({ language, setLanguage, t, user, onLogin, onLogout, tota
                 </span>
                 <ChevronRight size={16} className="text-amber-500 dark:text-amber-400 shrink-0" />
               </button>
+
+              {user && (
+                <div className="mt-2 pt-3 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    {user.photoURL ? (
+                      <img src={user.photoURL} alt="Avatar" className="w-7 h-7 rounded-full border border-slate-300 dark:border-white/20" />
+                    ) : (
+                      <div className="w-7 h-7 rounded-full bg-cyan-400/20 text-cyan-700 dark:text-cyan-300 flex items-center justify-center text-xs font-bold">
+                        {user.displayName ? user.displayName[0] : 'U'}
+                      </div>
+                    )}
+                    <span className="text-xs font-medium text-slate-700 dark:text-slate-200 font-mono">
+                      {maskEmail(user.email)}
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      closeMenu();
+                      onLogout();
+                    }}
+                    className="px-3 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-xs font-semibold flex items-center gap-1.5 cursor-pointer transition"
+                  >
+                    <LogOut size={14} />
+                    <span>{t.logout}</span>
+                  </button>
+                </div>
+              )}
             </div>
           </motion.div>
         )}
