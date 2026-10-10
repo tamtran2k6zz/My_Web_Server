@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:questions": "node scripts/check-questions.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@types/canvas-confetti": "^1.9.0",

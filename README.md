@@ -102,7 +102,7 @@ Hệ thống sử dụng tệp dữ liệu duy nhất `questions.js` làm **Sing
  ┣ 📜 BỘ CÂU HỎI MỚI: Câu hỏi trắc nghiệm bổ sung & vận dụng tình huống (12 câu) — [Hoàn thành ✅]
  ┣ 🔄 CHẶNG 1: Ôn tập Tổng hợp Phần 1 – 3 (109 câu) — [Hoàn thành ✅]
  ┣ 🔄 CHẶNG 2: Ôn tập Tổng hợp Phần 4 – 6 (94 câu) — [Hoàn thành ✅]
- ┗ 🚀 KHẢO THÍ TOÀN DIỆN: Tổng hợp toàn bộ ngân hàng câu hỏi (215+ câu) — [Hoàn thành ✅]
+ ┗ 🚀 KHẢO THÍ TOÀN DIỆN: Tổng hợp toàn bộ ngân hàng câu hỏi (260 câu) — [Hoàn thành ✅]
 ```
 
 ---
@@ -182,18 +182,22 @@ npm run build
 
 ## 📈 Bảng Theo Dõi Tiến Độ Triển Khai (Progress Tracker)
 
+Ngân hàng hiện có 225 câu CNXHKH và 35 câu Kinh tế chính trị bổ sung. Nội dung đã được sửa theo đợt rà soát ngày 10/10/2026; xem [chi tiết cập nhật](CAP_NHAT_DAP_AN.md).
+
+Trước khi phát hành, chạy `npm run check:questions` để kiểm tra toàn bộ dữ liệu và các đáp án đã sửa, `npm run typecheck` để kiểm tra TypeScript, và `npm run build` để tạo bản production.
+
 | Hạng mục / Module | Quy mô & Chi tiết triển khai | Trạng thái | Tiến độ |
 | :--- | :--- | :---: | :---: |
-| **Phần 1: Nhập môn & Sứ mệnh GCCN** | 38 câu hỏi chuẩn hóa (Trắc nghiệm đơn & phức hợp) | Hoàn thành | 100% |
-| **Phần 2: CNXH & Thời kỳ quá độ** | 41 câu hỏi phân tích lý luận & kinh tế chính trị | Hoàn thành | 100% |
-| **Phần 3: Dân chủ & Nhà nước XHCN** | 30 câu hỏi chuyên sâu bản chất dân chủ & nhà nước | Hoàn thành | 100% |
-| **Phần 4: Cơ cấu XH & Liên minh giai cấp** | 39 câu hỏi (Trắc nghiệm, Đúng/Sai & Kéo thả) | Hoàn thành | 100% |
-| **Phần 5: Dân tộc & Tôn giáo trong TKQĐ** | 28 câu hỏi (26 trắc nghiệm đơn, 2 trắc nghiệm nhiều đáp án) | Hoàn thành | 100% |
+| **Phần 1: Nhập môn & Sứ mệnh GCCN** | 40 câu hỏi | Hoàn thành | 100% |
+| **Phần 2: CNXH & Thời kỳ quá độ** | 40 câu hỏi | Hoàn thành | 100% |
+| **Phần 3: Dân chủ & Nhà nước XHCN** | 37 câu hỏi | Hoàn thành | 100% |
+| **Phần 4: Cơ cấu XH & Liên minh giai cấp** | 41 câu hỏi | Hoàn thành | 100% |
+| **Phần 5: Dân tộc & Tôn giáo trong TKQĐ** | 40 câu hỏi | Hoàn thành | 100% |
 | **Phần 6: Gia đình trong TKQĐ lên CNXH** | 27 câu hỏi (Trắc nghiệm đơn, nhiều đáp án, Đúng/Sai & Kéo thả) | Hoàn thành | 100% |
-| **Bộ câu hỏi mới (Bổ sung)** | 12 câu hỏi trắc nghiệm vận dụng nâng cao & tình huống | Hoàn thành | 100% |
-| **Chặng 1: Ôn tập Tổng hợp Phần 1 – 3** | Tổng hợp ngẫu nhiên 109 câu hỏi liên chương 1, 2, 3 | Hoàn thành | 100% |
-| **Chặng 2: Ôn tập Tổng hợp Phần 4 – 6** | Tổng hợp ngẫu nhiên 94 câu hỏi liên chương 4, 5, 6 | Hoàn thành | 100% |
-| **Khảo thí Toàn diện Toàn bộ kiến thức** | Xáo trộn 215+ câu hỏi toàn ngân hàng đề | Hoàn thành | 100% |
+| **Bộ câu hỏi mới (Bổ sung)** | 35 câu hỏi Kinh tế chính trị Mác – Lênin | Hoàn thành | 100% |
+| **Chặng 1: Ôn tập Tổng hợp Phần 1 – 3** | Tổng hợp ngẫu nhiên 117 câu hỏi liên chương 1, 2, 3 | Hoàn thành | 100% |
+| **Chặng 2: Ôn tập Tổng hợp Phần 4 – 6** | Tổng hợp ngẫu nhiên 108 câu hỏi liên chương 4, 5, 6 | Hoàn thành | 100% |
+| **Khảo thí Toàn diện Toàn bộ kiến thức** | Xáo trộn 260 câu hỏi toàn ngân hàng đề | Hoàn thành | 100% |
 | **Chuyên đề theo Dạng bài** | Tách riêng Trắc nghiệm (A,B,C,D), Đúng/Sai, Kéo thả | Hoàn thành | 100% |
 | **Phòng thi bấm giờ (Timed Exam)** | Đếm ngược 30p, tính điểm 10 & 4, xếp loại A-F | Hoàn thành | 100% |
 | **Bảng vinh danh (Global Leaderboard)** | Podium Top 3, xếp hạng toàn trường, lịch sử thi cá nhân | Hoàn thành | 100% |

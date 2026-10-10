@@ -30,7 +30,7 @@ export const newTopic: Topic = {
       type: "multi",
       q: "Câu 30(Bài 2): Đâu là thuộc tính của hàng hóa sức lao động? (Chọn 2 đáp án đúng nhất)",
       options: [
-        "A. Thuộc tính sử dụng của hàng hoá sức lao động",
+        "A. Giá trị của toàn bộ tư liệu sản xuất do công nhân sử dụng",
         "B. Giá trị của hàng hoá sức lao động",
         "C. Giá trị thặng dư",
         "D. Giá trị sử dụng của hàng hoá sức lao động",
@@ -39,7 +39,7 @@ export const newTopic: Topic = {
     },
     {
       type: "single",
-      q: "Câu 31(Bài 2): Tốc độ chu chuyển của tư bản tư bản là:",
+      q: "Câu 31(Bài 2): Tốc độ chu chuyển của tư bản là:",
       options: [
         "A. Số vòng chu chuyển của tư bản trong một năm",
         "B. Tốc độ lưu thông của tư bản.",
@@ -65,10 +65,10 @@ export const newTopic: Topic = {
       options: [
         "A. Tốc độ lưu thông của tư bản.",
         "B. Sự tuần hoàn tư bản lặp đi lặp lại một cách có định kỳ",
-        "C. Sự tuần hoàn tư bản lặp đi lặp lại",
+        "C. Một lần vận động của tư bản qua ba giai đoạn",
         "D. Sự vận động của tư bản",
       ],
-      correct: 2,
+      correct: 1,
     },
     {
       type: "single",
@@ -76,7 +76,7 @@ export const newTopic: Topic = {
       options: [
         "A. Giá trị của nó không thay đổi và được chuyển ngay sang sản phẩm sau một chu kỳ sản xuất",
         "B. Giá trị của nó lớn lên trong quá trình sản xuất",
-        "C. Giá trị của nó chuyển dẫn vào sản phẩm qua khấu hao",
+        "C. Giá trị của nó chuyển dần vào sản phẩm qua khấu hao",
         "D. Giá trị của nó không thay đổi về lượng và được chuyển nguyên vẹn sang sản phẩm",
       ],
       correct: 3,
@@ -149,12 +149,12 @@ export const newTopic: Topic = {
     },
     {
       type: "single",
-      q: "Câu 30(Bài 3): Tái sản xuất giản đơn có đặc điểm gì?",
+      q: "Câu 30(Bài 3): Tái sản xuất giản đơn tư bản chủ nghĩa có đặc điểm gì?",
       options: [
         "A. Quy mô sản xuất tăng lên",
         "B. Đầu tư thặng dư vào sản xuất",
         "C. Toàn bộ thặng dư dùng cho tiêu dùng cá nhân",
-        "D. Quy mô sản xuất tăng lên",
+        "D. Toàn bộ giá trị thặng dư được tư bản hóa",
       ],
       correct: 2,
     },
@@ -203,7 +203,7 @@ export const newTopic: Topic = {
         "A. Để tăng giá trị hàng hóa",
         "B. Để giảm tỷ suất thặng dư",
         "C. Để giảm chi phí sản xuất",
-        "D. Để cân bằng lợi ích trước mắt và lâu dài",
+        "D. Để mở rộng sản xuất, tăng quy mô tư bản và năng lực cạnh tranh",
       ],
       correct: 3,
     },
@@ -255,8 +255,8 @@ export const newTopic: Topic = {
       type: "single",
       q: "Câu 30(Bài 4): Trong giai đoạn CNTB tự do cạnh tranh quy luật giá trị thặng dư biểu hiện thành:",
       options: [
-        "A. Qui luật tỷ suất lợi nhuận độc quyền cao",
-        "B. Qui luật tỷ suất lợi nhuận bình quân",
+        "A. Quy luật lợi nhuận độc quyền cao",
+        "B. Quy luật lợi nhuận bình quân",
         "C. Qui luật tích lũy tư bản",
         "D. Qui luật giá cả sản xuất",
       ],
@@ -308,12 +308,12 @@ export const newTopic: Topic = {
     },
     {
       type: "single",
-      q: "Câu 35(Bài 4): Xuất khẩu tư bản là:",
+      q: "Câu 35(Bài 4): Định nghĩa đầy đủ nhất của xuất khẩu tư bản là gì?",
       options: [
         "A. Cho nước ngoài vay",
         "B. Mang hàng hóa ra nước ngoài để thực hiện giá trị",
         "C. Cả A và B",
-        "D. Đầu tư trực tiếp ra nước ngoài",
+        "D. Đưa giá trị ra nước ngoài để thu giá trị thặng dư và các nguồn lợi nhuận khác, bằng đầu tư trực tiếp hoặc cho vay",
       ],
       correct: 3,
     },
@@ -343,7 +343,7 @@ export const newTopic: Topic = {
         "định hướng xã hội chủ nghĩa",
       ],
       columns: [
-        "Cơ chế thị trường dựa trên ____________ và sự vận hành của quy luật giá trị.",
+        "Một trong hai điều kiện ra đời và tồn tại của sản xuất hàng hóa là ____________.",
         "Cơ chế thị trường tạo ____________ để doanh nghiệp nâng cao năng suất lao động và chất lượng hàng hóa.",
         "____________ của Đảng bảo đảm sự phát triển đúng hướng của nền kinh tế.",
         "Mục tiêu phát triển kinh tế ở Việt Nam là phát triển bền vững, bao trùm, gắn liền với ______________.",
@@ -371,7 +371,7 @@ export const newTopic: Topic = {
       q: "Câu 22(Bài 6): Chọn 1 phương án trả lời đúng nhất. Trong nền kinh tế tri thức, yếu tố nào trở thành tài nguyên quan trọng nhất?",
       options: [
         "A. Tài chính",
-        "B. Thông tin",
+        "B. Tri thức",
         "C. Địa lý",
         "D. Tài nguyên khoáng sản",
       ],

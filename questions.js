@@ -122,14 +122,14 @@ export const questions = [
   },
   {
     "article": "Bài 1",
-    "text": "Câu 11: Hạn chế cơ bản lớn nhất mà giai cấp công nhân Việt Nam hiện nay cần khắc phục là gì?",
+    "text": "Câu 11: Hạn chế nào về trình độ chuyên môn, kỹ thuật của giai cấp công nhân Việt Nam cần được khắc phục để đáp ứng yêu cầu công nghiệp hóa, hiện đại hóa?",
     "options": [
       "A. Tâm lý tiểu nông",
       "B. Số lượng còn ít",
       "C. Trình độ khoa học kỹ thuật chưa cao",
       "D. Hiệu quả lao động thấp"
     ],
-    "answer": "A",
+    "answer": "C",
     "type": "single"
   },
   {
@@ -206,7 +206,7 @@ export const questions = [
   },
   {
     "article": "Bài 1",
-    "text": "Câu 18: Trong các nội dung sau đây thì nội dung nào thuộc về giải pháp xây dựng giai cấp công nhân Việt Nam hiện nay?",
+    "text": "Câu 18: Giải pháp nào trực tiếp gắn chiến lược xây dựng giai cấp công nhân Việt Nam với chiến lược phát triển kinh tế – xã hội và hội nhập quốc tế?",
     "options": [
       "A. Thực hiện tốt chính sách và pháp luật đối với công nhân và người lao động",
       "B. Thực hiện chiến lược xây dựng giai cấp công nhân lớn mạnh, gắn kết chặt chẽ với chiến lược phát triển kinh tế - xã hội, công nghiệp hoá hiện đại hoá đất nước, hội nhập quốc tế",
@@ -230,22 +230,22 @@ export const questions = [
   },
   {
     "article": "Bài 1",
-    "text": "Câu 20: Đặc điểm nào sau đây thể hiện đúng bản chất của giai cấp công nhân? (Chọn 2 đáp án đúng)",
+    "text": "Câu 20: Trong quan hệ sản xuất tư bản chủ nghĩa, giai cấp công nhân có những đặc điểm nào sau đây? (Chọn 2 đáp án đúng)",
     "options": [
       "A. Luôn gắn bó với giai cấp địa chủ và tiểu thương",
       "B. Có trình độ học vấn thấp, chủ yếu làm việc tay chân",
       "C. Có tính tổ chức và kỷ luật cao trong lao động sản xuất",
-      "D. Không sở hữu tư liệu sản xuất, sống bằng lao động làm thuê"
+      "D. Không có hoặc về cơ bản không có tư liệu sản xuất, phải bán sức lao động cho nhà tư bản"
     ],
     "answer": ["C", "D"],
     "type": "multiple"
   },
   {
     "article": "Bài 1",
-    "text": "Câu 21: Giai cấp công nhân Việt Nam có đặc điểm gì khác với giai cấp công nhân ở các nước tư bản? (Chọn 2 đáp án đúng)",
+    "text": "Câu 21: Khi ra đời và phát triển trong xã hội Việt Nam thời thuộc địa, giai cấp công nhân có những đặc điểm nào sau đây? (Chọn 2 đáp án đúng)",
     "options": [
       "A. Sở hữu tư liệu sản xuất trong xã hội",
-      "B. Chịu sự bóc lột của thực dân và phong kiến",
+      "B. Chịu sự áp bức, bóc lột của thực dân, phong kiến và tư sản",
       "C. Xuất thân từ nông dân là chủ yếu",
       "D. Không có sự gắn kết với các giai cấp, tầng lớp khác"
     ],
@@ -278,7 +278,7 @@ export const questions = [
   },
   {
     "article": "Bài 1",
-    "text": "Câu 24: Điền từ còn thiếu vào chỗ trống: Giai cấp công nhân và nhân dân lao động là cơ sở..., cơ sở... của Đảng Cộng sản, là nguồn bổ sung lực lượng phụ cho Đảng.",
+    "text": "Câu 24: Điền từ còn thiếu: Giai cấp công nhân là cơ sở..., nhân dân lao động là cơ sở... của Đảng Cộng sản, đồng thời là nguồn bổ sung lực lượng phong phú cho Đảng.",
     "options": [
       "A. Chính trị - xã hội",
       "B. Kinh tế - xã hội",
@@ -427,8 +427,8 @@ export const questions = [
     "targets": [
       "Đảng Cộng sản là _____ quan trọng nhất để giai cấp công nhân thực hiện thắng lợi sứ mệnh lịch sử của mình:",
       "Giai cấp công nhân là _____ của quá trình sản xuất vật chất hiện đại:",
-      "Giai cấp công nhân đại diện cho _____ tiên tiến:",
-      "Giai cấp công nhân đại diện cho _____ hiện đại:"
+      "Giai cấp công nhân đại diện cho _____ hiện đại:",
+      "Giai cấp công nhân đại diện cho _____ tiên tiến:"
     ],
     "answer": {
       "0": ["0"],
@@ -447,8 +447,8 @@ export const questions = [
       "giai cấp cách mạng"
     ],
     "targets": [
-      "Thực hiện sự nghiệp giải phóng thế giới ấy, đó là sứ mệnh lịch sử của _____ hiện đại:",
-      "Sứ mệnh lịch sử của giai cấp công nhân là _____ khỏi áp bức, bất công, bóc lột:",
+      "Giai cấp có sứ mệnh lịch sử thực hiện sự nghiệp giải phóng mình, nhân dân lao động và toàn thể nhân loại là _____:",
+      "Sứ mệnh lịch sử của giai cấp công nhân là _____ giai cấp công nhân, nhân dân lao động và toàn thể nhân loại khỏi áp bức, bất công, bóc lột:",
       "Giai cấp công nhân là _____ và có tinh thần cách mạng triệt để:"
     ],
     "answer": {
@@ -497,17 +497,17 @@ export const questions = [
       "Giai cấp công nhân Việt Nam hiện nay đã tăng cả về số lượng và chất lượng",
       "Giai cấp công nhân đại diện cho phương thức sản xuất tiên tiến và lực lượng sản xuất hiện đại",
       "Đảng Cộng sản là nhân tố khách quan quan trọng nhất để giai cấp công nhân thực hiện thắng lợi sứ mệnh lịch sử của mình",
-      "Sự trưởng thành của Đảng Cộng sản – Hạt nhân chính trị quan trọng của giai cấp công nhân"
+      "Sự trưởng thành của Đảng Cộng sản, hạt nhân chính trị của giai cấp công nhân, là điều kiện chủ quan quan trọng để thực hiện sứ mệnh lịch sử của giai cấp công nhân"
     ],
     "answer": ["Đúng", "Đúng", "Sai", "Đúng"],
     "type": "truefalse"
   },
   {
     "article": "Bài 1",
-    "text": "Câu 40: Chủ nghĩa xã hội khoa học ra đời dựa trên cơ sở của những tiền đề nào? (Chọn 2 đáp án đúng)",
+    "text": "Câu 40: Ngoài điều kiện kinh tế – xã hội, chủ nghĩa xã hội khoa học ra đời dựa trên hai nhóm tiền đề nào sau đây? (Chọn 2 đáp án đúng)",
     "options": [
-      "A. Tiền đề khoa lịch sử",
-      "B. Tiền đề khoa học xã hội",
+      "A. Tiền đề thần học",
+      "B. Tiền đề chiêm tinh học",
       "C. Tiền đề tư tưởng lý luận",
       "D. Tiền đề khoa học tự nhiên"
     ],
@@ -662,15 +662,15 @@ export const questions = [
   },
   {
     "article": "Bài 2",
-    "text": "Câu 13: Chọn phương án sai:",
+    "text": "Câu 13: Những phương án nào sau đây SAI về quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa ở Việt Nam? (Chọn 2 đáp án sai)",
     "options": [
       "A. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa nhưng có sự tiếp thu, kế thừa toàn bộ các lĩnh vực đã tạo ra dưới chế độ tư bản chủ nghĩa.",
       "B. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa tức là bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa.",
       "C. Con đường đi lên chủ nghĩa xã hội của nước ta là sự phát triển quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa.",
       "D. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là con đường cách mạng tất yếu chủ quan, con đường xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội."
     ],
-    "answer": "A",
-    "type": "single"
+    "answer": ["A", "D"],
+    "type": "multiple"
   },
   {
     "article": "Bài 2",
@@ -749,9 +749,9 @@ export const questions = [
     "text": "Câu 20: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
     "options": [
       "Thực chất của thời kỳ quá độ lên chủ nghĩa xã hội là thời kỳ cải biến cách mạng từ xã hội tiền tư bản chủ nghĩa và tư bản chủ nghĩa sang xã hội xã hội chủ nghĩa",
-      "Quá độ trực tiếp từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đối với những nước đã trải qua chủ nghĩa tư bản phát triển",
-      "Quá độ gián tiếp từ chủ nghĩa tư bản lên chủ nghĩa cộng sản đối với những nước chưa trải qua chủ nghĩa tư bản phát triển",
-      "Học thuyết hình thái kinh tế - xã hội của chủ nghĩa Mác - Lênin đã chỉ rõ: Lịch sử xã hội đã trải qua 4 hình thái kinh tế - xã hội"
+      "Quá độ trực tiếp lên chủ nghĩa xã hội là hình thức quá độ từ chủ nghĩa tư bản đối với những nước đã trải qua chủ nghĩa tư bản phát triển",
+      "Quá độ gián tiếp lên chủ nghĩa xã hội là hình thức quá độ đối với những nước chưa trải qua chủ nghĩa tư bản phát triển",
+      "Học thuyết hình thái kinh tế – xã hội của chủ nghĩa Mác – Lênin phân chia quá trình phát triển của xã hội loài người thành bốn hình thái kinh tế – xã hội cơ bản"
     ],
     "answer": ["Đúng", "Đúng", "Đúng", "Sai"],
     "type": "truefalse"
@@ -901,7 +901,7 @@ export const questions = [
     "text": "Câu 32: Thời kỳ quá độ lên chủ nghĩa xã hội có những mâu thuẫn nào cần giải quyết? (Chọn 2 đáp án đúng)",
     "options": [
       "A. Mâu thuẫn giữa các tầng lớp lao động và tư sản hoàn toàn biến mất.",
-      "B. Mâu thuẫn giữa năng suất lao động và nhu cầu phát triển xã hội.",
+      "B. Các thành phần kinh tế đã hoàn toàn đồng nhất về quan hệ sở hữu và lợi ích, không còn mâu thuẫn.",
       "C. Mâu thuẫn giữa các thành phần kinh tế khác nhau trong xã hội.",
       "D. Mâu thuẫn giữa cái cũ và cái mới trong xã hội."
     ],
@@ -1160,7 +1160,7 @@ export const questions = [
   },
   {
     "article": "Bài 3",
-    "text": "Câu 13: Nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam có đặc điểm như thế nào?",
+    "text": "Câu 13: Đặc điểm nào trực tiếp thể hiện cơ sở pháp lý của việc tổ chức và hoạt động của Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam?",
     "options": [
       "A. Nhà nước hoạt động trên nền tảng của khối liên minh công – nông – trí thức.",
       "B. Nhà nước đặt dưới sự lãnh đạo của Đảng Cộng sản.",
@@ -1176,7 +1176,7 @@ export const questions = [
     "options": [
       "A. Mọi người đều bình đẳng trong quyết định các vấn đề chung.",
       "B. Quyền lực tập trung vào một số cá nhân.",
-      "C. Không có sự phân chia giai cấp và quyền lực.",
+      "C. Chưa có sự phân chia giai cấp; quyền lực thuộc cộng đồng.",
       "D. Hình thành tổ chức chính trị phức tạp."
     ],
     "answer": ["A", "C"],
@@ -1188,7 +1188,7 @@ export const questions = [
     "options": [
       "A. Nền dân chủ của đa số nhân dân lao động.",
       "B. Nền dân chủ mang tính cá nhân.",
-      "C. Nền dân chủ mang tính tập thể.",
+      "C. Nền dân chủ mang bản chất giai cấp công nhân.",
       "D. Nền dân chủ của giai cấp tư sản."
     ],
     "answer": ["A", "C"],
@@ -1244,11 +1244,11 @@ export const questions = [
   },
   {
     "article": "Bài 3",
-    "text": "Câu 20: Tại sao quyền lực nhà nước ở Việt Nam được tổ chức theo nguyên tắc thống nhất?",
+    "text": "Câu 20: Quyền lực nhà nước ở Việt Nam thống nhất nhưng được tổ chức thực hiện theo nguyên tắc nào?",
     "options": [
       "A. Để tăng cường sự kiểm soát của nhà nước",
       "B. Để giảm thiểu vai trò của các tổ chức phi chính phủ",
-      "C. Để đảm bảo sự phối hợp và kiểm soát giữa các cơ quan lập pháp, hành pháp và tư pháp",
+      "C. Có sự phân công, phối hợp và kiểm soát giữa các cơ quan nhà nước trong việc thực hiện các quyền lập pháp, hành pháp, tư pháp",
       "D. Để kiểm soát chặt chẽ các hoạt động kinh tế"
     ],
     "answer": "C",
@@ -1294,10 +1294,10 @@ export const questions = [
     "article": "Bài 3",
     "text": "Câu 24: Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam được xây dựng dựa trên những nguyên tắc nào sau đây? (Chọn 2 đáp án đúng)",
     "options": [
-      "A. Nhà nước quản lý xã hội bằng hiện pháp, pháp luật",
+      "A. Nhà nước quản lý xã hội bằng Hiến pháp và pháp luật",
       "B. Quyền lực nhà nước thống nhất, có phân công, phối hợp và kiểm soát",
       "C. Quyền lực nhà nước là tối cao, không cần kiểm soát",
-      "D. Đáng lãnh đạo nhà nước theo phương thức mệnh lệnh"
+      "D. Đảng lãnh đạo Nhà nước chỉ bằng mệnh lệnh, không cần tuân thủ Hiến pháp và pháp luật"
     ],
     "answer": ["A", "B"],
     "type": "multiple"
@@ -1397,10 +1397,10 @@ export const questions = [
     "article": "Bài 3",
     "text": "Câu 32: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
     "options": [
-      "Bản chất dân chủ xã hội chủ nghĩa ở Việt Nam được thực hiện thông qua các thức dân chủ gián tiếp và dân chủ trực tiếp",
+      "Dân chủ xã hội chủ nghĩa ở Việt Nam được thực hiện thông qua các hình thức dân chủ gián tiếp và dân chủ trực tiếp",
       "Đảng ta khẳng định một trong những đặc trưng của chủ nghĩa xã hội Việt Nam là do nhân dân làm chủ",
       "Quốc hội là cơ quan quyền lực nhà nước cao nhất hoạt động theo nhiệm kỳ 3 năm",
-      "Trong hoạt động của nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam, các cơ quan của nhà nước không được phân quyền rõ ràng"
+      "Trong Nhà nước pháp quyền xã hội chủ nghĩa Việt Nam, các cơ quan nhà nước thực hiện quyền lực mà không cần phân công, phối hợp và kiểm soát"
     ],
     "answer": ["Đúng", "Đúng", "Sai", "Sai"],
     "type": "truefalse"
@@ -1447,7 +1447,7 @@ export const questions = [
       "Dân chủ tư sản là hình thức dân chủ gắn với quyền lực chính trị của giai cấp tư sản",
       "Với tư cách là một hình thái nhà nước, một chế độ chính trị thì trong lịch sử nhân loại, cho đến nay có năm nền (chế độ) dân chủ",
       "Nền dân chủ chủ nô, gắn với chế độ chiếm hữu nô lệ",
-      "Dân chủ xã hội chủ nghĩa là công cụ để giai cấp công nhân thực hiện chuyên chính với các giai cấp khác"
+      "Dân chủ xã hội chủ nghĩa chỉ bảo đảm quyền làm chủ cho riêng giai cấp công nhân, không bảo đảm quyền làm chủ của các tầng lớp nhân dân lao động khác"
     ],
     "answer": ["Đúng", "Sai", "Đúng", "Sai"],
     "type": "truefalse"
@@ -1458,8 +1458,8 @@ export const questions = [
     "options": [
       "Dân chủ xã hội chủ nghĩa là nền dân chủ cao hơn về chất so với nền dân chủ tư sản",
       "Trong xã hội tư bản, dân chủ thực chất thuộc về giai cấp tư sản",
-      "Dân chủ xã hội chủ nghĩa là sự phủ định sách tron những thành tựu dân chủ trước đó",
-      "Dân chủ là một phạm trù mang tính lịch sử, gắn với sự xuất hiện và phát triển của nhà nước"
+      "Dân chủ xã hội chủ nghĩa là sự phủ định sạch trơn những thành tựu dân chủ trước đó",
+      "Với tư cách là một chế độ chính trị, dân chủ là một phạm trù lịch sử, gắn với sự xuất hiện và phát triển của nhà nước"
     ],
     "answer": ["Đúng", "Đúng", "Sai", "Đúng"],
     "type": "truefalse"
@@ -1596,14 +1596,14 @@ export const questions = [
   },
   {
     "article": "Bài 4",
-    "text": "Câu 10: Cơ cấu xã hội – giai cấp ở Việt Nam thời kỳ quá độ lên chủ nghĩa xã hội bao gồm mấy giai cấp, tầng lớp?",
+    "text": "Câu 10: Trong mục về vị trí, vai trò các giai cấp, tầng lớp cơ bản ở Việt Nam của giáo trình CNXHKH năm 2019, có mấy nhóm được trình bày (tính cả phụ nữ và thanh niên)?",
     "options": [
       "A. 3",
       "B. 4",
       "C. 5",
       "D. 6"
     ],
-    "answer": "C",
+    "answer": "D",
     "type": "single"
   },
   {
@@ -1675,7 +1675,7 @@ export const questions = [
       "C. 2",
       "D. 4"
     ],
-    "answer": "C",
+    "answer": "A",
     "type": "single"
   },
   {
@@ -1933,7 +1933,7 @@ export const questions = [
     "options": [
       "A. Tăng vai trò tôn giáo đối với các giai cấp, tầng lớp.",
       "B. Giảm vai trò kinh tế trong xã hội.",
-      "C. Phát huy tính thiên đoàn kết.",
+      "C. Phát huy tinh thần đoàn kết, thống nhất.",
       "D. Tạo sự đồng thuận giữa các lực lượng."
     ],
     "answer": ["C", "D"],
@@ -1954,24 +1954,26 @@ export const questions = [
     ],
     "targets": [
       "Nội dung/phương hướng của liên minh:",
-      "Thành phần/yếu tố của liên minh:"
+      "Các lực lượng xã hội tham gia liên minh:",
+      "Chủ thể lãnh đạo liên minh:"
     ],
     "answer": {
-      "0": ["0", "1", "2", "3", "4"],
-      "1": ["5", "6", "7"]
+      "0": ["0", "1", "2", "3"],
+      "1": ["5", "6", "7"],
+      "2": ["4"]
     },
     "type": "dragdrop"
   },
   {
     "article": "Bài 4",
-    "text": "Câu 38: Trong thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội – giai cấp gồm mấy giai cấp, tầng lớp cơ bản?",
+    "text": "Câu 38: Nhóm nào sau đây gồm đầy đủ ba lực lượng trong liên minh công – nông – trí thức ở Việt Nam?",
     "options": [
-      "A. 5",
-      "B. 6",
-      "C. 3",
-      "D. 4"
+      "A. Công nhân, doanh nhân và thanh niên",
+      "B. Công nhân, nông dân và đội ngũ trí thức",
+      "C. Nông dân, doanh nhân và phụ nữ",
+      "D. Trí thức, doanh nhân và thanh niên"
     ],
-    "answer": "A",
+    "answer": "B",
     "type": "single"
   },
   {
@@ -2073,12 +2075,12 @@ export const questions = [
   },
   {
     "article": "Bài 5",
-    "text": "Câu 5: Tôn giáo là một phạm trù thuộc:",
+    "text": "Câu 5: Xét về bản chất, tôn giáo là gì?",
     "options": [
-      "A. Hình thái ý thức xã hội",
-      "B. Cơ sở hạ tầng",
-      "C. Kiến trúc thượng tầng",
-      "D. Tồn tại xã hội"
+      "A. Một hình thái ý thức xã hội phản ánh hiện thực một cách hư ảo, thông qua các yếu tố siêu nhiên",
+      "B. Một bộ phận của cơ sở hạ tầng kinh tế",
+      "C. Một quy luật kinh tế khách quan",
+      "D. Một ngành sản xuất vật chất"
     ],
     "answer": "A",
     "type": "single"
@@ -2181,7 +2183,7 @@ export const questions = [
   },
   {
     "article": "Bài 5",
-    "text": "Câu 14: Vận dụng kiến thức về đặc điểm tôn giáo ở Việt Nam, hãy xác định số lượng tôn giáo đã được công nhận và cấp đăng ký hoạt động ở Việt Nam:",
+    "text": "Câu 14: Theo số liệu năm 2025, ở Việt Nam có bao nhiêu tôn giáo được công nhận và cấp đăng ký hoạt động?",
     "options": [
       "A. 5",
       "B. 43",
@@ -2217,7 +2219,7 @@ export const questions = [
   },
   {
     "article": "Bài 5",
-    "text": "Câu 17: Đâu là đặc trưng quan trọng nhất, là cơ sở để liên kết các thành viên của dân tộc tạo thành nền tảng vững chắc của cộng đồng dân tộc?",
+    "text": "Câu 17: Đối với dân tộc theo nghĩa dân tộc – quốc gia, đặc trưng nào là cơ sở quan trọng liên kết các thành viên thành một cộng đồng?",
     "options": [
       "A. Có thể cư trú tập trung trên một vùng lãnh thổ của một quốc gia, hoặc cư trú đan xen với nhiều dân tộc anh em",
       "B. Có ngôn ngữ riêng và có thể có chữ viết riêng làm công cụ giao tiếp",
@@ -2361,7 +2363,7 @@ export const questions = [
   },
   {
     "article": "Bài 5",
-    "text": "Câu 29: Kéo thả các đáp án khớp với các phát biểu dưới đây:",
+    "text": "Câu 29: Phân loại các cách diễn đạt dưới đây theo mục đặc trưng dân tộc – quốc gia hoặc bộ ba đặc trưng dân tộc – tộc người trong giáo trình. Các đặc trưng của hai nghĩa dân tộc có thể liên quan nhau.",
     "options": [
       "Lãnh thổ chung",
       "Ngôn ngữ chung",
@@ -2371,8 +2373,8 @@ export const questions = [
       "Ý thức tự giác tộc người"
     ],
     "targets": [
-      "Đặc trưng của dân tộc (quốc gia):",
-      "Đặc trưng của dân tộc (tộc người):"
+      "Đặc trưng được nêu trong mục dân tộc – quốc gia:",
+      "Bộ ba đặc trưng được nêu trong mục dân tộc – tộc người:"
     ],
     "answer": {
       "0": ["0", "1", "2"],
@@ -2388,12 +2390,12 @@ export const questions = [
       "Hệ thống tín đồ",
       "Niềm tin",
       "Tâm lý",
-      "Kinh tế",
+      "Kinh tế – xã hội",
       "Nhận thức"
     ],
     "targets": [
-      "Yếu tố liên quan đến tôn giáo:",
-      "Nguồn gốc của tôn giáo:"
+      "Biểu hiện, thiết chế của tôn giáo:",
+      "Các nguồn gốc của tôn giáo:"
     ],
     "answer": {
       "0": ["0", "1", "2"],
@@ -2405,15 +2407,15 @@ export const questions = [
     "article": "Bài 5",
     "text": "Câu 31: Kéo thả các đáp án khớp với các phát biểu dưới đây:",
     "options": [
-      "Dân tộc tộc người",
+      "Dân tộc – tộc người",
       "Phương thức sinh hoạt kinh tế chung",
       "Bình đẳng dân tộc",
       "Lãnh thổ"
     ],
     "targets": [
       "Khái niệm dân tộc theo nghĩa hẹp được gọi là gì?:",
-      "Đặc trưng quan trọng nhất của dân tộc là gì?:",
-      "Nội dung cơ bản của cương lĩnh dân tộc Mác-Lênin là gì?:",
+      "Đặc trưng về kinh tế liên kết các thành viên của dân tộc – quốc gia là gì?:",
+      "Một trong ba nội dung cơ bản của cương lĩnh dân tộc Mác – Lênin là gì?:",
       "Yếu tố thiêng liêng đối với dân tộc (quốc gia) và từng thành viên dân tộc là gì?:"
     ],
     "answer": {
@@ -2493,9 +2495,9 @@ export const questions = [
     ],
     "targets": [
       "Thực hiện quyền tự quyết dân tộc phải đứng vững trên lập trường của giai cấp nào?:",
-      "Yếu tố thúc đẩy bình đẳng dân tộc là gì?:",
+      "Bình đẳng dân tộc cần được thể chế hóa trong Hiến pháp và pháp luật nhằm tạo lập _____ cho việc thực hiện quyền bình đẳng:",
       "Giải pháp quan trọng để liên kết các nội dung của Cương lĩnh dân tộc thành một chỉnh thể:",
-      "Đây là quyền thiêng liêng của các dân tộc, không phân biệt dân tộc lớn hay nhỏ:"
+      "Quyền bảo đảm các dân tộc dù lớn hay nhỏ đều có nghĩa vụ và quyền lợi ngang nhau được gọi là gì?:"
     ],
     "answer": {
       "0": ["0"],
@@ -2736,7 +2738,7 @@ export const questions = [
   },
   {
     "article": "Bài 6",
-    "text": "Câu 15: Chọn đáp án sai về mô hình gia đình Việt Nam hiện đại ngày nay?",
+    "text": "Câu 15: Phương án nào KHÔNG thuộc ba mô hình người chủ gia đình hiện đại được trình bày trong giáo trình CNXHKH năm 2019?",
     "options": [
       "A. Ông bà là người làm chủ gia đình",
       "B. Người phụ nữ - người vợ làm chủ gia đình",
@@ -2879,7 +2881,7 @@ export const questions = [
     ],
     "targets": [
       "Biến đổi về chức năng gia đình:",
-      "Biến đổi về quy mô gia đình:"
+      "Biến đổi về quy mô và hình thức gia đình:"
     ],
     "answer": {
       "0": ["0", "1", "2"],
