@@ -1,5 +1,7 @@
 # Cập nhật ngân hàng câu hỏi ngày 10/10/2026
 
+> Lịch sử cập nhật: ngày 17/10/2026, người dùng yêu cầu lấy ZIP làm chuẩn. Các câu CNXHKH bên dưới đã được đồng bộ lại theo ZIP; xem [bản đồng bộ mới](DONG_BO_ZIP.md).
+
 Đã sửa 44 câu: 34 câu trong `questions.js`, 10 câu trong `newData.ts`. Tổng số vẫn là 260 câu (225 CNXHKH và 35 Kinh tế chính trị bổ sung). Đây là cập nhật mã nguồn web; ZIP và các file Word gốc giữ nguyên.
 
 ## Các thay đổi về đáp án và cách chấm

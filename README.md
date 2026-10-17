@@ -182,6 +182,8 @@ npm run build
 
 ## 📈 Bảng Theo Dõi Tiến Độ Triển Khai (Progress Tracker)
 
+**Nguồn đáp án hiện tại (17/10/2026):** 225 câu CNXHKH được đồng bộ theo nội dung và đáp án màu đỏ trong ZIP do người dùng cung cấp. Yêu cầu khớp ZIP thay thế các điều chỉnh nội dung ngày 10/10. Bộ bổ sung 35 câu giữ nguyên. Xem [ghi nhận đồng bộ](DONG_BO_ZIP.md).
+
 ### Lưu câu và luyện lại
 
 - Nút **Lưu để làm lại** trên mỗi câu cho phép lưu hoặc bỏ lưu thủ công.

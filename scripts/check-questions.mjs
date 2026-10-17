@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { build } from 'esbuild';
 import { fileURLToPath } from 'node:url';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { questions } from '../questions.js';
 
 // Exercise the same data.ts adapter used by the web app, including supplementary data.
@@ -75,25 +77,24 @@ function selected(q) {
   return indices.map(i => q.options[i].replace(/^[A-D]\.\s*/, ''));
 }
 
-// Curriculum regressions: verify substantive answers after the app's conversion.
-assert.match(selected(find('1', 'Câu 11:'))[0], /Trình độ khoa học kỹ thuật chưa cao/);
-assert.match(selected(find('1', 'Câu 24:'))[0], /Giai cấp - xã hội/);
-const incorrectStatements = find('2', 'Câu 13:');
-assert.equal(incorrectStatements.type, 'multi');
-assert.equal(selected(incorrectStatements).length, 2);
-assert.ok(selected(incorrectStatements).some(text => text.includes('toàn bộ')));
-assert.ok(selected(incorrectStatements).some(text => text.includes('tất yếu chủ quan')));
-const democraticForms = find('3', 'Câu 33:');
-assert.deepEqual(democraticForms.correct['2'], ['Chủ thể quyền lực']);
-assert.deepEqual(democraticForms.correct['3'], ['Dân chủ đại diện']);
-assert.deepEqual(selected(find('4', 'Câu 10:')), ['6']);
-assert.deepEqual(selected(find('4', 'Câu 16:')), ['3']);
-const alliance = find('4', 'Câu 37:');
-const leadership = alliance.columns.findIndex(text => text.includes('Chủ thể lãnh đạo'));
-assert.ok(leadership >= 0);
-assert.deepEqual(alliance.correct[String(leadership)], ['Đảng Cộng sản']);
-assert.ok(!alliance.correct['0'].includes('Đảng Cộng sản'));
-assert.match(selected(find('4', 'Câu 38:'))[0], /Công nhân, nông dân và đội ngũ trí thức/);
+// The supplied ZIP is the user's authority. These hashes were extracted from its
+// DOCX paragraphs and red answer runs, independently of the application adapter.
+const manifest = JSON.parse(readFileSync(new URL('../fixtures/cnxh-zip-answer-key.json', import.meta.url), 'utf8'));
+const canonical = value => Array.isArray(value) ? value.map(canonical)
+  : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])])) : value;
+assert.equal(manifest.questions.length, questions.length);
+questions.forEach((question, index) => {
+  const expected = manifest.questions[index];
+  const digest = createHash('sha256').update(JSON.stringify(canonical(question))).digest('hex');
+  assert.equal(question.article, expected.article);
+  assert.ok(question.text.startsWith(`Câu ${expected.number}:`));
+  assert.equal(digest, expected.sha256, `ZIP mismatch: ${question.article}, câu ${expected.number}`);
+});
+const workerMatching = find('1', 'Câu 35:');
+assert.deepEqual(Object.values(workerMatching.correct).flat(), ['nhân tố chủ quan', 'chủ thể', 'lực lượng sản xuất', 'phương thức sản xuất']);
+assert.match(workerMatching.columns[2], /tiên tiến/);
+assert.match(workerMatching.columns[3], /hiện đại/);
+assert.equal(find('1', 'Câu 39:').options[1].correct, true);
 assert.match(selected(find('new-questions', 'Câu 33(Bài 2):'))[0], /có định kỳ/);
 assert.match(selected(find('new-questions', 'Câu 30(Bài 4):'))[0], /^Quy luật lợi nhuận bình quân$/);
 assert.match(selected(find('new-questions', 'Câu 35(Bài 4):'))[0], /đầu tư trực tiếp hoặc cho vay/);
@@ -104,4 +105,4 @@ surplusExercise.options.forEach((option, i) => {
   assert.equal(option.correct, proposedValues[i] === 2000 * (1 + rates[i] / 100));
 });
 
-console.log('PASS: 260 questions; counts, choices, answer indices, true/false values, drag targets and curriculum regressions.');
+console.log('PASS: all 225 CNXHKH questions match the ZIP fingerprint; all 260 questions pass structure and adapter checks.');
