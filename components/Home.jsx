@@ -95,7 +95,8 @@ export function Home({
   onLogout,
   isExamMode,
   onToggleExamMode,
-  onOpenLeaderboard
+  onOpenLeaderboard,
+  reviewStorageError
 }) {
   const [language, setLanguage] = useState('vi')
   const t = content[language]
@@ -122,7 +123,7 @@ export function Home({
 
   // Dynamic calculation: sum questions from all base topics, excluding aggregate reviews & specialized categories
   const totalQuestions = useMemo(() => {
-    const standardKeys = Object.keys(data).filter(k => !k.startsWith('review-') && !k.startsWith('type-'));
+    const standardKeys = ['1', '2', '3', '4', '5', '6', 'new-questions'];
     return standardKeys.reduce((sum, key) => sum + (data[key]?.questions?.length || 0), 0);
   }, [data]);
 
@@ -154,6 +155,21 @@ export function Home({
         />
 
         <main className="mt-8 space-y-12">
+          <section aria-label="Danh sách ôn lại" className="space-y-4">
+            <h2 className="text-xl font-bold">Ôn lại của bạn</h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400">Lưu câu cần luyện thêm. Câu làm sai tự động được lưu và được bỏ khỏi danh sách khi bạn trả lời đúng. Danh sách được giữ trên trình duyệt này theo tài khoản.</p>
+            {reviewStorageError && <p role="alert" className="rounded-xl bg-amber-100 p-3 text-sm text-amber-950">{reviewStorageError}</p>}
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[['saved-questions', 'Câu đã lưu để làm lại', 'Bấm “Lưu để làm lại” ở câu bất kỳ.'], ['wrong-questions', 'Câu làm sai', 'Chưa có câu làm sai cần ôn lại.']].map(([id, title, emptyText]) => {
+                const count = data[id]?.questions.length || 0;
+                return <button key={id} type="button" onClick={() => onTopicSelect(id)} disabled={!count}
+                  className="glass-panel rounded-2xl border border-slate-200 dark:border-white/15 p-5 text-left min-h-[100px] enabled:hover:border-cyan-500 disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-500">
+                  <span className="block font-semibold">{title} · {count} câu</span>
+                  <span className="mt-2 block text-sm text-slate-600 dark:text-slate-400">{count ? 'Bắt đầu ôn lại →' : emptyText}</span>
+                </button>;
+              })}
+            </div>
+          </section>
           {stages.map((stage, stageIndex) => (
             <section key={stage.key} id={stage.id} className="space-y-4">
               {/* Section Header */}

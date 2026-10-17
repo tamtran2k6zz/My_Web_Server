@@ -1,6 +1,7 @@
 export type QuestionType = 'single' | 'multi' | 'truefalse' | 'drag' | 'match' | 'fillblank';
 
 export interface QuestionBase {
+  id?: string;
   type: QuestionType;
   q: string;
   html?: boolean; // If true, render q as HTML

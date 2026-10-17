@@ -12,6 +12,7 @@ import { ThemeToggle } from './components/ThemeToggle';
 import { calculateGrade, saveExamResult, ExamRecord, QuestionAnswerRecord } from './services/examService';
 import { auth, loginWithGoogle, logout, isValidIctuEmail, maskEmail } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import { emptyReview, parseReview, recordResult, reviewKey, toggleSaved, StudyReview } from './services/studyReview';
 
 // Helper to clean prefix like "A. ", "B. ", "C. ", "D. "
 function cleanOptionText(opt: string): string {
@@ -62,7 +63,10 @@ function randomizeQuestionOptions(question: any) {
 function App() {
   const [activeTopicId, setActiveTopicId] = useState<string | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
+  const [sessionTopic, setSessionTopic] = useState<Topic | null>(null);
+  const [sessionId, setSessionId] = useState(0);
+  const [reviewStore, setReviewStore] = useState<{ owner: string; value: StudyReview }>({ owner: '', value: emptyReview() });
+  const [storageError, setStorageError] = useState('');
   const [user, setUser] = useState<any>(null);
   const [loadingAuth, setLoadingAuth] = useState(true);
   const [authError, setAuthError] = useState<string | null>(null);
@@ -76,6 +80,31 @@ function App() {
   const [examStartTime, setExamStartTime] = useState<number>(Date.now());
   const [examDuration, setExamDuration] = useState<number>(1800);
   const [answerResults, setAnswerResults] = useState<Record<number, boolean>>({});
+  const score = Object.values(answerResults).filter(Boolean).length;
+  const review = reviewStore.owner === user?.uid ? reviewStore.value : emptyReview();
+
+  useEffect(() => {
+    if (!user?.uid) return;
+    try {
+      setReviewStore({ owner: user.uid, value: parseReview(localStorage.getItem(reviewKey(user.uid))) });
+      setStorageError('');
+    } catch {
+      setReviewStore({ owner: user.uid, value: emptyReview() });
+      setStorageError('Trình duyệt không cho phép lưu. Danh sách chỉ được giữ trong phiên này.');
+    }
+  }, [user?.uid]);
+
+  const updateReview = (update: (previous: StudyReview) => StudyReview) => {
+    if (!user?.uid) return;
+    const value = update(review);
+    setReviewStore({ owner: user.uid, value });
+    try {
+      localStorage.setItem(reviewKey(user.uid), JSON.stringify(value));
+      setStorageError('');
+    } catch {
+      setStorageError('Không lưu được trên trình duyệt. Danh sách chỉ được giữ trong phiên này.');
+    }
+  };
   const autoAdvanceTimerRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const clearAdvanceTimer = () => {
@@ -170,17 +199,26 @@ function App() {
     };
   }, []);
 
-  const handleTopicSelect = (id: string) => {
+  const personalTopics: Record<string, Topic> = {
+    'saved-questions': { name: 'CÂU ĐÃ LƯU ĐỂ LÀM LẠI', questions: Object.values(sourceData).flatMap(topic => topic.questions).filter(q => review.saved.includes(q.id!)) },
+    'wrong-questions': { name: 'CÂU LÀM SAI', questions: Object.values(sourceData).flatMap(topic => topic.questions).filter(q => review.wrong.includes(q.id!)) }
+  };
+
+  const handleTopicSelect = (id: string, retryTopic?: Topic) => {
+    const topic = retryTopic || personalTopics[id] || data[id];
+    if (!topic?.questions.length) return;
     clearAdvanceTimer();
     setActiveTopicId(id);
-    setScore(0);
+    setSessionTopic({ ...topic, questions: shuffleArray(topic.questions).map(randomizeQuestionOptions) });
+    setSessionId(previous => previous + 1);
+    setIsResultModalOpen(false);
+    setCurrentExamRecord(null);
     setCurrentQuestionIndex(0);
     setAnimDirection(null);
     setViewMode('single');
     setAnswerResults({});
     setExamStartTime(Date.now());
 
-    const topic = data[id];
     const qCount = topic ? topic.questions.length : 30;
     const duration = Math.min(2700, Math.max(600, qCount * 45));
     setExamDuration(duration);
@@ -190,6 +228,8 @@ function App() {
 
   const handleAnswerResult = (idx: number, isCorrect: boolean) => {
     setAnswerResults(prev => ({ ...prev, [idx]: isCorrect }));
+    const question = sessionTopic?.questions[idx];
+    if (question?.id) updateReview(previous => recordResult(previous, question.id!, isCorrect));
   };
 
   const handleFinishExam = () => {
@@ -233,11 +273,11 @@ function App() {
   const handleExit = () => {
     clearAdvanceTimer();
     setActiveTopicId(null);
-    setScore(0);
+    setAnswerResults({});
     setCurrentQuestionIndex(0);
   };
 
-  const activeTopic = activeTopicId ? data[activeTopicId] : null;
+  const activeTopic = activeTopicId ? sessionTopic : null;
 
   const handleNext = () => {
     clearAdvanceTimer();
@@ -288,7 +328,7 @@ function App() {
     await logout();
     setUser(null);
     setActiveTopicId(null);
-    setScore(0);
+    setAnswerResults({});
     setCurrentQuestionIndex(0);
     setAuthError(null);
   };
@@ -311,7 +351,8 @@ function App() {
     return (
       <>
         <Home 
-          data={data} 
+          data={{ ...data, ...personalTopics }}
+          reviewStorageError={storageError}
           onTopicSelect={handleTopicSelect} 
           user={user} 
           onLogin={handleLogin} 
@@ -361,6 +402,7 @@ function App() {
             {/* Exam Mode Timer */}
             {isExamMode && (
               <ExamTimer
+                key={sessionId}
                 initialSeconds={examDuration}
                 onTimeUp={handleFinishExam}
                 onSubmit={handleFinishExam}
@@ -425,17 +467,18 @@ function App() {
                       ? `Câu ${currentQuestionIndex + 1} / ${activeTopic.questions.length}`
                       : `Tổng cộng: ${activeTopic.questions.length} câu`}
                   </span>
-                  <span className="text-slate-500 dark:text-slate-400">• Tự động lưu tiến độ</span>
+                  <span className="text-slate-500 dark:text-slate-400">• Tự động lưu câu làm sai</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Question View Area */}
+          {storageError && <p role="alert" className="rounded-xl bg-amber-100 p-4 text-sm text-amber-950">{storageError}</p>}
           <div className={viewMode === 'single' ? "relative min-h-[380px]" : "space-y-6"}>
             {activeTopic.questions.map((q, idx) => (
               <div
-                key={`${activeTopicId}-${idx}`}
+                key={`${sessionId}-${q.id || idx}`}
                 className={
                   viewMode === 'single'
                     ? idx === currentQuestionIndex
@@ -447,7 +490,12 @@ function App() {
                 <QuestionCard
                   question={q}
                   index={idx}
-                  onCorrect={() => setScore(prev => prev + 1)}
+                  onCorrect={() => {}}
+                  isSaved={review.saved.includes(q.id!)}
+                  onToggleSave={() => {
+                    clearAdvanceTimer();
+                    if (q.id) updateReview(previous => toggleSaved(previous, q.id!));
+                  }}
                   onAnswer={handleAnswer}
                   onAnswerResult={handleAnswerResult}
                 />
@@ -456,6 +504,16 @@ function App() {
           </div>
 
           {/* Bottom Action Controls */}
+          {Object.keys(answerResults).length === activeTopic.questions.length && (
+            <section aria-label="Kết quả phần vừa làm" className="glass-panel rounded-2xl p-5 space-y-4 border border-slate-200 dark:border-white/10">
+              <p role="status" className="font-semibold">Đã hoàn thành phần này · Đúng {score}/{activeTopic.questions.length} câu</p>
+              <div className="flex flex-wrap gap-3">
+                <button type="button" onClick={() => handleTopicSelect(activeTopicId!, activeTopic)} className="min-h-[44px] rounded-xl bg-cyan-600 px-5 py-3 font-semibold text-white hover:bg-cyan-700">Làm lại toàn bộ</button>
+                <button type="button" onClick={() => handleTopicSelect('wrong-questions')} disabled={!personalTopics['wrong-questions'].questions.length} className="min-h-[44px] rounded-xl border border-slate-300 dark:border-white/20 px-5 py-3 font-semibold disabled:opacity-40">Ôn câu làm sai</button>
+                <button type="button" onClick={handleExit} className="min-h-[44px] rounded-xl border border-slate-300 dark:border-white/20 px-5 py-3 font-semibold">Về danh mục</button>
+              </div>
+            </section>
+          )}
           {viewMode === 'single' ? (
             <div className="space-y-4 pt-4 border-t border-white/10">
               <div className="flex justify-between items-center gap-3">
@@ -544,7 +602,7 @@ function App() {
         onClose={() => setIsResultModalOpen(false)}
         onRetry={() => {
           setIsResultModalOpen(false);
-          if (activeTopicId) handleTopicSelect(activeTopicId);
+          if (activeTopicId) handleTopicSelect(activeTopicId, activeTopic);
         }}
         onViewLeaderboard={() => {
           setIsResultModalOpen(false);

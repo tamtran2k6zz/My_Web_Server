@@ -98,3 +98,10 @@ if (newTopic && Array.isArray(newTopic.questions)) {
   });
 }
 
+// Assign identity before shuffling so saved questions work across all practice modes.
+Object.entries(data).forEach(([topicId, topic]) => {
+  topic.questions.forEach((question, index) => {
+    question.id = `${topicId}:${index}`;
+  });
+});
+

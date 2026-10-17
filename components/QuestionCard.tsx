@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Question } from '../types';
-import { Check, X, Circle, CheckCircle2, AlertCircle } from 'lucide-react';
+import { Check, X, Circle, CheckCircle2, AlertCircle, Bookmark } from 'lucide-react';
 import DragDropQuestion from './DragDropQuestion';
 import FillBlankQuestion from './FillBlankQuestion';
 
@@ -10,9 +10,11 @@ interface Props {
   onCorrect: () => void;
   onAnswer?: () => void;
   onAnswerResult?: (index: number, isCorrect: boolean) => void;
+  isSaved?: boolean;
+  onToggleSave?: () => void;
 }
 
-const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, onAnswerResult }) => {
+const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, onAnswerResult, isSaved, onToggleSave }) => {
   const [answered, setAnswered] = useState(false);
   const [selectedSingle, setSelectedSingle] = useState<number | null>(null);
   const [selectedMulti, setSelectedMulti] = useState<number[]>([]);
@@ -103,6 +105,13 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, o
           </span>
           <span className="text-slate-900 dark:text-slate-100 flex-1 text-pretty leading-relaxed">{renderContent()}</span>
         </h3>
+        {onToggleSave && (
+          <button type="button" onClick={onToggleSave} aria-pressed={!!isSaved}
+            className="mt-4 min-h-[44px] inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-white/20 px-4 py-2 text-sm font-semibold text-slate-800 dark:text-slate-100 hover:bg-slate-100 dark:hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-500">
+            <Bookmark size={18} fill={isSaved ? 'currentColor' : 'none'} />
+            {isSaved ? 'Đã lưu · Bỏ lưu' : 'Lưu để làm lại'}
+          </button>
+        )}
       </div>
 
       <div className="p-5 sm:p-6 space-y-4">
@@ -359,7 +368,7 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, o
           ) : (
             <>
               <AlertCircle className="text-rose-600 dark:text-rose-400 shrink-0" size={22} />
-              <span>Chưa chính xác. Hãy đối chiếu với đáp án đúng được làm nổi bật phía trên.</span>
+              <span>Chưa chính xác. Câu này đã được thêm vào danh sách câu làm sai. Hãy đối chiếu với đáp án đúng phía trên.</span>
             </>
           )}
         </div>

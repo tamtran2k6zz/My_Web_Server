@@ -182,6 +182,14 @@ npm run build
 
 ## 📈 Bảng Theo Dõi Tiến Độ Triển Khai (Progress Tracker)
 
+### Lưu câu và luyện lại
+
+- Nút **Lưu để làm lại** trên mỗi câu cho phép lưu hoặc bỏ lưu thủ công.
+- Câu trả lời sai tự động vào **Câu làm sai**; trả lời đúng trong lượt sau sẽ bỏ câu khỏi danh sách này, nhưng vẫn giữ dấu lưu thủ công.
+- Hai danh sách có tại **Ôn lại của bạn** trên trang chọn phần. Danh sách lưu trên trình duyệt theo tài khoản, không đồng bộ giữa các thiết bị.
+- Khi trả lời đủ các câu trong phần, nút **Làm lại toàn bộ** bắt đầu lượt mới với câu hỏi/đáp án xáo trộn, điểm và đồng hồ đặt lại. Danh sách đang luyện được giữ cố định trong lượt đó.
+- Chạy `npm run check:review` để kiểm tra việc lưu/bỏ lưu, ôn câu sai, lưu trữ và trạng thái nút.
+
 Ngân hàng hiện có 225 câu CNXHKH và 35 câu Kinh tế chính trị bổ sung. Nội dung đã được sửa theo đợt rà soát ngày 10/10/2026; xem [chi tiết cập nhật](CAP_NHAT_DAP_AN.md).
 
 Trước khi phát hành, chạy `npm run check:questions` để kiểm tra toàn bộ dữ liệu và các đáp án đã sửa, `npm run typecheck` để kiểm tra TypeScript, và `npm run build` để tạo bản production.

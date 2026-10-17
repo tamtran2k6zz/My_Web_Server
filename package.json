@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "check:questions": "node scripts/check-questions.mjs",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:review": "node scripts/check-study-review.mjs"
   },
   "dependencies": {
     "@types/canvas-confetti": "^1.9.0",
