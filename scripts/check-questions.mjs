@@ -88,14 +88,14 @@ questions.forEach((question, index) => {
   assert.equal(digest, expected.sha256, `ZIP mismatch: ${question.article}, câu ${expected.number}`);
 });
 const workerMatching = find('1', 'Câu 35:');
-assert.deepEqual(Object.values(workerMatching.correct).flat(), ['nhân tố chủ quan', 'chủ thể', 'lực lượng sản xuất', 'phương thức sản xuất']);
+assert.deepEqual(Object.values(workerMatching.correct).flat(), ['nhân tố chủ quan', 'chủ thể', 'phương thức sản xuất', 'lực lượng sản xuất']);
 assert.match(workerMatching.columns[2], /tiên tiến/);
 assert.match(workerMatching.columns[3], /hiện đại/);
 assert.equal(find('1', 'Câu 39:').options[1].correct, true);
 // The user requires matching-lesson evidence and the original question format.
 const review = JSON.parse(readFileSync(new URL('../fixtures/cnxh-syllabus-review.json', import.meta.url), 'utf8'));
 assert.equal(review.sources.length, 6);
-assert.equal(review.corrections.length, 4);
+assert.equal(review.corrections.length, 5);
 const ids = new Set();
 for (const correction of review.corrections) {
   const key = `${correction.article}:${correction.number}`;
@@ -136,4 +136,4 @@ assert.ok(Object.values(find('4', 'Câu 37:').correct)[1].includes('Đảng Cộ
 assert.equal(find('6', 'Câu 25:').options[2].correct, true);
 assert.equal(Object.values(data).flatMap(topic => topic.questions).length, 225);
 assert.equal(data['new-questions'], undefined);
-console.log('PASS: all 225 ZIP prompts, options and types preserved; 4 answer-only corrections with same-lesson evidence; every other answer matches ZIP.');
+console.log('PASS: all 225 ZIP prompts, options and types preserved; 5 answer-only corrections with same-lesson evidence; every other answer matches ZIP.');

@@ -4,8 +4,9 @@
 
 Bài 1 chỉ dùng PDF Bài 1; tương tự đến Bài 6. Không dùng giáo trình bài khác để chốt đáp án. Giữ nguyên 225 câu, tất cả phương án, phát biểu, vế kéo thả và loại câu của ZIP. Chỉ chỉnh khóa chấm có căn cứ rõ ràng trong đúng bài. Câu mơ hồ hoặc thiếu căn cứ giữ khóa ZIP và được ghi rõ, không coi là đã xác nhận đúng.
 
-## Bốn khóa chấm được sửa
+## Năm khóa chấm được sửa
 
+- Bài 1 câu 35: theo đúng đoạn trang 16 người dùng chỉ định, vế 3 → phương thức sản xuất; vế 4 → lực lượng sản xuất. Hai vế đầu giữ nguyên.
 - Bài 3 câu 33: hai cặp cuối phải là nhân dân → chủ thể quyền lực; dân chủ gián tiếp → dân chủ đại diện. Bài 3 trang 2, 11–12.
 - Bài 4 câu 10: A (3) → D (6), theo danh sách các nhóm ở Việt Nam tại mục 4.3.1, trang 8–10.
 - Bài 4 câu 37: Đảng Cộng sản chuyển sang nhóm thành phần/yếu tố, vì là tổ chức lãnh đạo, không phải tên một nội dung/phương hướng. Bài 4 trang 10, 12–15.
@@ -20,7 +21,7 @@ Bài 1 chỉ dùng PDF Bài 1; tương tự đến Bài 6. Không dùng giáo tr
 
 ## Những chỗ giữ nguyên và giới hạn xác minh
 
-Bài 1 câu 35 và 39 cùng có căn cứ trong chính Bài 1: trang 11 diễn đạt lực lượng sản xuất tiên tiến/phương thức sản xuất hiện đại; trang 16 diễn đạt phương thức sản xuất tiên tiến/lực lượng sản xuất hiện đại. Không chấm sai chỉ vì hoán đổi hai tính từ.
+Bài 1 câu 35 được sửa theo đúng đoạn trang 16 người dùng chỉ định trong ảnh: phương thức sản xuất tiên tiến và lực lượng sản xuất hiện đại. Câu 39 giữ Đúng ở phát biểu tương ứng, thống nhất với đoạn này. Trang 11 có cách diễn đạt khác, nhưng lần chỉnh câu 35 này lấy đoạn cụ thể trang 16 làm căn cứ.
 
 Bài 5 câu 14: 6 tôn giáo lớn được liệt kê ở trang 11 không đồng nghĩa số tôn giáo được công nhận/cấp đăng ký. Giữ C (16) của ZIP, nhưng PDF Bài 5 không đủ xác nhận con số này.
 
@@ -80,7 +81,7 @@ Các trang bên dưới tính từ trang PDF đầu tiên = 1. SHA-256 giúp nh�
 | 32 | 1→1,2; 2→3,4 | 1→1,2; 2→3,4 | 16–18 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 33 | A, B, D | A, B, D | 20–21 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 34 | Đúng, Đúng, Sai, Sai | Đúng, Đúng, Sai, Sai | 19 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
-| 35 | 1→1; 2→2; 3→3; 4→4 | 1→1; 2→2; 3→3; 4→4 | 11–12, 16, 18 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
+| 35 | 1→1; 2→2; 3→3; 4→4 | 1→1; 2→2; 3→4; 4→3 | 16, 18 | Đã chỉnh: Theo đoạn mục 1.2.4.1 trang 16 được người dùng chỉ định: phương thức sản xuất tiên tiến, lực lượng sản xuất hiện đại. Vì vậy vế 3 nhận “phương thức sản xuất”, vế 4 nhận “lực lượng sản xuất”. Hai vế đầu giữ nhân tố chủ quan và chủ thể (trang 18 và 16). |
 | 36 | 1→1; 2→2; 3→3 | 1→1; 2→2; 3→3 | 6–7, 13 | Chưa đủ căn cứ trực tiếp: Ý nghĩa sứ mệnh được trình bày; không có nguyên văn câu dẫn ở vế 1. |
 | 37 | Đúng, Sai, Đúng, Đúng | Đúng, Sai, Đúng, Đúng | 18–20 | Chưa đủ căn cứ trực tiếp: Ý 1 “lực lượng nòng cốt của Đảng” không có nguyên văn; PDF nêu cơ sở xã hội/nguồn bổ sung lực lượng. |
 | 38 | 1→1; 2→2; 3→3 | 1→1; 2→2; 3→3 | 18–19 | Chưa đủ căn cứ trực tiếp: Vế 1 “lực lượng nòng cốt của Đảng” không có nguyên văn trong PDF. |

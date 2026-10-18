@@ -40,6 +40,71 @@
   ],
   "corrections": [
     {
+      "article": "Bài 1",
+      "number": 35,
+      "before": {
+        "article": "Bài 1",
+        "text": "Câu 35: Kéo thả các đáp án khớp với các phát biểu từ 1 – 4 vế trái dưới đây:",
+        "options": [
+          "nhân tố chủ quan",
+          "chủ thể",
+          "lực lượng sản xuất",
+          "phương thức sản xuất"
+        ],
+        "targets": [
+          "Đảng Cộng sản là _____ quan trọng nhất để giai cấp công nhân thực hiện thắng lợi sứ mệnh lịch sử của mình",
+          "Giai cấp công nhân là _____ của quá trình sản xuất vật chất hiện đại",
+          "Giai cấp công nhân đại diện cho _____ tiên tiến",
+          "Giai cấp công nhân đại diện cho _____ hiện đại"
+        ],
+        "answer": {
+          "0": [
+            "0"
+          ],
+          "1": [
+            "1"
+          ],
+          "2": [
+            "2"
+          ],
+          "3": [
+            "3"
+          ]
+        },
+        "type": "dragdrop"
+      },
+      "changes": {
+        "answer": {
+          "0": [
+            "0"
+          ],
+          "1": [
+            "1"
+          ],
+          "2": [
+            "3"
+          ],
+          "3": [
+            "2"
+          ]
+        }
+      },
+      "pages": [
+        16,
+        18
+      ],
+      "references": [
+        {
+          "article": "Bài 1",
+          "pages": [
+            16,
+            18
+          ]
+        }
+      ],
+      "reason": "Theo đoạn mục 1.2.4.1 trang 16 được người dùng chỉ định: phương thức sản xuất tiên tiến, lực lượng sản xuất hiện đại. Vì vậy vế 3 nhận “phương thức sản xuất”, vế 4 nhận “lực lượng sản xuất”. Hai vế đầu giữ nhân tố chủ quan và chủ thể (trang 18 và 16)."
+    },
+    {
       "article": "Bài 3",
       "number": 33,
       "before": {
