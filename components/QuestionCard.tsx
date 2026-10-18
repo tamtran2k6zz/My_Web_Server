@@ -373,6 +373,11 @@ const QuestionCard: React.FC<Props> = ({ question, index, onCorrect, onAnswer, o
           )}
         </div>
       )}
+      {answered && question.syllabusNote && (
+        <p className="border-t border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-slate-900 px-5 py-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          {question.syllabusNote}
+        </p>
+      )}
     </article>
   );
 };

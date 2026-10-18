@@ -74,8 +74,8 @@ function find(topicId, prefix) {
   assert.equal(found.length, 1, prefix);
   return found[0];
 }
-// The supplied ZIP is the user's authority. These hashes were extracted from its
-// DOCX paragraphs and red answer runs, independently of the application adapter.
+// Keep the original ZIP immutable. The later user-supplied syllabus takes priority
+// only where a reviewed correction has an explicit source and rationale.
 const manifest = JSON.parse(readFileSync(new URL('../fixtures/cnxh-zip-answer-key.json', import.meta.url), 'utf8'));
 const canonical = value => Array.isArray(value) ? value.map(canonical)
   : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])])) : value;
@@ -92,6 +92,41 @@ assert.deepEqual(Object.values(workerMatching.correct).flat(), ['nhân tố ch�
 assert.match(workerMatching.columns[2], /tiên tiến/);
 assert.match(workerMatching.columns[3], /hiện đại/);
 assert.equal(find('1', 'Câu 39:').options[1].correct, true);
+// User constraint: no rewriting prompts, choices, statements or drag targets.
+for (const original of questions) {
+  const topicId = original.article.match(/\d+/)[0];
+  const number = original.text.match(/^Câu\s+(\d+):/)[1];
+  const adapted = find(topicId, `Câu ${number}:`);
+  assert.equal(adapted.q, original.text, `Prompt changed: ${original.article}/${number}`);
+  if (original.type === 'truefalse') assert.deepEqual(adapted.options.map(item => item.text), original.options);
+  else if (original.type === 'dragdrop') {
+    assert.deepEqual(adapted.items, original.options);
+    assert.deepEqual(adapted.columns, original.targets);
+  } else assert.deepEqual(adapted.options, original.options);
+}
+const review = JSON.parse(readFileSync(new URL('../fixtures/cnxh-syllabus-review.json', import.meta.url), 'utf8'));
+assert.equal(review.sources.length, 6);
+assert.equal(review.corrections.length, 8);
+const ids = new Set();
+for (const correction of review.corrections) {
+  const key = `${correction.article}:${correction.number}`;
+  assert.ok(!ids.has(key), `Duplicate correction ${key}`); ids.add(key);
+  const original = questions.find(q => q.article === correction.article && q.text.startsWith(`Câu ${correction.number}:`));
+  assert.deepEqual(original, correction.before, `Correction must target the reviewed ZIP version: ${key}`);
+  assert.ok(correction.pages.length && correction.reason, `Missing evidence: ${key}`);
+  assert.ok(Object.keys(correction.changes).every(field => ['answer', 'type'].includes(field)), `Only answer keys may change: ${key}`);
+  const adapted = find(correction.article.match(/\d+/)[0], `Câu ${correction.number}:`);
+  assert.equal(adapted.q, correction.changes.text || original.text);
+  assert.ok(adapted.syllabusNote.includes(correction.reason));
+}
+assert.equal(find('1', 'Câu 24:').correct, 3);
+assert.deepEqual(find('2', 'Câu 13:').correct, [0, 3]);
+assert.deepEqual(Object.values(find('3', 'Câu 33:').correct).flat(), ['Bầu cử Quốc hội', 'Thượng tôn pháp luật', 'Chủ thể quyền lực', 'Dân chủ đại diện']);
+assert.equal(find('4', 'Câu 10:').correct, 3);
+assert.equal(find('4', 'Câu 38:').correct, 1);
+assert.ok(Object.values(find('4', 'Câu 37:').correct)[1].includes('Đảng Cộng sản'));
+assert.equal(find('6', 'Câu 25:').options[2].correct, true);
 assert.equal(Object.values(data).flatMap(topic => topic.questions).length, 225);
 assert.equal(data['new-questions'], undefined, 'Supplementary bank must not enter any aggregate practice topic');
-console.log('PASS: 225 active questions match the ZIP; supplementary bank is excluded from app data.');
+assert.deepEqual(find('3', 'Câu 13:').correct, [0, 1, 2, 3]);
+console.log('PASS: 225 original questions/options preserved; 8 answer keys corrected against the syllabus; mappings and topic counts validated.');

@@ -5,6 +5,7 @@ export interface QuestionBase {
   type: QuestionType;
   q: string;
   html?: boolean; // If true, render q as HTML
+  syllabusNote?: string;
 }
 
 export interface SingleChoiceQuestion extends QuestionBase {

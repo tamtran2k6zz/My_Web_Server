@@ -1,5 +1,5 @@
 import { Topic } from './types';
-import { questions } from './questions.js';
+import { reviewedQuestions as questions } from './reviewedQuestions';
 
 export const data: Record<string, Topic> = {
   "1": {
@@ -62,6 +62,7 @@ questions.forEach((q: any) => {
   const questionObj: any = {
     type: type,
     q: q.text,
+    syllabusNote: q.syllabusNote,
   };
 
   if (type === 'single' || type === 'multi') {

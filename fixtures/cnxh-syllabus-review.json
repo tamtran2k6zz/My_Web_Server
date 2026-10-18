@@ -1,0 +1,343 @@
+{
+  "authority": "Six user-supplied syllabus PDFs; supersedes ZIP where explicitly corrected",
+  "sources": [
+    {
+      "article": "Bài 1",
+      "file": "Bài 1. Tổng quan về chủ nghĩa xã hội khoa học.pdf",
+      "path": "C:\\Users\\MSI\\OneDrive\\Tài liệu\\Đáp án các môn\\Chủ nghĩa khoa học\\Bài 1. Tổng quan về chủ nghĩa xã hội khoa học.pdf",
+      "sha256": "a4bae87324af1eb821b4b4d3f331029b7de78c6de673abc11e12af5bbea962ec"
+    },
+    {
+      "article": "Bài 2",
+      "file": "Bài 2- Chủ nghĩa xã hội và thời kỳ quá độ lên chủ nghĩa xã hội.pdf",
+      "path": "C:\\Users\\MSI\\OneDrive\\Tài liệu\\Đáp án các môn\\Chủ nghĩa khoa học\\Bài 2- Chủ nghĩa xã hội và thời kỳ quá độ lên chủ nghĩa xã hội.pdf",
+      "sha256": "eb778498d6455a303968c55843851ec1e8d50c11a5dd1ddb1c3237f84d28fa3d"
+    },
+    {
+      "article": "Bài 3",
+      "file": "Bài 3-Dân chủ xã hội chủ nghĩa và nhà nước xã hội chủ nghĩa.pdf",
+      "path": "C:\\Users\\MSI\\OneDrive\\Tài liệu\\Đáp án các môn\\Chủ nghĩa khoa học\\Bài 3-Dân chủ xã hội chủ nghĩa và nhà nước xã hội chủ nghĩa.pdf",
+      "sha256": "31eb28daa8f053f55b4dddcad3c9d3900fbe0b8a1f1d18c84ee7e5eb95b6ddb8"
+    },
+    {
+      "article": "Bài 4",
+      "file": "Bài 4-Cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội.pdf",
+      "path": "C:\\Users\\MSI\\OneDrive\\Tài liệu\\Đáp án các môn\\Chủ nghĩa khoa học\\Bài 4-Cơ cấu xã hội - giai cấp và liên minh giai cấp, tầng lớp trong thời kỳ quá độ lên chủ nghĩa xã hội.pdf",
+      "sha256": "484c36fd4864fa8d0a9f437fae25a36017ae09d0d32ecd414cbb615a27bb8514"
+    },
+    {
+      "article": "Bài 5",
+      "file": "Bài 5-Vấn đề dân tộc và tôn giáo trong thời kỳ quá độ lên chủ nghĩa xã hội.pdf",
+      "path": "C:\\Users\\MSI\\OneDrive\\Tài liệu\\Đáp án các môn\\Chủ nghĩa khoa học\\Bài 5-Vấn đề dân tộc và tôn giáo trong thời kỳ quá độ lên chủ nghĩa xã hội.pdf",
+      "sha256": "76dc495fbc9673d7f5e242749c4ebf606252e92ee124743f93cd150622028873"
+    },
+    {
+      "article": "Bài 6",
+      "file": "Bài 6-Vấn đề gia đình trong thời kỳ quá độ lên chủ nghĩa xã hội.pdf",
+      "path": "C:\\Users\\MSI\\OneDrive\\Tài liệu\\Đáp án các môn\\Chủ nghĩa khoa học\\Bài 6-Vấn đề gia đình trong thời kỳ quá độ lên chủ nghĩa xã hội.pdf",
+      "sha256": "6487aec30ea26bdb7a763fd83534fb93e4495e2125749abba83b973218fd57ae"
+    }
+  ],
+  "corrections": [
+    {
+      "article": "Bài 1",
+      "number": 24,
+      "before": {
+        "article": "Bài 1",
+        "text": "Câu 24: Điền từ còn thiếu vào chỗ trống: Giai cấp công nhân và nhân dân lao động là cơ sở..., cơ sở... của Đảng Cộng sản, là nguồn bổ sung lực lượng phụ cho Đảng.",
+        "options": [
+          "A. Chính trị - xã hội",
+          "B. Kinh tế - xã hội",
+          "C. Văn hoá - xã hội",
+          "D. Giai cấp - xã hội"
+        ],
+        "answer": "A",
+        "type": "single"
+      },
+      "changes": {
+        "answer": "D"
+      },
+      "pages": [
+        18
+      ],
+      "reason": "Hai chỗ trống “cơ sở ... , cơ sở ...” nói về cơ sở giai cấp và cơ sở xã hội của Đảng, không phải chính trị – xã hội. Trang 18 xác định giai cấp công nhân là cơ sở xã hội và nguồn bổ sung lực lượng quan trọng nhất; đề gốc còn có cụm “lực lượng phụ” chưa chuẩn, giữ nguyên theo yêu cầu."
+    },
+    {
+      "article": "Bài 2",
+      "number": 13,
+      "before": {
+        "article": "Bài 2",
+        "text": "Câu 13: Chọn phương án sai:",
+        "options": [
+          "A. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa nhưng có sự tiếp thu, kế thừa toàn bộ các lĩnh vực đã tạo ra dưới chế độ tư bản chủ nghĩa.",
+          "B. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa tức là bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa.",
+          "C. Con đường đi lên chủ nghĩa xã hội của nước ta là sự phát triển quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa.",
+          "D. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là con đường cách mạng tất yếu chủ quan, con đường xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội."
+        ],
+        "answer": "D",
+        "type": "single"
+      },
+      "changes": {
+        "answer": [
+          "A",
+          "D"
+        ],
+        "type": "multiple"
+      },
+      "pages": [
+        12
+      ],
+      "reason": "A sai vì nói kế thừa toàn bộ các lĩnh vực, trong khi giáo trình yêu cầu tiếp thu những thành tựu; D sai vì nói tất yếu chủ quan thay vì tất yếu khách quan. Giữ nguyên đề, cần chấp nhận cả A và D."
+    },
+    {
+      "article": "Bài 3",
+      "number": 13,
+      "before": {
+        "article": "Bài 3",
+        "text": "Câu 13: Nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam có đặc điểm như thế nào?",
+        "options": [
+          "A. Nhà nước hoạt động trên nền tảng của khối liên minh công – nông – trí thức.",
+          "B. Nhà nước đặt dưới sự lãnh đạo của Đảng Cộng sản.",
+          "C. Nhà nước được tổ chức và hoạt động trên cơ sở Hiến pháp và pháp luật.",
+          "D. Nhà nước hình thành là kết quả của cách mạng xã hội chủ nghĩa."
+        ],
+        "answer": "C",
+        "type": "single"
+      },
+      "changes": {
+        "answer": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "type": "multiple"
+      },
+      "pages": [
+        7,
+        10,
+        12
+      ],
+      "reason": "Đề không giới hạn khía cạnh pháp lý. B, C: Bài 3 trang 12; D: Bài 3 trang 7; A được suy ra kết hợp Bài 4 trang 5–6, 10 về liên minh nền tảng và chính quyền. Giữ nguyên câu hỏi, chấp nhận cả bốn đặc điểm thay vì chỉ C.",
+      "references": [
+        {
+          "article": "Bài 3",
+          "pages": [
+            7,
+            12
+          ]
+        },
+        {
+          "article": "Bài 4",
+          "pages": [
+            5,
+            6,
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "article": "Bài 3",
+      "number": 33,
+      "before": {
+        "article": "Bài 3",
+        "text": "Câu 33: Kéo thả các đáp án khớp với các phát biểu từ 1 – 4 ở dưới đây:",
+        "options": [
+          "Bầu cử Quốc hội",
+          "Thượng tôn pháp luật",
+          "Dân chủ đại diện",
+          "Chủ thể quyền lực"
+        ],
+        "targets": [
+          "Dân chủ đại diện được thể hiện qua việc ______",
+          "Một nguyên tắc cốt lõi của nhà nước pháp quyền là ______",
+          "Nhân dân là ______ tối cao trong Nhà nước pháp quyền",
+          "Hình thức dân chủ gián tiếp là hình thức ______"
+        ],
+        "answer": {
+          "0": [
+            "0"
+          ],
+          "1": [
+            "1"
+          ],
+          "2": [
+            "2"
+          ],
+          "3": [
+            "3"
+          ]
+        },
+        "type": "dragdrop"
+      },
+      "changes": {
+        "answer": {
+          "0": [
+            "0"
+          ],
+          "1": [
+            "1"
+          ],
+          "2": [
+            "3"
+          ],
+          "3": [
+            "2"
+          ]
+        }
+      },
+      "pages": [
+        2,
+        11,
+        12
+      ],
+      "reason": "Hai cặp cuối bị đảo: nhân dân là chủ thể quyền lực; hình thức dân chủ gián tiếp là dân chủ đại diện."
+    },
+    {
+      "article": "Bài 4",
+      "number": 10,
+      "before": {
+        "article": "Bài 4",
+        "text": "Câu 10: Cơ cấu xã hội – giai cấp ở Việt Nam thời kỳ quá độ lên chủ nghĩa xã hội bao gồm mấy giai cấp, tầng lớp?",
+        "options": [
+          "A. 3",
+          "B. 4",
+          "C. 5",
+          "D. 6"
+        ],
+        "answer": "A",
+        "type": "single"
+      },
+      "changes": {
+        "answer": "D"
+      },
+      "pages": [
+        8,
+        9,
+        10
+      ],
+      "reason": "Mục 4.3.1 liệt kê 6 nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên; không chỉ ba lực lượng nòng cốt của liên minh."
+    },
+    {
+      "article": "Bài 4",
+      "number": 37,
+      "before": {
+        "article": "Bài 4",
+        "text": "Câu 37: Kéo thả các yếu tố liên quan đến liên minh giai cấp, tầng lớp ở Việt Nam trong thời kỳ quá độ lên chủ nghĩa xã hội vào các cột tương ứng:",
+        "options": [
+          "Nội dung chính trị",
+          "Nội dung kinh tế",
+          "Xóa đói giảm nghèo",
+          "Tăng cường liên minh",
+          "Đảng Cộng sản",
+          "Giai cấp nông dân",
+          "Giai cấp công nhân",
+          "Tầng lớp phụ nữ"
+        ],
+        "targets": [
+          "Nội dung/phương hướng của liên minh",
+          "Thành phần/yếu tố của liên minh"
+        ],
+        "answer": {
+          "0": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "1": [
+            "5",
+            "6",
+            "7"
+          ]
+        },
+        "type": "dragdrop"
+      },
+      "changes": {
+        "answer": {
+          "0": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "1": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ]
+        }
+      },
+      "pages": [
+        10,
+        12,
+        13,
+        15
+      ],
+      "reason": "Đảng Cộng sản là tổ chức lãnh đạo, thuộc nhóm thành phần/yếu tố của liên minh, không phải một nội dung/phương hướng."
+    },
+    {
+      "article": "Bài 4",
+      "number": 38,
+      "before": {
+        "article": "Bài 4",
+        "text": "Câu 38: Trong thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội – giai cấp gồm mấy giai cấp, tầng lớp cơ bản?",
+        "options": [
+          "A. 5",
+          "B. 6",
+          "C. 3",
+          "D. 4"
+        ],
+        "answer": "C",
+        "type": "single"
+      },
+      "changes": {
+        "answer": "B"
+      },
+      "pages": [
+        8,
+        9,
+        10
+      ],
+      "reason": "Đối chiếu phần cơ cấu xã hội – giai cấp ở Việt Nam tại mục 4.3.1: 6 nhóm, không phải ba lực lượng của liên minh công – nông – trí thức. Câu gốc không nêu rõ Việt Nam; giữ nguyên câu chữ theo yêu cầu."
+    },
+    {
+      "article": "Bài 6",
+      "number": 25,
+      "before": {
+        "article": "Bài 6",
+        "text": "Câu 25: Chọn đáp án (Đúng hoặc Sai) với từng phát biểu sau:",
+        "options": [
+          "Nội dung giáo dục trong gia đình hiện nay chỉ tập trung giáo dục đạo đức",
+          "Hiện nay, độ bền vững của gia đình không bị chi phối bởi các mối quan hệ hòa hợp tình cảm giữa chồng và vợ, cha mẹ và con cái",
+          "Giáo dục gia đình tiếp tục nhấn mạnh sự hy sinh của cá nhân cho cộng đồng",
+          "Hiện nay, kinh tế gia đình đang trở thành một bộ phận quan trọng trong nền kinh tế quốc dân"
+        ],
+        "answer": [
+          "Sai",
+          "Sai",
+          "Sai",
+          "Đúng"
+        ],
+        "type": "truefalse"
+      },
+      "changes": {
+        "answer": [
+          "Sai",
+          "Sai",
+          "Đúng",
+          "Đúng"
+        ]
+      },
+      "pages": [
+        7,
+        8
+      ],
+      "reason": "Trang 7 ghi giáo dục gia đình truyền thống và xã hội mới tiếp tục nhấn mạnh sự hy sinh của cá nhân cho cộng đồng; phát biểu thứ 3 phải Đúng."
+    }
+  ],
+  "policy": "Preserve all original stems, options and targets verbatim. Change answer keys only; switch single to multiple only when the unchanged question has multiple valid answers."
+}
