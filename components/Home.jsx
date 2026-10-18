@@ -48,7 +48,6 @@ const stagesConfig = [
       { id: '4', title: 'Phần 4: Cơ cấu XH - Giai cấp & Liên minh', icon: Target },
       { id: '5', title: 'Phần 5: Dân tộc & Tôn giáo trong TKQĐ', icon: Wand2 },
       { id: '6', title: 'Phần 6: Vấn đề Gia đình trong TKQĐ', icon: Puzzle },
-      { id: 'new-questions', title: 'Bộ câu hỏi mới (Bổ sung)', icon: Sparkles },
     ],
   },
   {
@@ -123,7 +122,7 @@ export function Home({
 
   // Dynamic calculation: sum questions from all base topics, excluding aggregate reviews & specialized categories
   const totalQuestions = useMemo(() => {
-    const standardKeys = ['1', '2', '3', '4', '5', '6', 'new-questions'];
+    const standardKeys = ['1', '2', '3', '4', '5', '6'];
     return standardKeys.reduce((sum, key) => sum + (data[key]?.questions?.length || 0), 0);
   }, [data]);
 

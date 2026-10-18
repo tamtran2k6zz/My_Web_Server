@@ -5,17 +5,19 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { questions } from '../questions.js';
 
-// Exercise the same data.ts adapter used by the web app, including supplementary data.
+// Exercise the same data.ts adapter used by the web app.
 const bundle = await build({
   entryPoints: [fileURLToPath(new URL('../data.ts', import.meta.url))],
   bundle: true,
   write: false,
   platform: 'node',
   format: 'esm',
+  metafile: true,
 });
+assert.ok(!Object.keys(bundle.metafile.inputs).some(path => path.endsWith('newData.ts')), 'Archived supplementary data must not be bundled into the app');
 const { data } = await import(`data:text/javascript;base64,${Buffer.from(bundle.outputFiles[0].text).toString('base64')}`);
 
-const expectedCounts = { '1': 40, '2': 40, '3': 37, '4': 41, '5': 40, '6': 27, 'new-questions': 35 };
+const expectedCounts = { '1': 40, '2': 40, '3': 37, '4': 41, '5': 40, '6': 27 };
 assert.equal(questions.length, 225);
 for (const q of questions) {
   const label = `${q.article}: ${q.text}`;
@@ -72,11 +74,6 @@ function find(topicId, prefix) {
   assert.equal(found.length, 1, prefix);
   return found[0];
 }
-function selected(q) {
-  const indices = q.type === 'single' ? [q.correct] : q.correct;
-  return indices.map(i => q.options[i].replace(/^[A-D]\.\s*/, ''));
-}
-
 // The supplied ZIP is the user's authority. These hashes were extracted from its
 // DOCX paragraphs and red answer runs, independently of the application adapter.
 const manifest = JSON.parse(readFileSync(new URL('../fixtures/cnxh-zip-answer-key.json', import.meta.url), 'utf8'));
@@ -95,14 +92,6 @@ assert.deepEqual(Object.values(workerMatching.correct).flat(), ['nhân tố ch�
 assert.match(workerMatching.columns[2], /tiên tiến/);
 assert.match(workerMatching.columns[3], /hiện đại/);
 assert.equal(find('1', 'Câu 39:').options[1].correct, true);
-assert.match(selected(find('new-questions', 'Câu 33(Bài 2):'))[0], /có định kỳ/);
-assert.match(selected(find('new-questions', 'Câu 30(Bài 4):'))[0], /^Quy luật lợi nhuận bình quân$/);
-assert.match(selected(find('new-questions', 'Câu 35(Bài 4):'))[0], /đầu tư trực tiếp hoặc cho vay/);
-const surplusExercise = find('new-questions', 'Câu 36(Bài 2):');
-const rates = [200, 400, 300, 100];
-const proposedValues = [6000, 8000, 7000, 4000];
-surplusExercise.options.forEach((option, i) => {
-  assert.equal(option.correct, proposedValues[i] === 2000 * (1 + rates[i] / 100));
-});
-
-console.log('PASS: all 225 CNXHKH questions match the ZIP fingerprint; all 260 questions pass structure and adapter checks.');
+assert.equal(Object.values(data).flatMap(topic => topic.questions).length, 225);
+assert.equal(data['new-questions'], undefined, 'Supplementary bank must not enter any aggregate practice topic');
+console.log('PASS: 225 active questions match the ZIP; supplementary bank is excluded from app data.');

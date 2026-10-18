@@ -1,6 +1,5 @@
 import { Topic } from './types';
 import { questions } from './questions.js';
-import { newTopic } from './newData';
 
 export const data: Record<string, Topic> = {
   "1": {
@@ -26,16 +25,12 @@ export const data: Record<string, Topic> = {
   "6": {
     name: "PHẦN 6: VẤN ĐỀ GIA ĐÌNG TRONG THỜI KỲ QUÁ ĐỘ LÊN CHỦ NGHĨA XÃ HỘI",
     questions: []
-  },
-  "new-questions": {
-    name: "BỘ CÂU HỎI MỚI (BỔ SUNG)",
-    questions: []
   }
 };
 
 questions.forEach((q: any) => {
   const match = q.article.match(/Bài\s*(\d+)/i);
-  const articleId = match ? match[1] : (q.article === 'new-questions' || q.article === 'Bài new-questions' ? 'new-questions' : q.article);
+  const articleId = match ? match[1] : q.article;
 
   if (!data[articleId]) {
     data[articleId] = {
@@ -88,15 +83,6 @@ questions.forEach((q: any) => {
 
   data[articleId].questions.push(questionObj);
 });
-
-if (newTopic && Array.isArray(newTopic.questions)) {
-  newTopic.questions.forEach((nq: any) => {
-    const isDuplicate = data["new-questions"].questions.some((eq: any) => eq.q === nq.q);
-    if (!isDuplicate) {
-      data["new-questions"].questions.push(nq);
-    }
-  });
-}
 
 // Assign identity before shuffling so saved questions work across all practice modes.
 Object.entries(data).forEach(([topicId, topic]) => {

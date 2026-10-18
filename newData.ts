@@ -1,6 +1,6 @@
 import { Topic } from "./types";
 
-// Bạn có thể gửi và thêm các câu hỏi mới của mình vào mảng này
+// Archived on 2026-10-18 for the duplicate audit. Not imported by the web app.
 export const newTopic: Topic = {
   name: "Những câu hỏi mới",
   questions: [

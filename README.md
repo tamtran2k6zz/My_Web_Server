@@ -99,10 +99,9 @@ Hệ thống sử dụng tệp dữ liệu duy nhất `questions.js` làm **Sing
  ┣ 📜 PHẦN 4: Cơ cấu xã hội – giai cấp và liên minh giai cấp, tầng lớp (39 câu) — [Hoàn thành ✅]
  ┣ 📜 PHẦN 5: Vấn đề dân tộc và tôn giáo trong thời kỳ quá độ (28 câu) — [Hoàn thành ✅]
  ┣ 📜 PHẦN 6: Vấn đề gia đình trong thời kỳ quá độ lên CNXH (27 câu) — [Hoàn thành ✅]
- ┣ 📜 BỘ CÂU HỎI MỚI: Câu hỏi trắc nghiệm bổ sung & vận dụng tình huống (12 câu) — [Hoàn thành ✅]
  ┣ 🔄 CHẶNG 1: Ôn tập Tổng hợp Phần 1 – 3 (109 câu) — [Hoàn thành ✅]
  ┣ 🔄 CHẶNG 2: Ôn tập Tổng hợp Phần 4 – 6 (94 câu) — [Hoàn thành ✅]
- ┗ 🚀 KHẢO THÍ TOÀN DIỆN: Tổng hợp toàn bộ ngân hàng câu hỏi (260 câu) — [Hoàn thành ✅]
+ ┗ 🚀 KHẢO THÍ TOÀN DIỆN: Tổng hợp toàn bộ ngân hàng câu hỏi (225 câu) — [Hoàn thành ✅]
 ```
 
 ---
@@ -182,7 +181,7 @@ npm run build
 
 ## 📈 Bảng Theo Dõi Tiến Độ Triển Khai (Progress Tracker)
 
-**Nguồn đáp án hiện tại (17/10/2026):** 225 câu CNXHKH được đồng bộ theo nội dung và đáp án màu đỏ trong ZIP do người dùng cung cấp. Yêu cầu khớp ZIP thay thế các điều chỉnh nội dung ngày 10/10. Bộ bổ sung 35 câu giữ nguyên. Xem [ghi nhận đồng bộ](DONG_BO_ZIP.md).
+**Nguồn đáp án hiện tại:** 225 câu CNXHKH được đồng bộ theo nội dung và đáp án màu đỏ trong ZIP do người dùng cung cấp. Yêu cầu khớp ZIP thay thế các điều chỉnh nội dung ngày 10/10. Ngày 18/10/2026 đã bỏ bộ bổ sung khỏi web và mọi chế độ ôn tập. Xem [ghi nhận đồng bộ](DONG_BO_ZIP.md) và [đối chiếu 35 câu bổ sung](BAO_CAO_TRUNG_CAU_BO_SUNG.md).
 
 ### Lưu câu và luyện lại
 
@@ -192,7 +191,7 @@ npm run build
 - Khi trả lời đủ các câu trong phần, nút **Làm lại toàn bộ** bắt đầu lượt mới với câu hỏi/đáp án xáo trộn, điểm và đồng hồ đặt lại. Danh sách đang luyện được giữ cố định trong lượt đó.
 - Chạy `npm run check:review` để kiểm tra việc lưu/bỏ lưu, ôn câu sai, lưu trữ và trạng thái nút.
 
-Ngân hàng hiện có 225 câu CNXHKH và 35 câu Kinh tế chính trị bổ sung. Nội dung đã được sửa theo đợt rà soát ngày 10/10/2026; xem [chi tiết cập nhật](CAP_NHAT_DAP_AN.md).
+Ngân hàng đang chạy trên web có 225 câu CNXHKH của sáu bài trong ZIP. File newData.ts lưu lại 35 câu đã loại để phục vụ đối chiếu, không được nhập vào ứng dụng.
 
 Trước khi phát hành, chạy `npm run check:questions` để kiểm tra toàn bộ dữ liệu và các đáp án đã sửa, `npm run typecheck` để kiểm tra TypeScript, và `npm run build` để tạo bản production.
 
@@ -204,10 +203,9 @@ Trước khi phát hành, chạy `npm run check:questions` để kiểm tra toà
 | **Phần 4: Cơ cấu XH & Liên minh giai cấp** | 41 câu hỏi | Hoàn thành | 100% |
 | **Phần 5: Dân tộc & Tôn giáo trong TKQĐ** | 40 câu hỏi | Hoàn thành | 100% |
 | **Phần 6: Gia đình trong TKQĐ lên CNXH** | 27 câu hỏi (Trắc nghiệm đơn, nhiều đáp án, Đúng/Sai & Kéo thả) | Hoàn thành | 100% |
-| **Bộ câu hỏi mới (Bổ sung)** | 35 câu hỏi Kinh tế chính trị Mác – Lênin | Hoàn thành | 100% |
 | **Chặng 1: Ôn tập Tổng hợp Phần 1 – 3** | Tổng hợp ngẫu nhiên 117 câu hỏi liên chương 1, 2, 3 | Hoàn thành | 100% |
 | **Chặng 2: Ôn tập Tổng hợp Phần 4 – 6** | Tổng hợp ngẫu nhiên 108 câu hỏi liên chương 4, 5, 6 | Hoàn thành | 100% |
-| **Khảo thí Toàn diện Toàn bộ kiến thức** | Xáo trộn 260 câu hỏi toàn ngân hàng đề | Hoàn thành | 100% |
+| **Khảo thí Toàn diện Toàn bộ kiến thức** | Xáo trộn 225 câu hỏi toàn ngân hàng đề | Hoàn thành | 100% |
 | **Chuyên đề theo Dạng bài** | Tách riêng Trắc nghiệm (A,B,C,D), Đúng/Sai, Kéo thả | Hoàn thành | 100% |
 | **Phòng thi bấm giờ (Timed Exam)** | Đếm ngược 30p, tính điểm 10 & 4, xếp loại A-F | Hoàn thành | 100% |
 | **Bảng vinh danh (Global Leaderboard)** | Podium Top 3, xếp hạng toàn trường, lịch sử thi cá nhân | Hoàn thành | 100% |
