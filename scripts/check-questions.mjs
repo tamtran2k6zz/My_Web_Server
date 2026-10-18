@@ -92,41 +92,48 @@ assert.deepEqual(Object.values(workerMatching.correct).flat(), ['nhân tố ch�
 assert.match(workerMatching.columns[2], /tiên tiến/);
 assert.match(workerMatching.columns[3], /hiện đại/);
 assert.equal(find('1', 'Câu 39:').options[1].correct, true);
-// User constraint: no rewriting prompts, choices, statements or drag targets.
-for (const original of questions) {
-  const topicId = original.article.match(/\d+/)[0];
-  const number = original.text.match(/^Câu\s+(\d+):/)[1];
-  const adapted = find(topicId, `Câu ${number}:`);
-  assert.equal(adapted.q, original.text, `Prompt changed: ${original.article}/${number}`);
-  if (original.type === 'truefalse') assert.deepEqual(adapted.options.map(item => item.text), original.options);
-  else if (original.type === 'dragdrop') {
-    assert.deepEqual(adapted.items, original.options);
-    assert.deepEqual(adapted.columns, original.targets);
-  } else assert.deepEqual(adapted.options, original.options);
-}
+// The user requires matching-lesson evidence and the original question format.
 const review = JSON.parse(readFileSync(new URL('../fixtures/cnxh-syllabus-review.json', import.meta.url), 'utf8'));
 assert.equal(review.sources.length, 6);
-assert.equal(review.corrections.length, 8);
+assert.equal(review.corrections.length, 4);
 const ids = new Set();
 for (const correction of review.corrections) {
   const key = `${correction.article}:${correction.number}`;
   assert.ok(!ids.has(key), `Duplicate correction ${key}`); ids.add(key);
   const original = questions.find(q => q.article === correction.article && q.text.startsWith(`Câu ${correction.number}:`));
-  assert.deepEqual(original, correction.before, `Correction must target the reviewed ZIP version: ${key}`);
-  assert.ok(correction.pages.length && correction.reason, `Missing evidence: ${key}`);
-  assert.ok(Object.keys(correction.changes).every(field => ['answer', 'type'].includes(field)), `Only answer keys may change: ${key}`);
-  const adapted = find(correction.article.match(/\d+/)[0], `Câu ${correction.number}:`);
-  assert.equal(adapted.q, correction.changes.text || original.text);
-  assert.ok(adapted.syllabusNote.includes(correction.reason));
+  assert.deepEqual(original, correction.before, `Correction must target reviewed ZIP: ${key}`);
+  assert.deepEqual(Object.keys(correction.changes), ['answer'], `Only the answer key may change: ${key}`);
+  assert.ok(correction.pages.length && correction.reason);
+  assert.ok(correction.references.length);
+  correction.references.forEach(ref => assert.equal(ref.article, correction.article, `Cross-lesson evidence is forbidden: ${key}`));
+  assert.ok(find(correction.article.match(/\d+/)[0], `Câu ${correction.number}:`).syllabusNote.includes(correction.reason));
 }
-assert.equal(find('1', 'Câu 24:').correct, 3);
-assert.deepEqual(find('2', 'Câu 13:').correct, [0, 3]);
+for (const original of questions) {
+  const topicId = original.article.match(/\d+/)[0];
+  const number = Number(original.text.match(/^Câu\s+(\d+):/)[1]);
+  const adapted = find(topicId, `Câu ${number}:`);
+  assert.equal(adapted.q, original.text);
+  const expectedType = { multiple: 'multi', dragdrop: 'drag' }[original.type] || original.type;
+  assert.equal(adapted.type, expectedType, `Original question type must remain unchanged: ${topicId}/${number}`);
+  if (original.type === 'truefalse') assert.deepEqual(adapted.options.map(item => item.text), original.options);
+  else if (original.type === 'dragdrop') {
+    assert.deepEqual(adapted.items, original.options); assert.deepEqual(adapted.columns, original.targets);
+  } else assert.deepEqual(adapted.options, original.options);
+  if (!review.corrections.some(c => c.article === original.article && c.number === number)) {
+    if (original.type === 'single') assert.equal(adapted.correct, original.answer.charCodeAt(0) - 65);
+    else if (original.type === 'multiple') assert.deepEqual(adapted.correct, original.answer.map(a => a.charCodeAt(0) - 65));
+    else if (original.type === 'truefalse') assert.deepEqual(adapted.options.map(o => o.correct), original.answer.map(a => a === 'Đúng'));
+    else if (original.type === 'dragdrop') assert.deepEqual(adapted.correct, Object.fromEntries(Object.entries(original.answer).map(([k,v])=>[k,v.map(i=>original.options[Number(i)])])));
+  }
+}
+assert.equal(find('1', 'Câu 24:').correct, 0);
+assert.equal(find('2', 'Câu 13:').correct, 3);
+assert.equal(find('3', 'Câu 13:').correct, 2);
 assert.deepEqual(Object.values(find('3', 'Câu 33:').correct).flat(), ['Bầu cử Quốc hội', 'Thượng tôn pháp luật', 'Chủ thể quyền lực', 'Dân chủ đại diện']);
 assert.equal(find('4', 'Câu 10:').correct, 3);
-assert.equal(find('4', 'Câu 38:').correct, 1);
+assert.equal(find('4', 'Câu 38:').correct, 2);
 assert.ok(Object.values(find('4', 'Câu 37:').correct)[1].includes('Đảng Cộng sản'));
 assert.equal(find('6', 'Câu 25:').options[2].correct, true);
 assert.equal(Object.values(data).flatMap(topic => topic.questions).length, 225);
-assert.equal(data['new-questions'], undefined, 'Supplementary bank must not enter any aggregate practice topic');
-assert.deepEqual(find('3', 'Câu 13:').correct, [0, 1, 2, 3]);
-console.log('PASS: 225 original questions/options preserved; 8 answer keys corrected against the syllabus; mappings and topic counts validated.');
+assert.equal(data['new-questions'], undefined);
+console.log('PASS: all 225 ZIP prompts, options and types preserved; 4 answer-only corrections with same-lesson evidence; every other answer matches ZIP.');

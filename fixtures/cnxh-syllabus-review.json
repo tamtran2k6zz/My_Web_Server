@@ -1,5 +1,5 @@
 {
-  "authority": "Six user-supplied syllabus PDFs; supersedes ZIP where explicitly corrected",
+  "authority": "Matching user-supplied lesson PDF only; no cross-lesson evidence or external inference",
   "sources": [
     {
       "article": "Bài 1",
@@ -39,104 +39,6 @@
     }
   ],
   "corrections": [
-    {
-      "article": "Bài 1",
-      "number": 24,
-      "before": {
-        "article": "Bài 1",
-        "text": "Câu 24: Điền từ còn thiếu vào chỗ trống: Giai cấp công nhân và nhân dân lao động là cơ sở..., cơ sở... của Đảng Cộng sản, là nguồn bổ sung lực lượng phụ cho Đảng.",
-        "options": [
-          "A. Chính trị - xã hội",
-          "B. Kinh tế - xã hội",
-          "C. Văn hoá - xã hội",
-          "D. Giai cấp - xã hội"
-        ],
-        "answer": "A",
-        "type": "single"
-      },
-      "changes": {
-        "answer": "D"
-      },
-      "pages": [
-        18
-      ],
-      "reason": "Hai chỗ trống “cơ sở ... , cơ sở ...” nói về cơ sở giai cấp và cơ sở xã hội của Đảng, không phải chính trị – xã hội. Trang 18 xác định giai cấp công nhân là cơ sở xã hội và nguồn bổ sung lực lượng quan trọng nhất; đề gốc còn có cụm “lực lượng phụ” chưa chuẩn, giữ nguyên theo yêu cầu."
-    },
-    {
-      "article": "Bài 2",
-      "number": 13,
-      "before": {
-        "article": "Bài 2",
-        "text": "Câu 13: Chọn phương án sai:",
-        "options": [
-          "A. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa nhưng có sự tiếp thu, kế thừa toàn bộ các lĩnh vực đã tạo ra dưới chế độ tư bản chủ nghĩa.",
-          "B. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa tức là bỏ qua việc xác lập vị trí thống trị của quan hệ sản xuất và kiến trúc thượng tầng tư bản chủ nghĩa.",
-          "C. Con đường đi lên chủ nghĩa xã hội của nước ta là sự phát triển quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa.",
-          "D. Quá độ lên chủ nghĩa xã hội bỏ qua chế độ tư bản chủ nghĩa là con đường cách mạng tất yếu chủ quan, con đường xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội."
-        ],
-        "answer": "D",
-        "type": "single"
-      },
-      "changes": {
-        "answer": [
-          "A",
-          "D"
-        ],
-        "type": "multiple"
-      },
-      "pages": [
-        12
-      ],
-      "reason": "A sai vì nói kế thừa toàn bộ các lĩnh vực, trong khi giáo trình yêu cầu tiếp thu những thành tựu; D sai vì nói tất yếu chủ quan thay vì tất yếu khách quan. Giữ nguyên đề, cần chấp nhận cả A và D."
-    },
-    {
-      "article": "Bài 3",
-      "number": 13,
-      "before": {
-        "article": "Bài 3",
-        "text": "Câu 13: Nhà nước pháp quyền xã hội chủ nghĩa ở Việt Nam có đặc điểm như thế nào?",
-        "options": [
-          "A. Nhà nước hoạt động trên nền tảng của khối liên minh công – nông – trí thức.",
-          "B. Nhà nước đặt dưới sự lãnh đạo của Đảng Cộng sản.",
-          "C. Nhà nước được tổ chức và hoạt động trên cơ sở Hiến pháp và pháp luật.",
-          "D. Nhà nước hình thành là kết quả của cách mạng xã hội chủ nghĩa."
-        ],
-        "answer": "C",
-        "type": "single"
-      },
-      "changes": {
-        "answer": [
-          "A",
-          "B",
-          "C",
-          "D"
-        ],
-        "type": "multiple"
-      },
-      "pages": [
-        7,
-        10,
-        12
-      ],
-      "reason": "Đề không giới hạn khía cạnh pháp lý. B, C: Bài 3 trang 12; D: Bài 3 trang 7; A được suy ra kết hợp Bài 4 trang 5–6, 10 về liên minh nền tảng và chính quyền. Giữ nguyên câu hỏi, chấp nhận cả bốn đặc điểm thay vì chỉ C.",
-      "references": [
-        {
-          "article": "Bài 3",
-          "pages": [
-            7,
-            12
-          ]
-        },
-        {
-          "article": "Bài 4",
-          "pages": [
-            5,
-            6,
-            10
-          ]
-        }
-      ]
-    },
     {
       "article": "Bài 3",
       "number": 33,
@@ -192,7 +94,17 @@
         11,
         12
       ],
-      "reason": "Hai cặp cuối bị đảo: nhân dân là chủ thể quyền lực; hình thức dân chủ gián tiếp là dân chủ đại diện."
+      "reason": "Hai cặp cuối bị đảo: nhân dân là chủ thể quyền lực; hình thức dân chủ gián tiếp là dân chủ đại diện.",
+      "references": [
+        {
+          "article": "Bài 3",
+          "pages": [
+            2,
+            11,
+            12
+          ]
+        }
+      ]
     },
     {
       "article": "Bài 4",
@@ -217,7 +129,17 @@
         9,
         10
       ],
-      "reason": "Mục 4.3.1 liệt kê 6 nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên; không chỉ ba lực lượng nòng cốt của liên minh."
+      "reason": "Mục 4.3.1 liệt kê 6 nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên; không chỉ ba lực lượng nòng cốt của liên minh.",
+      "references": [
+        {
+          "article": "Bài 4",
+          "pages": [
+            8,
+            9,
+            10
+          ]
+        }
+      ]
     },
     {
       "article": "Bài 4",
@@ -277,32 +199,18 @@
         13,
         15
       ],
-      "reason": "Đảng Cộng sản là tổ chức lãnh đạo, thuộc nhóm thành phần/yếu tố của liên minh, không phải một nội dung/phương hướng."
-    },
-    {
-      "article": "Bài 4",
-      "number": 38,
-      "before": {
-        "article": "Bài 4",
-        "text": "Câu 38: Trong thời kỳ quá độ lên chủ nghĩa xã hội, cơ cấu xã hội – giai cấp gồm mấy giai cấp, tầng lớp cơ bản?",
-        "options": [
-          "A. 5",
-          "B. 6",
-          "C. 3",
-          "D. 4"
-        ],
-        "answer": "C",
-        "type": "single"
-      },
-      "changes": {
-        "answer": "B"
-      },
-      "pages": [
-        8,
-        9,
-        10
-      ],
-      "reason": "Đối chiếu phần cơ cấu xã hội – giai cấp ở Việt Nam tại mục 4.3.1: 6 nhóm, không phải ba lực lượng của liên minh công – nông – trí thức. Câu gốc không nêu rõ Việt Nam; giữ nguyên câu chữ theo yêu cầu."
+      "reason": "Đảng Cộng sản là tổ chức lãnh đạo, thuộc nhóm thành phần/yếu tố của liên minh, không phải một nội dung/phương hướng.",
+      "references": [
+        {
+          "article": "Bài 4",
+          "pages": [
+            10,
+            12,
+            13,
+            15
+          ]
+        }
+      ]
     },
     {
       "article": "Bài 6",
@@ -336,8 +244,59 @@
         7,
         8
       ],
-      "reason": "Trang 7 ghi giáo dục gia đình truyền thống và xã hội mới tiếp tục nhấn mạnh sự hy sinh của cá nhân cho cộng đồng; phát biểu thứ 3 phải Đúng."
+      "reason": "Trang 7 ghi giáo dục gia đình truyền thống và xã hội mới tiếp tục nhấn mạnh sự hy sinh của cá nhân cho cộng đồng; phát biểu thứ 3 phải Đúng.",
+      "references": [
+        {
+          "article": "Bài 6",
+          "pages": [
+            7,
+            8
+          ]
+        }
+      ]
     }
   ],
-  "policy": "Preserve all original stems, options and targets verbatim. Change answer keys only; switch single to multiple only when the unchanged question has multiple valid answers."
+  "policy": "Each quiz lesson uses only its matching syllabus PDF. Preserve original stems, choices, targets and question type. Change only answer keys with clear same-lesson support; retain ZIP keys for ambiguous or unsupported questions and flag them for review.",
+  "retainedAmbiguities": [
+    {
+      "article": "Bài 1",
+      "number": 24,
+      "answer": "A",
+      "pages": [
+        18
+      ],
+      "reason": "Bài 1 trang 18 nêu cơ sở xã hội và nguồn bổ sung lực lượng quan trọng nhất, không có nguyên văn đầy đủ hai chỗ trống của đề. Không đủ căn cứ từ riêng Bài 1 để đổi A sang D; trả A theo ZIP và ghi nhận lỗi câu chữ “lực lượng phụ”."
+    },
+    {
+      "article": "Bài 2",
+      "number": 13,
+      "answer": "D",
+      "pages": [
+        12
+      ],
+      "reason": "Bài 2 trang 12 trực tiếp xác định tất yếu khách quan, nên D “tất yếu chủ quan” là phương án sai rõ ràng. A dùng “toàn bộ các lĩnh vực” còn mơ hồ; không tự đổi câu một lựa chọn sang nhiều lựa chọn. Trả khóa D của ZIP."
+    },
+    {
+      "article": "Bài 3",
+      "number": 13,
+      "answer": "C",
+      "pages": [
+        7,
+        10,
+        12
+      ],
+      "reason": "Mục 3.3.2.2 Bài 3 trang 12 nêu trực tiếp C, đồng thời B cũng là đặc điểm đúng. Đề một lựa chọn chưa phân biệt khía cạnh; không lấy Bài 4 để kết luận A và không tự đổi sang chọn cả bốn. Trả khóa C của ZIP, đánh dấu câu có phương án chồng lấn."
+    },
+    {
+      "article": "Bài 4",
+      "number": 38,
+      "answer": "C",
+      "pages": [
+        8,
+        9,
+        10
+      ],
+      "reason": "Câu không nêu Việt Nam. Bài 4 trang 1 liệt kê nhiều giai cấp, tầng lớp kèm v.v., không quy định một số cố định; trang 8–10 riêng Việt Nam có 6 nhóm. Không áp phạm vi Việt Nam cho nguyên văn câu chung; trả C của ZIP và đánh dấu chưa đủ căn cứ."
+    }
+  ]
 }

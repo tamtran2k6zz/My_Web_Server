@@ -1,29 +1,30 @@
-# Đối chiếu đáp án CNXHKH với 6 tài liệu giáo trình
+# Đối chiếu đáp án theo đúng giáo trình từng bài
 
-## Phạm vi và nguyên tắc
+## Nguyên tắc đã áp dụng lại
 
-Rà soát 225 câu trong ZIP đang dùng trên web. Theo chỉ dẫn mới nhất: giữ nguyên 100% câu hỏi, phương án lựa chọn, phát biểu đúng/sai và vế kéo thả; chỉ điều chỉnh khóa chấm. Không chỉnh sửa ZIP/PDF gốc. `questions.js` giữ dữ liệu ZIP, `reviewedQuestions.ts` áp dụng 8 chỉnh sửa từ `fixtures/cnxh-syllabus-review.json`. Hai câu vốn một lựa chọn phải cho phép chọn nhiều để chấm đủ các phương án hợp lý trong nguyên văn đề.
+Bài 1 chỉ dùng PDF Bài 1; tương tự đến Bài 6. Không dùng giáo trình bài khác để chốt đáp án. Giữ nguyên 225 câu, tất cả phương án, phát biểu, vế kéo thả và loại câu của ZIP. Chỉ chỉnh khóa chấm có căn cứ rõ ràng trong đúng bài. Câu mơ hồ hoặc thiếu căn cứ giữ khóa ZIP và được ghi rõ, không coi là đã xác nhận đúng.
 
-- Bài 1 câu 24: A → D.
-- Bài 2 câu 13: D → A và D (hai phương án sai).
-- Bài 3 câu 13: C → A, B, C, D; câu không giới hạn khía cạnh pháp lý. A được suy ra kết hợp Bài 4 trang 5–6, 10 về liên minh nền tảng; B/C trực tiếp Bài 3 trang 12; D Bài 3 trang 7.
-- Bài 3 câu 33: đảo lại hai cặp cuối, nhân dân → chủ thể quyền lực; gián tiếp → dân chủ đại diện.
-- Bài 4 câu 10: A (3) → D (6).
-- Bài 4 câu 37: đưa Đảng Cộng sản từ nhóm nội dung/phương hướng sang nhóm thành phần/yếu tố.
-- Bài 4 câu 38: C (3) → B (6), theo danh sách cơ bản ở Việt Nam tại mục 4.3.1. Nguyên văn câu không nêu phạm vi Việt Nam, đây vẫn là điểm mơ hồ của đề; không sửa câu chữ.
-- Bài 6 câu 25: phát biểu thứ 3 Sai → Đúng.
+## Bốn khóa chấm được sửa
 
-## Những điểm cần phân biệt
+- Bài 3 câu 33: hai cặp cuối phải là nhân dân → chủ thể quyền lực; dân chủ gián tiếp → dân chủ đại diện. Bài 3 trang 2, 11–12.
+- Bài 4 câu 10: A (3) → D (6), theo danh sách các nhóm ở Việt Nam tại mục 4.3.1, trang 8–10.
+- Bài 4 câu 37: Đảng Cộng sản chuyển sang nhóm thành phần/yếu tố, vì là tổ chức lãnh đạo, không phải tên một nội dung/phương hướng. Bài 4 trang 10, 12–15.
+- Bài 6 câu 25: phát biểu 3 Sai → Đúng. Bài 6 trang 7 nói rõ giáo dục gia đình tiếp tục nhấn mạnh sự hy sinh của cá nhân cho cộng đồng.
 
-Bài 1 câu 35 và câu 39 giữ nguyên. Trang 11 dùng lực lượng sản xuất tiên tiến/phương thức sản xuất hiện đại; trang 16 dùng phương thức sản xuất tiên tiến/lực lượng sản xuất hiện đại. Không đủ căn cứ chấm Sai chỉ vì đổi hai tính từ.
+## Thu hồi bốn thay đổi thiếu căn cứ hoặc vượt phạm vi
 
-Bài 2 câu 13 có hai phương án sai trong chính câu gốc. Bài 3 câu 13 có nhiều đặc điểm đúng. Việc giữ nguyên đề buộc giao diện chọn nhiều đáp án; không sửa câu thành câu hỏi khác để tạo đáp án duy nhất.
+- Bài 1 câu 24: Bài 1 trang 18 nêu cơ sở xã hội và nguồn bổ sung lực lượng quan trọng nhất, không có nguyên văn đầy đủ hai chỗ trống của đề. Không đủ căn cứ từ riêng Bài 1 để đổi A sang D; trả A theo ZIP và ghi nhận lỗi câu chữ “lực lượng phụ”.
+- Bài 2 câu 13: Bài 2 trang 12 trực tiếp xác định tất yếu khách quan, nên D “tất yếu chủ quan” là phương án sai rõ ràng. A dùng “toàn bộ các lĩnh vực” còn mơ hồ; không tự đổi câu một lựa chọn sang nhiều lựa chọn. Trả khóa D của ZIP.
+- Bài 3 câu 13: Mục 3.3.2.2 Bài 3 trang 12 nêu trực tiếp C, đồng thời B cũng là đặc điểm đúng. Đề một lựa chọn chưa phân biệt khía cạnh; không lấy Bài 4 để kết luận A và không tự đổi sang chọn cả bốn. Trả khóa C của ZIP, đánh dấu câu có phương án chồng lấn.
+- Bài 4 câu 38: Câu không nêu Việt Nam. Bài 4 trang 1 liệt kê nhiều giai cấp, tầng lớp kèm v.v., không quy định một số cố định; trang 8–10 riêng Việt Nam có 6 nhóm. Không áp phạm vi Việt Nam cho nguyên văn câu chung; trả C của ZIP và đánh dấu chưa đủ căn cứ.
 
-Bài 5 câu 14: số 6 trong PDF là số tôn giáo lớn được liệt kê, không phải số tôn giáo được công nhận/cấp đăng ký. Vì yêu cầu giữ nguyên câu và các lựa chọn, không thay câu bằng câu hỏi khác về 6 tôn giáo lớn.
+## Những chỗ giữ nguyên và giới hạn xác minh
 
-## Giới hạn xác minh
+Bài 1 câu 35 và 39 cùng có căn cứ trong chính Bài 1: trang 11 diễn đạt lực lượng sản xuất tiên tiến/phương thức sản xuất hiện đại; trang 16 diễn đạt phương thức sản xuất tiên tiến/lực lượng sản xuất hiện đại. Không chấm sai chỉ vì hoán đổi hai tính từ.
 
-Đã rà soát toàn bộ 225 câu, nhưng 6 PDF không cung cấp trực tiếp mọi câu trích dẫn, số liệu hoặc nhận định tuyệt đối trong ZIP. Các câu gắn “Chưa đủ căn cứ trực tiếp” bên dưới giữ đáp án cũ; không được hiểu là đã chứng minh chắc chắn bằng PDF. Đây là hạn chế của tài liệu nguồn, không tự suy đoán một khóa mới. Những câu giữ nguyên khác có nội dung khái niệm tương ứng hoặc được suy ra từ các trang dẫn; không khẳng định trùng nguyên văn.
+Bài 5 câu 14: 6 tôn giáo lớn được liệt kê ở trang 11 không đồng nghĩa số tôn giáo được công nhận/cấp đăng ký. Giữ C (16) của ZIP, nhưng PDF Bài 5 không đủ xác nhận con số này.
+
+Các câu trích dẫn, số liệu hoặc đề mơ hồ không có căn cứ trực tiếp trong đúng PDF được giữ khóa cũ. Không khẳng định toàn bộ các khóa giữ lại đã được chứng minh. Bảng dưới ghi trang tham chiếu để tra nội dung liên quan, không mặc nhiên chứng minh mọi cách diễn đạt tuyệt đối của đề.
 
 ## Nguồn
 
@@ -68,7 +69,7 @@ Các trang bên dưới tính từ trang PDF đầu tiên = 1. SHA-256 giúp nh�
 | 21 | B, C | B, C | 18–19 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 22 | C | C | 18 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 23 | A | A | 17, 19 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
-| 24 | A | D | 18 | Đã chỉnh: Hai chỗ trống “cơ sở ... , cơ sở ...” nói về cơ sở giai cấp và cơ sở xã hội của Đảng, không phải chính trị – xã hội. Trang 18 xác định giai cấp công nhân là cơ sở xã hội và nguồn bổ sung lực lượng quan trọng nhất; đề gốc còn có cụm “lực lượng phụ” chưa chuẩn, giữ nguyên theo yêu cầu. |
+| 24 | A | A | 18 | Giữ khóa ZIP; chưa đủ căn cứ để sửa: Bài 1 trang 18 nêu cơ sở xã hội và nguồn bổ sung lực lượng quan trọng nhất, không có nguyên văn đầy đủ hai chỗ trống của đề. Không đủ căn cứ từ riêng Bài 1 để đổi A sang D; trả A theo ZIP và ghi nhận lỗi câu chữ “lực lượng phụ”. |
 | 25 | D | D | 18 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 26 | D | D | 23 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 27 | A | A | 20 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
@@ -102,7 +103,7 @@ Các trang bên dưới tính từ trang PDF đầu tiên = 1. SHA-256 giúp nh�
 | 10 | C | C | 12 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 11 | C | C | 13 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 12 | C | C | 13 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
-| 13 | D | A, D | 12 | Đã chỉnh: A sai vì nói kế thừa toàn bộ các lĩnh vực, trong khi giáo trình yêu cầu tiếp thu những thành tựu; D sai vì nói tất yếu chủ quan thay vì tất yếu khách quan. Giữ nguyên đề, cần chấp nhận cả A và D. |
+| 13 | D | D | 12 | Giữ khóa ZIP; chưa đủ căn cứ để sửa: Bài 2 trang 12 trực tiếp xác định tất yếu khách quan, nên D “tất yếu chủ quan” là phương án sai rõ ràng. A dùng “toàn bộ các lĩnh vực” còn mơ hồ; không tự đổi câu một lựa chọn sang nhiều lựa chọn. Trả khóa D của ZIP. |
 | 14 | A, D | A, D | 6, 11 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 15 | B | B | 10 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 16 | Đúng, Sai, Đúng, Sai | Đúng, Sai, Đúng, Sai | 10 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
@@ -147,10 +148,10 @@ Các trang bên dưới tính từ trang PDF đầu tiên = 1. SHA-256 giúp nh�
 | 10 | B | B | 5–7 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 11 | D | D | 11 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 12 | A | A | 12–13 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
-| 13 | C | A, B, C, D | 7, 12; Bài 4: 5–6, 10 | Đã chỉnh: Câu hỏi không giới hạn đặc điểm pháp lý. A đúng về nền tảng liên minh công – nông – trí thức; B, C đúng về lãnh đạo và cơ sở pháp lý; D đúng về nguồn gốc ra đời của nhà nước XHCN. Giữ nguyên đề và chấp nhận bốn đặc điểm. |
+| 13 | C | C | 7, 10, 12 | Giữ khóa ZIP; chưa đủ căn cứ để sửa: Mục 3.3.2.2 Bài 3 trang 12 nêu trực tiếp C, đồng thời B cũng là đặc điểm đúng. Đề một lựa chọn chưa phân biệt khía cạnh; không lấy Bài 4 để kết luận A và không tự đổi sang chọn cả bốn. Trả khóa C của ZIP, đánh dấu câu có phương án chồng lấn. |
 | 14 | A, C | A, C | 4 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 15 | A, C | A, C | 6–7 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
-| 16 | D | D | 6; Bài 2: 4 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
+| 16 | D | D | 6 | Giữ khóa ZIP; Bài 3 trang 6 xác nhận nền tảng công hữu TLSX chủ yếu, nhưng không nêu trực tiếp vế phân phối theo lao động. Không dùng Bài 2 để bổ sung căn cứ. |
 | 17 | B | B | 6–7 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 18 | D | D | 5 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 19 | B | B | 7–8 | Chưa đủ căn cứ trực tiếp: Không tìm thấy thuật ngữ “nửa nhà nước” trong PDF Bài 3. |
@@ -167,7 +168,7 @@ Các trang bên dưới tính từ trang PDF đầu tiên = 1. SHA-256 giúp nh�
 | 30 | 1→1; 2→2; 3→3 | 1→1; 2→2; 3→3 | 6–7, 11 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 31 | B | B | 8 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 32 | Đúng, Đúng, Sai, Sai | Đúng, Đúng, Sai, Sai | 11–12 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
-| 33 | 1→1; 2→2; 3→3; 4→4 | 1→1; 2→2; 3→4; 4→3 | 2, 11–12 | Đã chỉnh: Hai cặp cuối bị đảo: nhân dân là chủ thể quyền lực; hình thức dân chủ gián tiếp là dân chủ đại diện. |
+| 33 | 1→1; 2→2; 3→3; 4→4 | 1→1; 2→2; 3→4; 4→3 | 2, 11–12 | Đã chỉnh theo đúng giáo trình cùng bài: Hai cặp cuối bị đảo: nhân dân là chủ thể quyền lực; hình thức dân chủ gián tiếp là dân chủ đại diện. |
 | 34 | A, B | A, B | 1–3 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 35 | Đúng, Sai, Đúng, Sai | Đúng, Sai, Đúng, Sai | 5, 8 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 36 | Đúng, Đúng, Sai, Đúng | Đúng, Đúng, Sai, Đúng | 2, 4–6 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
@@ -186,7 +187,7 @@ Các trang bên dưới tính từ trang PDF đầu tiên = 1. SHA-256 giúp nh�
 | 7 | A | A | 6 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 8 | A | A | 5–6 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 9 | A, B | A, B | 6–7 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
-| 10 | A | D | 8–10 | Đã chỉnh: Mục 4.3.1 liệt kê 6 nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên; không chỉ ba lực lượng nòng cốt của liên minh. |
+| 10 | A | D | 8–10 | Đã chỉnh theo đúng giáo trình cùng bài: Mục 4.3.1 liệt kê 6 nhóm: công nhân, nông dân, trí thức, doanh nhân, phụ nữ, thanh niên; không chỉ ba lực lượng nòng cốt của liên minh. |
 | 11 | D | D | 2–4, 7 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 12 | C | C | 9 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 13 | A | A | 8 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
@@ -213,8 +214,8 @@ Các trang bên dưới tính từ trang PDF đầu tiên = 1. SHA-256 giúp nh�
 | 34 | 1→1,2,3,4; 2→5,6,7 | 1→1,2,3,4; 2→5,6,7 | 8–9, 13–14 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 35 | A, C | A, C | 9–10 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 36 | C, D | C, D | 14–15 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
-| 37 | 1→1,2,3,4,5; 2→6,7,8 | 1→1,2,3,4; 2→5,6,7,8 | 10–15 | Đã chỉnh: Đảng Cộng sản là tổ chức lãnh đạo, thuộc nhóm thành phần/yếu tố của liên minh, không phải một nội dung/phương hướng. |
-| 38 | C | B | 8–10 | Đã chỉnh: Đối chiếu phần cơ cấu xã hội – giai cấp ở Việt Nam tại mục 4.3.1: 6 nhóm, không phải ba lực lượng của liên minh công – nông – trí thức. Câu gốc không nêu rõ Việt Nam; giữ nguyên câu chữ theo yêu cầu. |
+| 37 | 1→1,2,3,4,5; 2→6,7,8 | 1→1,2,3,4; 2→5,6,7,8 | 10–15 | Đã chỉnh theo đúng giáo trình cùng bài: Đảng Cộng sản là tổ chức lãnh đạo, thuộc nhóm thành phần/yếu tố của liên minh, không phải một nội dung/phương hướng. |
+| 38 | C | C | 8, 9, 10 | Giữ khóa ZIP; chưa đủ căn cứ để sửa: Câu không nêu Việt Nam. Bài 4 trang 1 liệt kê nhiều giai cấp, tầng lớp kèm v.v., không quy định một số cố định; trang 8–10 riêng Việt Nam có 6 nhóm. Không áp phạm vi Việt Nam cho nguyên văn câu chung; trả C của ZIP và đánh dấu chưa đủ căn cứ. |
 | 39 | Sai, Đúng, Sai, Sai | Sai, Đúng, Sai, Sai | 11–13 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 40 | 1→1; 2→2; 3→3; 4→4 | 1→1; 2→2; 3→3; 4→4 | 8–9, 13 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 41 | A, C | A, C | 10–13 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
@@ -292,7 +293,7 @@ Các trang bên dưới tính từ trang PDF đầu tiên = 1. SHA-256 giúp nh�
 | 22 | C | C | 5 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 23 | B, D | B, D | 9–10 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 24 | Sai, Sai, Đúng, Đúng | Sai, Sai, Đúng, Đúng | 6 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
-| 25 | Sai, Sai, Sai, Đúng | Sai, Sai, Đúng, Đúng | 7–8 | Đã chỉnh: Trang 7 ghi giáo dục gia đình truyền thống và xã hội mới tiếp tục nhấn mạnh sự hy sinh của cá nhân cho cộng đồng; phát biểu thứ 3 phải Đúng. |
+| 25 | Sai, Sai, Sai, Đúng | Sai, Sai, Đúng, Đúng | 7–8 | Đã chỉnh theo đúng giáo trình cùng bài: Trang 7 ghi giáo dục gia đình truyền thống và xã hội mới tiếp tục nhấn mạnh sự hy sinh của cá nhân cho cộng đồng; phát biểu thứ 3 phải Đúng. |
 | 26 | 1→1,2,3; 2→4,5,6 | 1→1,2,3; 2→4,5,6 | 5, 7 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 | 27 | 1→1; 2→2; 3→3; 4→4 | 1→1; 2→2; 3→3; 4→4 | 5–10 | Giữ nguyên; phù hợp nội dung/khái niệm được trình bày. |
 
