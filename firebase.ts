@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { getFirestore, Firestore } from 'firebase/firestore';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -15,10 +16,12 @@ const firebaseConfig = {
 export let app: any;
 export let auth: any;
 export let googleProvider: any;
+export let db: Firestore;
 
 try {
   app = initializeApp(firebaseConfig);
   auth = getAuth(app);
+  db = getFirestore(app);
   googleProvider = new GoogleAuthProvider();
   // Suggest & prioritize ICTU domain and force account selection
   googleProvider.setCustomParameters({

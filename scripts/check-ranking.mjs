@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { build } from 'esbuild';
+const result=await build({entryPoints:['services/ranking.ts'],bundle:true,write:false,format:'esm',platform:'node'});
+const {compareScores,isBetterResult,rankedTopics}=await import(`data:text/javascript;base64,${Buffer.from(result.outputFiles[0].text).toString('base64')}`);
+const a={userId:'a',score:34,totalQuestions:40,timeSpentSeconds:60,timestamp:1};
+assert.ok(compareScores({...a,score:35},a)<0);
+assert.ok(compareScores({...a,timeSpentSeconds:50},a)<0);
+assert.ok(compareScores({...a,timestamp:2},a)>0);
+assert.ok(compareScores({...a,userId:'b'},a)>0);
+assert.ok(compareScores({...a,score:191,totalQuestions:225},{...a,score:33,totalQuestions:39})<0);
+assert.ok(!isBetterResult(a,a));
+assert.ok(isBetterResult({...a,timeSpentSeconds:59},a));
+assert.ok(!isBetterResult({...a,score:33,timeSpentSeconds:1},a));
+assert.equal(rankedTopics.length,12);
+console.log('PASS: exact fraction ranking, duration and stable ties, best-score replacement, all 12 topic groups.');

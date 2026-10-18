@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "check:questions": "node scripts/check-questions.mjs",
     "typecheck": "tsc --noEmit",
-    "check:review": "node scripts/check-study-review.mjs"
+    "check:review": "node scripts/check-study-review.mjs",
+    "check:ranking": "node scripts/check-ranking.mjs"
   },
   "dependencies": {
     "@types/canvas-confetti": "^1.9.0",
@@ -24,6 +25,7 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.2",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",
     "typescript": "~5.8.2",

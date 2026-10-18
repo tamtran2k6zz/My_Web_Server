@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function student() {
+      return request.auth != null && request.auth.token.email_verified == true
+        && request.auth.token.email.lower().matches('^[^@]+@ictu[.]edu[.]vn$');
+    }
+    function countFor(topic) {
+      return {'1':40, '2':40, '3':37, '4':41, '5':40, '6':27,
+        'review-1-3':117, 'review-4-6':108, 'review-all':225,
+        'type-quiz':182, 'type-tf':22, 'type-drag':21}.get(topic, 0);
+    }
+    function fields() {
+      return ['userId', 'topicId', 'topicName', 'score', 'totalQuestions',
+        'timeSpentSeconds', 'totalDurationSeconds', 'maskedEmail', 'displayName',
+        'submissionId', 'submittedAt'];
+    }
+    function common(d, uid) {
+      return d.keys().hasAll(fields()) && d.userId == uid
+        && d.topicId is string && d.topicName is string && d.topicName.size() <= 200
+        && d.totalQuestions is int && d.totalQuestions > 0 && d.totalQuestions <= 225
+        && d.score is int && d.score >= 0 && d.score <= d.totalQuestions
+        && d.totalDurationSeconds is int && d.totalDurationSeconds >= 600 && d.totalDurationSeconds <= 2700
+        && d.timeSpentSeconds is int && d.timeSpentSeconds >= 1 && d.timeSpentSeconds <= d.totalDurationSeconds
+        && d.maskedEmail is string && d.maskedEmail.size() <= 80
+        && d.maskedEmail.matches('^[^@]{1,3}[*]{3}[^@]{0,2}@ictu[.]edu[.]vn$')
+        && d.displayName is string && d.displayName.size() <= 100
+        && d.submissionId is string && d.submissionId.size() > 0 && d.submissionId.size() <= 100
+        && d.submittedAt == request.time;
+    }
+    match /quizExamHistory/{uid}/attempts/{attemptId} {
+      allow read: if student() && request.auth.uid == uid;
+      allow create: if student() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(fields().concat(['userEmail', 'answers']))
+        && common(request.resource.data, uid)
+        && request.resource.data.submissionId == attemptId
+        && request.resource.data.userEmail == request.auth.token.email
+        && request.resource.data.answers is list
+        && request.resource.data.answers.size() == request.resource.data.totalQuestions
+        && (countFor(request.resource.data.topicId) == request.resource.data.totalQuestions
+          || request.resource.data.topicId in ['saved-questions', 'wrong-questions']);
+      allow update, delete: if false;
+    }
+    function sameAttempt(d, uid, topic) {
+      let attempt = getAfter(/databases/$(database)/documents/quizExamHistory/$(uid)/attempts/$(d.submissionId)).data;
+      return attempt.userId == uid && attempt.topicId == topic
+        && attempt.score == d.score && attempt.totalQuestions == d.totalQuestions
+        && attempt.timeSpentSeconds == d.timeSpentSeconds && attempt.totalDurationSeconds == d.totalDurationSeconds
+        && attempt.maskedEmail == d.maskedEmail && attempt.displayName == d.displayName
+        && attempt.topicName == d.topicName && attempt.submittedAt == request.time;
+    }
+    match /quizLeaderboards/{topic}/entries/{uid} {
+      allow read: if student();
+      allow create, update: if student() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(fields())
+        && common(request.resource.data, uid)
+        && request.resource.data.topicId == topic
+        && countFor(topic) == request.resource.data.totalQuestions
+        && sameAttempt(request.resource.data, uid, topic)
+        && (!exists(/databases/$(database)/documents/quizLeaderboards/$(topic)/entries/$(uid))
+          || resource.data.totalQuestions != request.resource.data.totalQuestions
+          || request.resource.data.score > resource.data.score
+          || (request.resource.data.score == resource.data.score
+            && request.resource.data.timeSpentSeconds < resource.data.timeSpentSeconds));
+      allow delete: if false;
+    }
+  }
+}

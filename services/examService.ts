@@ -1,4 +1,6 @@
-import { maskEmail } from '../firebase';
+import { auth, db, maskEmail } from '../firebase';
+import { collection, doc, onSnapshot, orderBy, query, limit, runTransaction, serverTimestamp } from 'firebase/firestore';
+import { compareScores, isBetterResult, rankedTopics } from './ranking';
 
 export interface GradeResult {
   score10: number;
@@ -113,149 +115,94 @@ export function formatDuration(seconds: number): string {
   return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
 }
 
-const STORAGE_KEY = 'ictu_exam_records_v1';
+type CloudRecord = {
+  userId: string; topicId: string; topicName: string; score: number; totalQuestions: number;
+  timeSpentSeconds: number; totalDurationSeconds: number; maskedEmail: string;
+  displayName: string; submissionId: string; submittedAt: any;
+  userEmail?: string; answers?: QuestionAnswerRecord[];
+};
 
-// Initial realistic benchmark rankings for ICTU students
-const initialMockLeaderboard: ExamRecord[] = [
-  {
-    id: 'mock-1',
-    userId: 'u-1',
-    userEmail: 'nguyenvanh@ictu.edu.vn',
-    maskedEmail: 'ng***nh@ictu.edu.vn',
-    displayName: 'Nguyễn Văn H.',
-    topicId: 'review-all',
-    topicName: 'Khảo thí toàn bộ ngân hàng đề',
-    score: 39,
-    totalQuestions: 40,
-    percentage: 97.5,
-    grade: calculateGrade(39, 40),
-    timeSpentSeconds: 1140, // 19m 00s
-    totalDurationSeconds: 1800,
-    timestamp: Date.now() - 3600000 * 5,
-    dateFormatted: new Date(Date.now() - 3600000 * 5).toLocaleString('vi-VN'),
-    answers: []
-  },
-  {
-    id: 'mock-2',
-    userId: 'u-2',
-    userEmail: 'tranminhkhoi@ictu.edu.vn',
-    maskedEmail: 'tr***oi@ictu.edu.vn',
-    displayName: 'Trần Minh K.',
-    topicId: 'review-4-6',
-    topicName: 'Ôn tập Tổng hợp Phần 4 – 6',
-    score: 38,
-    totalQuestions: 40,
-    percentage: 95.0,
-    grade: calculateGrade(38, 40),
-    timeSpentSeconds: 1260, // 21m
-    totalDurationSeconds: 1800,
-    timestamp: Date.now() - 3600000 * 12,
-    dateFormatted: new Date(Date.now() - 3600000 * 12).toLocaleString('vi-VN'),
-    answers: []
-  },
-  {
-    id: 'mock-3',
-    userId: 'u-3',
-    userEmail: 'lethuyduong@ictu.edu.vn',
-    maskedEmail: 'le***ng@ictu.edu.vn',
-    displayName: 'Lê Thùy D.',
-    topicId: 'review-1-3',
-    topicName: 'Ôn tập Tổng hợp Phần 1 – 3',
-    score: 37,
-    totalQuestions: 40,
-    percentage: 92.5,
-    grade: calculateGrade(37, 40),
-    timeSpentSeconds: 1080,
-    totalDurationSeconds: 1800,
-    timestamp: Date.now() - 3600000 * 24,
-    dateFormatted: new Date(Date.now() - 3600000 * 24).toLocaleString('vi-VN'),
-    answers: []
-  },
-  {
-    id: 'mock-4',
-    userId: 'u-4',
-    userEmail: 'hoangvietanh@ictu.edu.vn',
-    maskedEmail: 'ho***nh@ictu.edu.vn',
-    displayName: 'Hoàng Việt A.',
-    topicId: '6',
-    topicName: 'Phần 6: Vấn đề Gia đình trong TKQĐ',
-    score: 26,
-    totalQuestions: 27,
-    percentage: 96.3,
-    grade: calculateGrade(26, 27),
-    timeSpentSeconds: 780,
-    totalDurationSeconds: 1200,
-    timestamp: Date.now() - 3600000 * 30,
-    dateFormatted: new Date(Date.now() - 3600000 * 30).toLocaleString('vi-VN'),
-    answers: []
-  },
-  {
-    id: 'mock-5',
-    userId: 'u-5',
-    userEmail: 'dangquanghuy@ictu.edu.vn',
-    maskedEmail: 'da***uy@ictu.edu.vn',
-    displayName: 'Đặng Quang H.',
-    topicId: 'review-all',
-    topicName: 'Khảo thí toàn bộ ngân hàng đề',
-    score: 35,
-    totalQuestions: 40,
-    percentage: 87.5,
-    grade: calculateGrade(35, 40),
-    timeSpentSeconds: 1410,
-    totalDurationSeconds: 1800,
-    timestamp: Date.now() - 3600000 * 48,
-    dateFormatted: new Date(Date.now() - 3600000 * 48).toLocaleString('vi-VN'),
-    answers: []
-  }
-];
+function fromCloud(id: string, value: CloudRecord): ExamRecord {
+  const timestamp = value.submittedAt?.toMillis?.() || 0;
+  return {
+    ...value, id, userEmail: value.userEmail || '', answers: value.answers || [],
+    grade: calculateGrade(value.score, value.totalQuestions),
+    percentage: value.totalQuestions ? value.score / value.totalQuestions * 100 : 0,
+    timestamp, dateFormatted: new Date(timestamp).toLocaleString('vi-VN')
+  };
+}
 
-export function getExamLeaderboard(): ExamRecord[] {
+export function leaderboardError(error: unknown): string {
+  const code = (error as { code?: string })?.code || '';
+  if (code.includes('permission-denied')) return 'Chưa có quyền truy cập bảng xếp hạng. Vui lòng đăng nhập lại hoặc liên hệ quản trị viên.';
+  if (code.includes('unavailable')) return 'Chưa kết nối được dữ liệu chung. Kiểm tra mạng và thử lại.';
+  if (code.includes('unauthenticated')) return 'Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.';
+  return 'Không thể đồng bộ dữ liệu lúc này. Vui lòng thử lại.';
+}
+
+export function watchLeaderboard(topicId: string, next: (records: ExamRecord[]) => void, error: (error: unknown) => void): () => void {
+  return onSnapshot(collection(db, 'quizLeaderboards', topicId, 'entries'), snapshot => {
+    next(snapshot.docs.map(item => fromCloud(item.id, item.data() as CloudRecord)).sort(compareScores));
+  }, error);
+}
+
+export function watchStudentHistory(next: (records: ExamRecord[]) => void, error: (error: unknown) => void): () => void {
+  const uid = auth?.currentUser?.uid;
+  if (!uid) { error({ code: 'unauthenticated' }); return () => {}; }
+  return onSnapshot(query(collection(db, 'quizExamHistory', uid, 'attempts'), orderBy('submittedAt', 'desc'), limit(100)), snapshot => {
+    next(snapshot.docs.map(item => fromCloud(item.id, item.data() as CloudRecord)));
+  }, error);
+}
+
+const pendingKey = (uid: string) => `ictu_pending_exam_results_v1:${uid}`;
+
+export function getPendingExamResults(uid: string): ExamRecord[] {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(initialMockLeaderboard));
-      return initialMockLeaderboard;
-    }
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed) && parsed.length > 0) {
-      return sortLeaderboard(parsed);
-    }
-    return initialMockLeaderboard;
-  } catch (e) {
-    return initialMockLeaderboard;
-  }
+    const value = JSON.parse(localStorage.getItem(pendingKey(uid)) || '[]');
+    return Array.isArray(value) ? value.filter(record => record.userId === uid && typeof record.id === 'string') : [];
+  } catch { return []; }
 }
 
-export function saveExamResult(record: ExamRecord): ExamRecord[] {
-  const current = getExamLeaderboard();
-  const updated = [record, ...current.filter(item => item.id !== record.id)];
-  const sorted = sortLeaderboard(updated);
+function setPending(record: ExamRecord, pending: boolean): void {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(sorted));
-  } catch (e) {
-    console.error("Could not save to localStorage", e);
+    const records = getPendingExamResults(record.userId).filter(item => item.id !== record.id);
+    if (pending) records.push(record);
+    localStorage.setItem(pendingKey(record.userId), JSON.stringify(records));
+  } catch { /* The result modal remains available for a manual retry. */ }
+}
+
+export async function saveExamResult(record: ExamRecord): Promise<void> {
+  const user = auth?.currentUser;
+  if (!user || user.uid !== record.userId) throw { code: 'unauthenticated' };
+  const topic = rankedTopics.find(item => item.id === record.topicId);
+  const personal = ['saved-questions', 'wrong-questions'].includes(record.topicId);
+  if ((!topic && !personal) || (topic && topic.count !== record.totalQuestions) ||
+      !Number.isInteger(record.score) || record.score < 0 || record.score > record.totalQuestions ||
+      !Number.isInteger(record.totalQuestions) || record.totalQuestions < 1 || record.totalQuestions > 225 ||
+      record.answers.length !== record.totalQuestions || record.answers.filter(answer => answer.isCorrect).length !== record.score ||
+      new Set(record.answers.map(answer => answer.questionIndex)).size !== record.totalQuestions ||
+      record.answers.some(answer => !Number.isInteger(answer.questionIndex) || answer.questionIndex < 0 || answer.questionIndex >= record.totalQuestions) ||
+      !Number.isInteger(record.totalDurationSeconds) || record.totalDurationSeconds < 600 || record.totalDurationSeconds > 2700 ||
+      !Number.isInteger(record.timeSpentSeconds) || record.timeSpentSeconds < 1 || record.timeSpentSeconds > record.totalDurationSeconds) {
+    throw new Error('Invalid exam result');
   }
-  return sorted;
-}
-
-export function getStudentExamHistory(email?: string): ExamRecord[] {
-  if (!email) return [];
-  const normalized = email.toLowerCase().trim();
-  const all = getExamLeaderboard();
-  return all.filter(r => (r.userEmail || '').toLowerCase().trim() === normalized);
-}
-
-function sortLeaderboard(records: ExamRecord[]): ExamRecord[] {
-  return [...records].sort((a, b) => {
-    // 1. Highest score10
-    if (b.grade.score10 !== a.grade.score10) {
-      return b.grade.score10 - a.grade.score10;
+  setPending(record, true);
+  const attempt = doc(db, 'quizExamHistory', user.uid, 'attempts', record.id);
+  const best = topic ? doc(db, 'quizLeaderboards', topic.id, 'entries', user.uid) : null;
+  const summary: CloudRecord = {
+    userId: user.uid, topicId: record.topicId, topicName: topic?.name || record.topicName,
+    score: record.score, totalQuestions: record.totalQuestions,
+    timeSpentSeconds: record.timeSpentSeconds, totalDurationSeconds: record.totalDurationSeconds,
+    maskedEmail: maskEmail(user.email), displayName: (user.displayName || 'Sinh viên ICTU').slice(0, 100),
+    submissionId: record.id, submittedAt: serverTimestamp()
+  };
+  await runTransaction(db, async transaction => {
+    const [existingAttempt, existingBest] = await Promise.all([transaction.get(attempt), best ? transaction.get(best) : Promise.resolve(null)]);
+    if (existingAttempt.exists()) return; // Retry is idempotent.
+    transaction.set(attempt, { ...summary, userEmail: user.email || '', answers: record.answers });
+    if (best && (!existingBest?.exists() || existingBest.data().totalQuestions !== record.totalQuestions || isBetterResult(record, fromCloud(existingBest.id, existingBest.data() as CloudRecord)))) {
+      transaction.set(best, summary);
     }
-    // 2. Faster time spent
-    if (a.timeSpentSeconds !== b.timeSpentSeconds) {
-      return a.timeSpentSeconds - b.timeSpentSeconds;
-    }
-    // 3. More recent
-    return b.timestamp - a.timestamp;
   });
+  setPending(record, false);
 }

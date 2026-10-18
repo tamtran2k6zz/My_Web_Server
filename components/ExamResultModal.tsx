@@ -13,6 +13,9 @@ interface Props {
   onClose: () => void;
   onRetry: () => void;
   onViewLeaderboard: () => void;
+  syncStatus?: 'idle' | 'saving' | 'saved' | 'error';
+  syncError?: string;
+  onRetrySync?: () => void;
 }
 
 export const ExamResultModal: React.FC<Props> = ({
@@ -20,7 +23,10 @@ export const ExamResultModal: React.FC<Props> = ({
   isOpen,
   onClose,
   onRetry,
-  onViewLeaderboard
+  onViewLeaderboard,
+  syncStatus,
+  syncError,
+  onRetrySync
 }) => {
   useEffect(() => {
     if (isOpen && record && (record.grade.gradeLetter === 'A' || record.grade.gradeLetter === 'B')) {
@@ -93,6 +99,11 @@ export const ExamResultModal: React.FC<Props> = ({
         </div>
 
         {/* Big Grade Badge */}
+        {syncStatus && syncStatus !== 'idle' && <div role={syncStatus === 'error' ? 'alert' : 'status'} className="mb-4 rounded-xl border border-slate-200 dark:border-white/15 p-3 text-sm">
+          {syncStatus === 'saving' && 'Đang lưu kết quả lên hệ thống…'}
+          {syncStatus === 'saved' && (['saved-questions', 'wrong-questions'].includes(record.topicId) ? 'Đã lưu lịch sử thi. Bộ ôn cá nhân không tham gia bảng xếp hạng chung.' : 'Đã đồng bộ kết quả. Bảng xếp hạng giữ kết quả tốt nhất của bạn cho phần này.')}
+          {syncStatus === 'error' && <><p>Chưa đồng bộ được kết quả. {syncError}</p><button type="button" onClick={onRetrySync} className="mt-2 min-h-[44px] rounded-lg border border-current px-4 py-2 font-semibold">Thử đồng bộ lại</button></>}
+        </div>}
         <div className="flex flex-col items-center justify-center p-6 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 mb-6 relative overflow-hidden">
           <div className={`flex flex-col items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border-2 ${grade.badgeColor} mb-3 shadow-lg relative select-none`}>
             <span className="text-4xl sm:text-5xl font-black tracking-tight">{grade.gradeLetter}</span>

@@ -1,294 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import { Trophy, Medal, Award, Clock, Download, X, User, Calendar, FileText, CheckCircle2 } from 'lucide-react';
-import { getExamLeaderboard, getStudentExamHistory, ExamRecord, formatDuration } from '../services/examService';
+import React, { useEffect, useState } from 'react';
+import { Download, Trophy, X } from 'lucide-react';
+import { auth } from '../firebase';
+import { ExamRecord, formatDuration, getPendingExamResults, leaderboardError, saveExamResult, watchLeaderboard, watchStudentHistory } from '../services/examService';
+import { rankedTopics } from '../services/ranking';
 import { exportLeaderboardToExcel, exportExamToPdf, exportExamToExcel } from '../services/exportService';
 
-interface Props {
-  isOpen: boolean;
-  onClose: () => void;
-  currentEmail?: string;
-}
+interface Props { isOpen: boolean; onClose: () => void; currentEmail?: string }
 
-export const LeaderboardModal: React.FC<Props> = ({ isOpen, onClose, currentEmail }) => {
+export const LeaderboardModal: React.FC<Props> = ({ isOpen, onClose }) => {
   const [tab, setTab] = useState<'global' | 'history'>('global');
-  const [leaderboard, setLeaderboard] = useState<ExamRecord[]>([]);
+  const [topicId, setTopicId] = useState('review-all');
+  const [records, setRecords] = useState<ExamRecord[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [pending, setPending] = useState<ExamRecord[]>([]);
+  const [retrying, setRetrying] = useState(false);
+  const [reload, setReload] = useState(0);
+  const uid = auth?.currentUser?.uid;
 
   useEffect(() => {
-    if (isOpen) {
-      setLeaderboard(getExamLeaderboard());
-    }
-  }, [isOpen]);
+    if (!isOpen || !uid) return;
+    setRecords([]); setLoading(true); setError('');
+    setPending(getPendingExamResults(uid));
+    const next = (items: ExamRecord[]) => { setRecords(items); setLoading(false); };
+    const fail = (reason: unknown) => { setError(leaderboardError(reason)); setLoading(false); setRecords([]); };
+    try {
+      return tab === 'global' ? watchLeaderboard(topicId, next, fail) : watchStudentHistory(next, fail);
+    } catch (reason) { fail(reason); }
+  }, [isOpen, uid, tab, topicId, reload]);
 
   if (!isOpen) return null;
-
-  const myHistory = getStudentExamHistory(currentEmail);
-  const top3 = leaderboard.slice(0, 3);
-  const rest = leaderboard.slice(3);
-
-  const getRankBadge = (index: number) => {
-    if (index === 0) return <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-400 text-slate-950 font-bold text-sm shadow-md shadow-amber-400/30">🥇</span>;
-    if (index === 1) return <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-slate-300 text-slate-950 font-bold text-sm shadow-md shadow-slate-300/30">🥈</span>;
-    if (index === 2) return <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-amber-600 text-white font-bold text-sm shadow-md shadow-amber-600/30">🥉</span>;
-    return <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-white/10 text-slate-300 font-bold text-xs">{index + 1}</span>;
+  const topic = rankedTopics.find(item => item.id === topicId);
+  const retryPending = async () => {
+    if (!uid || retrying) return;
+    setRetrying(true); setError('');
+    try { for (const record of pending) await saveExamResult(record); }
+    catch (reason) { setError(leaderboardError(reason)); }
+    finally { setPending(getPendingExamResults(uid)); setRetrying(false); }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 dark:bg-black/80 backdrop-blur-xl animate-fade-in overflow-y-auto">
-      <div 
-        className="relative w-full max-w-4xl rounded-3xl bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-black border border-slate-200 dark:border-white/15 p-5 sm:p-7 shadow-2xl shadow-cyan-950/20 dark:shadow-cyan-950/40 my-8 flex flex-col max-h-[90vh] text-slate-900 dark:text-white"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="leaderboard-title"
-      >
-        {/* Glow ambient */}
-        <div className="pointer-events-none absolute -top-20 right-10 w-72 h-72 bg-amber-500/10 rounded-full blur-3xl" />
-
-        {/* Close Button */}
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute top-5 right-5 p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 transition cursor-pointer"
-          aria-label="Đóng bảng xếp hạng"
-          title="Đóng"
-        >
-          <X size={18} />
-        </button>
-
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pr-10">
-          <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2 select-none">
-              <Trophy size={14} />
-              <span>Bảng vinh danh thành tích sinh viên</span>
-            </div>
-            <h2 id="leaderboard-title" className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight text-pretty">
-              Xếp Hạng Năng Lực Học Phần
-            </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Hệ thống khảo thí Chủ nghĩa Xã hội Khoa học • Đại học CNTT & Truyền thông (ICTU)
-            </p>
-          </div>
-
-          {/* Lecturer Quick Export Button */}
-          <button
-            type="button"
-            onClick={() => exportLeaderboardToExcel(leaderboard)}
-            className="px-3.5 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center gap-2 transition cursor-pointer self-start sm:self-center shrink-0 shadow-sm"
-            title="Dành cho Giảng viên: Xuất toàn bộ danh sách điểm sinh viên ra Excel"
-          >
-            <Download size={15} />
-            <span>Xuất Danh Sách Excel</span>
-          </button>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 dark:bg-black/80 p-3 sm:p-5 backdrop-blur-xl">
+      <section role="dialog" aria-modal="true" aria-labelledby="leaderboard-title" className="relative flex max-h-[90vh] w-full max-w-4xl flex-col rounded-3xl border border-slate-200 dark:border-white/15 bg-white dark:bg-slate-950 p-5 sm:p-7 text-slate-900 dark:text-white shadow-2xl">
+        <button type="button" onClick={onClose} aria-label="Đóng bảng xếp hạng" className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-xl hover:bg-slate-100 dark:hover:bg-white/10"><X size={20}/></button>
+        <h2 id="leaderboard-title" className="pr-12 text-xl font-bold flex items-center gap-2"><Trophy className="text-amber-500" size={24}/> Bảng xếp hạng chung</h2>
+        <p className="mt-2 pr-8 text-sm text-slate-600 dark:text-slate-400">Mỗi user có một kết quả tốt nhất trong từng phần. Cùng điểm thì ưu tiên thời gian ngắn hơn.</p>
+        <div className="my-4 flex flex-wrap gap-2" role="tablist" aria-label="Bảng điểm">
+          <button type="button" role="tab" id="ranking-tab" aria-controls="ranking-panel" aria-selected={tab === 'global'} onClick={() => setTab('global')} className={`min-h-[44px] rounded-xl px-4 py-2 font-semibold ${tab === 'global' ? 'bg-amber-400 text-slate-950' : 'bg-slate-100 dark:bg-white/10'}`}>Xếp hạng theo phần</button>
+          <button type="button" role="tab" id="history-tab" aria-controls="ranking-panel" aria-selected={tab === 'history'} onClick={() => setTab('history')} className={`min-h-[44px] rounded-xl px-4 py-2 font-semibold ${tab === 'history' ? 'bg-cyan-500 text-slate-950' : 'bg-slate-100 dark:bg-white/10'}`}>Lịch sử thi của tôi</button>
         </div>
-
-        {/* Navigation Tabs */}
-        <div className="flex items-center gap-2 border-b border-slate-200 dark:border-white/10 pb-3 mb-5 shrink-0">
-          <button
-            type="button"
-            onClick={() => setTab('global')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer flex items-center gap-2 ${
-              tab === 'global'
-                ? 'bg-amber-400 text-slate-950 shadow-md shadow-amber-400/20 font-bold'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-white/5'
-            }`}
-          >
-            <Trophy size={16} />
-            <span>Bảng vinh danh toàn trường ({leaderboard.length})</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setTab('history')}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition cursor-pointer flex items-center gap-2 ${
-              tab === 'history'
-                ? 'bg-cyan-500 text-slate-950 shadow-md shadow-cyan-400/20 font-bold'
-                : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-white/5'
-            }`}
-          >
-            <User size={16} />
-            <span>Lịch sử thi của tôi ({myHistory.length})</span>
-          </button>
+        {tab === 'global' && <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
+          <label className="min-w-0 flex-1 text-sm font-medium">Chọn phần thi
+            <select aria-label="Chọn phần thi" value={topicId} onChange={event => setTopicId(event.target.value)} className="mt-1 block min-h-[44px] w-full rounded-xl border border-slate-300 dark:border-white/20 bg-white dark:bg-slate-900 px-3 py-2 text-sm">
+              {rankedTopics.map(item => <option key={item.id} value={item.id}>{item.name} ({item.count} câu)</option>)}
+            </select>
+          </label>
+          <button type="button" disabled={loading || !records.length || !!error} onClick={() => exportLeaderboardToExcel(records)} className="min-h-[44px] rounded-xl border border-slate-300 dark:border-white/20 px-4 py-2 text-sm font-semibold disabled:opacity-40 flex items-center gap-2"><Download size={16}/> Xuất Excel</button>
+        </div>}
+        {pending.length > 0 && <div role="status" className="mb-3 rounded-xl bg-amber-50 dark:bg-amber-950/40 p-3 text-sm text-amber-900 dark:text-amber-200 flex flex-wrap items-center justify-between gap-2">
+          <span>{pending.length} bài thi đang chờ đồng bộ. Điểm chưa được đưa lên bảng chung.</span>
+          <button type="button" disabled={retrying} onClick={retryPending} className="min-h-[44px] rounded-lg border border-current px-3 py-2 font-semibold disabled:opacity-50">{retrying ? 'Đang đồng bộ…' : 'Đồng bộ lại'}</button>
+        </div>}
+        <div id="ranking-panel" role="tabpanel" aria-labelledby={tab === 'global' ? 'ranking-tab' : 'history-tab'} className="min-h-0 flex-1 overflow-auto">
+          {loading ? <p role="status" className="py-10 text-center">Đang tải dữ liệu chung…</p> : error ? <div role="alert" className="rounded-xl bg-rose-50 dark:bg-rose-950/40 p-4 text-rose-800 dark:text-rose-200"><p>{error}</p><button type="button" onClick={() => setReload(value => value + 1)} className="mt-3 min-h-[44px] rounded-lg border border-current px-4 py-2">Thử lại</button></div> : !records.length ? <div className="py-12 text-center"><Trophy size={36} className="mx-auto mb-3 text-slate-400"/><h3 className="font-semibold">{tab === 'global' ? 'Chưa có kết quả cho phần này' : 'Bạn chưa có lịch sử thi trên hệ thống'}</h3><p className="mt-2 text-sm text-slate-500">Bật chế độ thi và nộp bài để lưu kết quả.</p></div> : tab === 'global' ? <>
+            <p className="mb-3 text-xs text-slate-500" aria-live="polite">{records.length} user · {topic?.count} câu mỗi lượt · Tự cập nhật khi có người nộp bài</p>
+            <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-white/10"><table className="w-full text-left text-sm">
+              <thead className="bg-slate-100 dark:bg-white/5"><tr><th className="p-3">Hạng</th><th className="p-3">Sinh viên</th><th className="p-3 whitespace-nowrap">Đúng</th><th className="p-3 whitespace-nowrap">Điểm / 10</th><th className="p-3">Thời gian</th></tr></thead>
+              <tbody className="divide-y divide-slate-200 dark:divide-white/10">{records.map((record, index) => <tr key={record.userId} className={record.userId === uid ? 'bg-cyan-50 dark:bg-cyan-950/40' : ''}>
+                <td className="p-3 font-bold tabular-nums">{index < 3 ? ['🥇', '🥈', '🥉'][index] : index + 1}</td>
+                <td className="p-3"><div className="font-semibold">{record.displayName}{record.userId === uid && ' (Bạn)'}</div><div className="text-xs text-slate-500">{record.maskedEmail}</div></td>
+                <td className="p-3 tabular-nums whitespace-nowrap">{record.score}/{record.totalQuestions}</td><td className="p-3 font-bold tabular-nums">{record.grade.score10.toFixed(1)}</td><td className="p-3 tabular-nums">{formatDuration(record.timeSpentSeconds)}</td>
+              </tr>)}</tbody>
+            </table></div>
+          </> : <div className="space-y-3">{records.map(record => <article key={record.id} className="rounded-xl border border-slate-200 dark:border-white/15 p-4">
+            <h3 className="font-semibold">{record.topicName}</h3><p className="mt-1 text-xs text-slate-500">{record.dateFormatted}</p>
+            <p className="my-2 text-sm">Đúng {record.score}/{record.totalQuestions} · {record.grade.score10.toFixed(1)}/10 · {formatDuration(record.timeSpentSeconds)}</p>
+            <div className="flex gap-2"><button type="button" onClick={() => exportExamToPdf(record)} className="min-h-[44px] rounded-lg border border-slate-300 dark:border-white/20 px-3 py-2 text-sm">Tải PDF</button><button type="button" onClick={() => exportExamToExcel(record)} className="min-h-[44px] rounded-lg border border-slate-300 dark:border-white/20 px-3 py-2 text-sm">Tải Excel</button></div>
+          </article>)}</div>}
         </div>
-
-        {/* Tab 1: Global Leaderboard */}
-        {tab === 'global' && (
-          <div className="flex-1 overflow-y-auto pr-1 space-y-5 custom-scrollbar">
-            {/* Top 3 Podium Cards */}
-            {top3.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {top3.map((rec, idx) => (
-                  <div
-                    key={rec.id}
-                    className={`rounded-2xl p-4 border relative overflow-hidden flex flex-col justify-between ${
-                      idx === 0
-                        ? 'bg-gradient-to-b from-amber-50 to-amber-100/30 dark:from-amber-500/15 dark:to-amber-950/30 border-amber-300 dark:border-amber-500/40 shadow-lg shadow-amber-500/10'
-                        : idx === 1
-                        ? 'bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-400/10 dark:to-slate-900/30 border-slate-200 dark:border-slate-400/30'
-                        : 'bg-gradient-to-b from-orange-50 to-orange-100/30 dark:from-amber-700/10 dark:to-stone-900/30 border-orange-200 dark:border-amber-700/30'
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="flex items-center gap-2">
-                        {getRankBadge(idx)}
-                        <div>
-                          <div className="text-xs font-bold text-slate-900 dark:text-white font-mono truncate max-w-[130px]">
-                            {rec.maskedEmail}
-                          </div>
-                          <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[130px]">
-                            {rec.displayName || 'Sinh viên ICTU'}
-                          </div>
-                        </div>
-                      </div>
-
-                      <span className={`px-2 py-0.5 rounded-lg text-[10px] font-bold select-none ${rec.grade.badgeColor}`}>
-                        Loại {rec.grade.gradeLetter}
-                      </span>
-                    </div>
-
-                    <div className="mt-3 pt-3 border-t border-slate-200 dark:border-white/10 flex items-end justify-between">
-                      <div>
-                        <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase select-none">Điểm số</div>
-                        <div className="text-xl font-black text-amber-600 dark:text-amber-400 tabular-nums">
-                          {rec.grade.score10.toFixed(1)} <span className="text-xs font-normal text-slate-500 dark:text-slate-400">/ 10</span>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-[10px] text-slate-500 dark:text-slate-400 uppercase select-none">Thời gian</div>
-                        <div className="text-xs font-mono font-medium text-slate-700 dark:text-slate-300 tabular-nums">
-                          {formatDuration(rec.timeSpentSeconds)}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Rest of Leaderboard Table */}
-            <div className="rounded-2xl border border-slate-200 dark:border-white/10 overflow-hidden bg-slate-50/50 dark:bg-white/5">
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-100 dark:bg-white/5 border-b border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400 uppercase tracking-wider text-[10px] select-none">
-                    <tr>
-                      <th className="py-3 px-3 text-center">Hạng</th>
-                      <th className="py-3 px-3">Sinh viên</th>
-                      <th className="py-3 px-3">Học phần khảo thí</th>
-                      <th className="py-3 px-3 text-center">Đúng</th>
-                      <th className="py-3 px-3 text-center">Điểm (10)</th>
-                      <th className="py-3 px-3 text-center">Xếp loại</th>
-                      <th className="py-3 px-3 text-center">Thời gian</th>
-                      <th className="py-3 px-3 text-right">Ngày thi</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-200 dark:divide-white/5">
-                    {leaderboard.map((rec, index) => (
-                      <tr 
-                        key={rec.id}
-                        className={`hover:bg-slate-100/70 dark:hover:bg-white/5 transition ${
-                          currentEmail && rec.userEmail.toLowerCase() === currentEmail.toLowerCase()
-                            ? 'bg-cyan-500/10 font-medium'
-                            : ''
-                        }`}
-                      >
-                        <td className="py-3 px-3 text-center">
-                          {getRankBadge(index)}
-                        </td>
-                        <td className="py-3 px-3">
-                          <div className="font-semibold text-slate-900 dark:text-white font-mono">{rec.maskedEmail}</div>
-                          <div className="text-[10px] text-slate-500 dark:text-slate-400">{rec.displayName || 'Sinh viên ICTU'}</div>
-                        </td>
-                        <td className="py-3 px-3 text-slate-700 dark:text-slate-300 max-w-[160px] truncate" title={rec.topicName}>
-                          {rec.topicName}
-                        </td>
-                        <td className="py-3 px-3 text-center text-slate-700 dark:text-slate-300 tabular-nums">
-                          {rec.score} / {rec.totalQuestions}
-                        </td>
-                        <td className="py-3 px-3 text-center font-bold text-slate-900 dark:text-white tabular-nums">
-                          {rec.grade.score10.toFixed(1)}
-                        </td>
-                        <td className="py-3 px-3 text-center">
-                          <span className={`inline-block px-2 py-0.5 rounded-md text-[10px] font-bold select-none ${rec.grade.badgeColor}`}>
-                            Loại {rec.grade.gradeLetter}
-                          </span>
-                        </td>
-                        <td className="py-3 px-3 text-center font-mono text-slate-600 dark:text-slate-400 tabular-nums">
-                          {formatDuration(rec.timeSpentSeconds)}
-                        </td>
-                        <td className="py-3 px-3 text-right text-slate-500 dark:text-slate-400 text-[10px]">
-                          {rec.dateFormatted.split(',')[0]}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Tab 2: My Exam History */}
-        {tab === 'history' && (
-          <div className="flex-1 overflow-y-auto pr-1 space-y-3 custom-scrollbar">
-            {myHistory.length === 0 ? (
-              <div className="text-center py-12 px-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10">
-                <Trophy size={36} className="mx-auto text-slate-400 dark:text-slate-600 mb-3" />
-                <h4 className="text-base font-semibold text-slate-900 dark:text-white">Chưa có kết quả khảo thí</h4>
-                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto mt-1 text-pretty">
-                  Hãy bật chế độ "Phòng thi bấm giờ" và hoàn tất ít nhất một đề thi để ghi danh vào bảng xếp hạng!
-                </p>
-              </div>
-            ) : (
-              <div className="space-y-3">
-                {myHistory.map(rec => (
-                  <div
-                    key={rec.id}
-                    className="p-4 rounded-2xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-slate-300 dark:hover:border-white/20 transition"
-                  >
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold select-none ${rec.grade.badgeColor}`}>
-                          Loại {rec.grade.gradeLetter} ({rec.grade.gradeText})
-                        </span>
-                        <span className="text-[11px] text-slate-500 dark:text-slate-400">• {rec.dateFormatted}</span>
-                      </div>
-                      <h4 className="text-sm font-bold text-slate-900 dark:text-white">{rec.topicName}</h4>
-                      <div className="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-300 mt-1">
-                        <span>Đúng: <b className="tabular-nums">{rec.score}/{rec.totalQuestions}</b> ({rec.percentage.toFixed(1)}%)</span>
-                        <span>•</span>
-                        <span>Điểm 10: <b className="text-amber-600 dark:text-amber-400 tabular-nums">{rec.grade.score10.toFixed(1)}</b></span>
-                        <span>•</span>
-                        <span>Thời gian: <b className="tabular-nums font-mono">{formatDuration(rec.timeSpentSeconds)}</b></span>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
-                      <button
-                        type="button"
-                        onClick={() => exportExamToPdf(rec)}
-                        className="px-3 py-1.5 rounded-lg bg-red-500/15 hover:bg-red-500/25 text-red-700 dark:text-red-300 border border-red-500/30 text-xs font-medium flex items-center gap-1.5 transition cursor-pointer"
-                        title="Tải lại PDF phiếu báo điểm"
-                      >
-                        <Download size={13} />
-                        <span>PDF</span>
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={() => exportExamToExcel(rec)}
-                        className="px-3 py-1.5 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30 text-xs font-medium flex items-center gap-1.5 transition cursor-pointer"
-                        title="Tải lại Excel bảng điểm"
-                      >
-                        <Download size={13} />
-                        <span>Excel</span>
-                      </button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-      </div>
+      </section>
     </div>
   );
 };

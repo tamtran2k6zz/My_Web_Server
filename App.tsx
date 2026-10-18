@@ -9,7 +9,7 @@ import { ExamTimer } from './components/ExamTimer';
 import { ExamResultModal } from './components/ExamResultModal';
 import { LeaderboardModal } from './components/LeaderboardModal';
 import { ThemeToggle } from './components/ThemeToggle';
-import { calculateGrade, saveExamResult, ExamRecord, QuestionAnswerRecord } from './services/examService';
+import { calculateGrade, saveExamResult, leaderboardError, ExamRecord, QuestionAnswerRecord } from './services/examService';
 import { auth, loginWithGoogle, logout, isValidIctuEmail, maskEmail } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { emptyReview, parseReview, recordResult, reviewKey, toggleSaved, StudyReview } from './services/studyReview';
@@ -77,6 +77,18 @@ function App() {
   const [isResultModalOpen, setIsResultModalOpen] = useState(false);
   const [isLeaderboardOpen, setIsLeaderboardOpen] = useState(false);
   const [currentExamRecord, setCurrentExamRecord] = useState<ExamRecord | null>(null);
+  const [syncStatus, setSyncStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [syncError, setSyncError] = useState('');
+  const submittedExamRef = React.useRef<ExamRecord | null>(null);
+  const syncInFlightRef = React.useRef<string | null>(null);
+  useEffect(() => {
+    submittedExamRef.current = null;
+    setCurrentExamRecord(null);
+    setIsResultModalOpen(false);
+    setIsLeaderboardOpen(false);
+    setSyncStatus('idle');
+    setSyncError('');
+  }, [user?.uid]);
   const [examStartTime, setExamStartTime] = useState<number>(Date.now());
   const [examDuration, setExamDuration] = useState<number>(1800);
   const [answerResults, setAnswerResults] = useState<Record<number, boolean>>({});
@@ -213,6 +225,9 @@ function App() {
     setSessionId(previous => previous + 1);
     setIsResultModalOpen(false);
     setCurrentExamRecord(null);
+    submittedExamRef.current = null;
+    setSyncStatus('idle');
+    setSyncError('');
     setCurrentQuestionIndex(0);
     setAnimDirection(null);
     setViewMode('single');
@@ -232,8 +247,23 @@ function App() {
     if (question?.id) updateReview(previous => recordResult(previous, question.id!, isCorrect));
   };
 
+  const syncExamResult = async (record: ExamRecord) => {
+    if (syncInFlightRef.current === record.id) return;
+    syncInFlightRef.current = record.id;
+    setSyncStatus('saving'); setSyncError('');
+    try {
+      await saveExamResult(record);
+      if (submittedExamRef.current?.id === record.id && auth?.currentUser?.uid === record.userId) setSyncStatus('saved');
+    } catch (reason) {
+      if (submittedExamRef.current?.id === record.id && auth?.currentUser?.uid === record.userId) {
+        setSyncStatus('error'); setSyncError(leaderboardError(reason));
+      }
+    } finally { if (syncInFlightRef.current === record.id) syncInFlightRef.current = null; }
+  };
+
   const handleFinishExam = () => {
     if (!activeTopic) return;
+    if (submittedExamRef.current) { setIsResultModalOpen(true); return; }
     clearAdvanceTimer();
     const timeSpent = Math.max(1, Math.min(examDuration, Math.round((Date.now() - examStartTime) / 1000)));
     const totalQ = activeTopic.questions.length;
@@ -265,9 +295,10 @@ function App() {
       answers
     };
 
-    saveExamResult(record);
+    submittedExamRef.current = record;
     setCurrentExamRecord(record);
     setIsResultModalOpen(true);
+    void syncExamResult(record);
   };
 
   const handleExit = () => {
@@ -599,6 +630,9 @@ function App() {
       <ExamResultModal
         record={currentExamRecord}
         isOpen={isResultModalOpen}
+        syncStatus={syncStatus}
+        syncError={syncError}
+        onRetrySync={() => { if (currentExamRecord) void syncExamResult(currentExamRecord); }}
         onClose={() => setIsResultModalOpen(false)}
         onRetry={() => {
           setIsResultModalOpen(false);
